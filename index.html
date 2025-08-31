@@ -16,12 +16,12 @@
         .animate-fade-in { animation: fadeIn 0.5s ease-in-out; }
         .interactive-card {
             transition: all 0.3s ease-in-out;
-            border: 2px solid #a7f3d0; /* Viền xanh lá nhạt mặc định */
+            border: 2px solid #a7f3d0;
         }
         .interactive-card:hover {
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 12px 20px rgba(16, 185, 129, 0.2);
-            border-color: #059669; /* Viền xanh lá đậm khi hover */
+            border-color: #059669;
         }
         .dropdown { position: relative; }
         .dropdown-menu { 
@@ -39,26 +39,20 @@
         }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* CSS để giảm khoảng cách */
-        main > section {
-            padding-top: 2rem; /* giảm từ py-8 (2rem) thành 1rem */
-            padding-bottom: 2rem; /* giảm từ py-8 (2rem) thành 1rem */
-        }
-        main > section > div {
-            margin-bottom: 2.5rem; /* giảm từ mb-12 (3rem) hoặc mb-16 (4rem) */
-        }
+        main > section { padding-top: 2rem; padding-bottom: 2rem; }
+        main > section > div { margin-bottom: 2.5rem; }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
     <header class="gradient-bg text-white shadow-lg sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-3"> <!-- Giảm padding y từ 4 xuống 3 -->
+        <div class="container mx-auto px-4 py-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-3 cursor-pointer" onclick="showSection('intro')">
                     <img src="https://raw.githubusercontent.com/HienNguyenEMS/chacavungtau/refs/heads/main/logo.jpg" alt="Logo" class="w-10 h-10 rounded-lg">
                     <div><h1 class="text-xl font-bold">Đồng Nhân Food</h1></div>
                 </div>
-                <nav class="hidden md:flex space-x-5 items-center"> <!-- Giảm space-x từ 6 xuống 5 -->
+                <nav class="hidden md:flex space-x-5 items-center">
                     <button onclick="showSection('intro')" class="hover:text-amber-300 transition-colors">Trang chủ</button>
                     <button onclick="showSection('menu')" class="hover:text-amber-300 transition-colors">Sản phẩm</button>
                     <button onclick="showSection('stores')" class="hover:text-amber-300 transition-colors">Cửa hàng</button>
@@ -92,10 +86,10 @@
     <!-- Mobile Bottom Navigation -->
     <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t z-40">
         <div id="mobileNavGrid" class="grid grid-cols-3 h-16">
-            <button onclick="showSection('intro')" class="mobile-nav-btn flex flex-col items-center justify-center space-y-1 text-gray-600 active" data-section="intro">
+            <button onclick="showSection('intro')" class="mobile-nav-btn flex flex-col items-center justify-center space-y-1 text-gray-600" data-section="intro">
                 <span class="text-xl">🏠</span><span class="text-xs font-medium">Trang chủ</span>
             </button>
-            <button onclick="showSection('menu')" class="mobile-nav-btn flex flex-col items-center justify-center space-y-1 text-gray-600" data-section="menu">
+            <button onclick="showSection('menu')" class="mobile-nav-btn flex flex-col items-center justify-center space-y-1 text-gray-600 active" data-section="menu">
                 <span class="text-xl">🥖</span><span class="text-xs font-medium">Sản phẩm</span>
             </button>
             <button id="mobileNavCart" onclick="showSection('cart')" class="mobile-nav-btn flex-col items-center justify-center space-y-1 text-gray-600 relative hidden" data-section="cart">
@@ -108,9 +102,9 @@
         </div>
     </div>
 
-    <main class="container mx-auto px-4 py-8">
-        <section id="introSection" class="animate-fade-in"></section>
-        <section id="menuSection" class="hidden animate-fade-in"></section>
+    <main class="container mx-auto px-4">
+        <section id="introSection" class="hidden animate-fade-in"></section>
+        <section id="menuSection" class="animate-fade-in"></section>
         <section id="storesSection" class="hidden animate-fade-in"></section>
         <section id="cartSection" class="hidden animate-fade-in"></section>
         <section id="loginSection" class="hidden animate-fade-in"></section>
@@ -119,7 +113,7 @@
         <section id="franchiseSection" class="hidden animate-fade-in"></section>
     </main>
     
-    <footer class="bg-slate-800 text-white pt-10 pb-5">
+    <footer class="bg-gray-800 text-white pt-10 pb-5">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-6">
                 <div>
@@ -127,11 +121,11 @@
                         <img src="https://raw.githubusercontent.com/HienNguyenEMS/chacavungtau/refs/heads/main/logo.jpg" alt="Logo" class="w-10 h-10 rounded-lg">
                         <span class="font-bold text-lg">Đồng Nhân Food</span>
                     </div>
-                    <p class="text-slate-400 text-sm">Mang những sản phẩm chất lượng, an toàn và tiện lợi đến mọi nhà.</p>
+                    <p class="text-gray-400 text-sm">Mang những sản phẩm chất lượng, an toàn và tiện lợi đến mọi nhà.</p>
                 </div>
                 <div>
                     <h3 class="font-bold mb-3">Liên kết nhanh</h3>
-                    <ul class="space-y-1.5 text-slate-400 text-sm">
+                    <ul class="space-y-1.5 text-gray-400 text-sm">
                         <li><a href="#" onclick="event.preventDefault(); showSection('intro')" class="hover:text-white">Trang chủ</a></li>
                         <li><a href="#" onclick="event.preventDefault(); showSection('menu')" class="hover:text-white">Sản phẩm</a></li>
                         <li><a href="#" onclick="event.preventDefault(); showSection('stores')" class="hover:text-white">Cửa hàng</a></li>
@@ -140,7 +134,7 @@
                 </div>
                 <div>
                     <h3 class="font-bold mb-3">Liên hệ</h3>
-                    <ul class="space-y-1.5 text-slate-400 text-sm">
+                    <ul class="space-y-1.5 text-gray-400 text-sm">
                         <li><strong>Hotline:</strong> 0934.945.967</li>
                         <li><strong>Email:</strong> lienhe@dongnhanfood.com</li>
                         <li><strong>Trụ sở:</strong> 3/564 Ấp 64, Xuân Thới Sơn, TPHCM</li>
@@ -149,17 +143,16 @@
                 <div>
                     <h3 class="font-bold mb-3">Mạng xã hội</h3>
                      <div class="flex space-x-4">
-                        <a href="#" class="text-slate-400 hover:text-white">Facebook</a>
-                        <a href="#" class="text-slate-400 hover:text-white">Zalo</a>
+                        <a href="#" class="text-gray-400 hover:text-white">Facebook</a>
+                        <a href="#" class="text-gray-400 hover:text-white">Zalo</a>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-slate-700 pt-5 text-center text-sm text-slate-500">
+            <div class="border-t border-gray-700 pt-5 text-center text-sm text-gray-500">
                 <p>&copy; 2025 Đồng Nhân Food. All Rights Reserved.<a href="#" class="hover:text-white mt-2 inline-block">Tuyên bố quyền riêng tư</a></p>
             </div>
         </div>
     </footer>
-
 
     <!-- MODALS -->
     <div id="paymentOptionsModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"></div>
@@ -310,8 +303,10 @@ function filterProducts(category, element) {
     currentCategory = category;
     document.querySelectorAll('#category-filters .category-btn').forEach(btn => {
         btn.classList.remove('active');
+        btn.classList.add('bg-white', 'border');
     });
     element.classList.add('active');
+    element.classList.remove('bg-white', 'border');
     loadProducts();
 }
 
@@ -321,11 +316,21 @@ function loadProducts() {
     const productsToDisplay = currentCategory === 'all' ? products : products.filter(p => p.category === currentCategory);
 
     grid.innerHTML = productsToDisplay.map(p => {
-        const inCart = cart.some(item => item.id === p.id);
-        const btn = { class: inCart ? "bg-green-600 hover:bg-green-700" : "bg-emerald-600 hover:bg-emerald-700", text: inCart ? "Tới giỏ hàng ✅" : "Thêm vào giỏ hàng 🛒", action: inCart ? "showSection('cart')" : `addToCart(${p.id})` };
-        return `<div class="bg-white rounded-lg card-shadow overflow-hidden interactive-card"><div class="h-48 bg-gray-100 flex items-center justify-center">${p.image}</div><div class="p-4"><h3 class="font-bold text-lg">${p.name}</h3><p class="text-gray-600 text-sm h-10">${p.description}</p><div class="flex items-center justify-between mt-2 mb-4"><span class="text-xl font-bold text-emerald-600">${p.price.toLocaleString()}đ</span></div><button id="product-btn-${p.id}" onclick="${btn.action}" class="w-full text-white py-2 rounded-lg font-semibold ${btn.class}">${btn.text}</button></div></div>`;
+        const cartItem = cart.find(item => item.id === p.id);
+        const quantity = cartItem ? cartItem.quantity : 0;
+        
+        const buttonHtml = quantity > 0
+            ? `<div class="flex items-center justify-center gap-4">
+                 <button onclick="updateCartQuantity(${p.id}, -1)" class="w-10 h-10 bg-gray-200 rounded-full font-bold text-lg">-</button>
+                 <span class="text-xl font-semibold">${quantity}</span>
+                 <button onclick="updateCartQuantity(${p.id}, 1)" class="w-10 h-10 bg-gray-200 rounded-full font-bold text-lg">+</button>
+               </div>`
+            : `<button onclick="addToCart(${p.id})" class="w-full text-white py-2 rounded-lg font-semibold bg-emerald-600 hover:bg-emerald-700">Thêm vào giỏ hàng 🛒</button>`;
+            
+        return `<div class="bg-white rounded-lg card-shadow overflow-hidden interactive-card"><div class="h-48 bg-gray-100 flex items-center justify-center">${p.image}</div><div class="p-4"><h3 class="font-bold text-lg">${p.name}</h3><p class="text-gray-600 text-sm h-10">${p.description}</p><div class="flex items-center justify-between mt-2 mb-4"><span class="text-xl font-bold text-emerald-600">${p.price.toLocaleString()}đ</span></div><div id="product-actions-${p.id}">${buttonHtml}</div></div></div>`;
     }).join('');
 }
+
 
 function loadStores() {
     const grid = document.getElementById('storeGrid');
@@ -334,10 +339,22 @@ function loadStores() {
 
 // --- CART LOGIC ---
 function addToCart(productId) {
-    if (cart.some(item => item.id === productId)) return;
     const product = products.find(p => p.id === productId);
     cart.push({ ...product, quantity: 1 });
     showNotification(`${product.name} đã được thêm vào giỏ.`);
+    updateAllUI();
+}
+
+function updateCartQuantity(productId, change) {
+    const item = cart.find(item => item.id === productId);
+    if (!item) { // If item not in cart, add it (case from product page)
+        if(change > 0) addToCart(productId);
+        return;
+    }
+    item.quantity += change;
+    if (item.quantity <= 0) {
+        cart = cart.filter(i => i.id !== productId);
+    }
     updateAllUI();
 }
 
@@ -348,25 +365,72 @@ function removeFromCart(productId) {
 
 function updateCartDisplay() {
     const itemsEl = document.getElementById('cartItems');
+    const summaryEl = document.getElementById('cartSummary');
     const actionsEl = document.getElementById('cartActions');
     if(!itemsEl) return;
     if (cart.length === 0) {
         itemsEl.innerHTML = `<div class="text-center py-12"><h3 class="text-xl text-gray-600">Giỏ hàng của bạn đang trống.</h3><button onclick="showSection('menu')" class="mt-4 bg-emerald-600 text-white px-6 py-2 rounded-lg">Mua sắm ngay</button></div>`;
+        summaryEl.innerHTML = '';
         actionsEl.classList.add('hidden');
     } else {
-        const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
-        itemsEl.innerHTML = cart.map(item => `<div class="bg-white rounded-lg card-shadow p-4 flex items-center gap-4"><div class="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">${item.image}</div><div class="flex-1"><h3 class="font-semibold">${item.name}</h3><p class="text-emerald-600">${item.price.toLocaleString()}đ</p></div><p class="font-bold text-lg">${(item.price * item.quantity).toLocaleString()}đ</p><button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 p-2">✖</button></div>`).join('') + `<div class="text-right mt-4 text-xl font-bold">Tổng cộng: <span class="text-emerald-600">${total.toLocaleString()}đ</span></div>`;
+        itemsEl.innerHTML = cart.map(item => `<div class="bg-white rounded-lg card-shadow p-4 flex items-center gap-4"><div class="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">${item.image}</div><div class="flex-1"><h3 class="font-semibold">${item.name}</h3><p class="text-emerald-600">${item.price.toLocaleString()}đ</p></div><div class="flex items-center gap-3"><button onclick="updateCartQuantity(${item.id}, -1)" class="w-8 h-8 bg-gray-200 rounded-full font-bold">-</button><span class="text-lg font-semibold">${item.quantity}</span><button onclick="updateCartQuantity(${item.id}, 1)" class="w-8 h-8 bg-gray-200 rounded-full font-bold">+</button></div><p class="font-bold text-lg w-24 text-right">${(item.price * item.quantity).toLocaleString()}đ</p><button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 p-2">✖</button></div>`).join('');
+        
+        const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+        const discountAmount = subtotal * (discountPercent / 100);
+        const total = subtotal - discountAmount;
+
+        summaryEl.innerHTML = `
+            <div class="max-w-sm ml-auto bg-white p-6 rounded-lg card-shadow">
+                <div class="flex justify-between items-center mb-4">
+                    <input type="text" id="discountCodeInput" placeholder="Nhập mã giảm giá" class="w-full px-3 py-2 border rounded-l-lg">
+                    <button onclick="applyDiscount()" class="bg-gray-600 text-white px-4 py-2 rounded-r-lg hover:bg-gray-700">Áp dụng</button>
+                </div>
+                <div id="discountMessage" class="text-sm mb-4"></div>
+                <div class="space-y-2 border-t pt-4">
+                    <div class="flex justify-between"><span class="text-gray-600">Tạm tính:</span><span>${subtotal.toLocaleString()}đ</span></div>
+                    ${discountPercent > 0 ? `<div class="flex justify-between text-green-600"><span class="text-gray-600">Giảm giá (${discountPercent}%):</span><span>-${discountAmount.toLocaleString()}đ</span></div>` : ''}
+                    <div class="flex justify-between text-xl font-bold"><span class="text-gray-800">Tổng cộng:</span><span class="text-emerald-600">${total.toLocaleString()}đ</span></div>
+                </div>
+            </div>
+        `;
+
         actionsEl.classList.remove('hidden');
     }
 }
 
+function applyDiscount() {
+    const code = document.getElementById('discountCodeInput').value.toUpperCase();
+    const messageEl = document.getElementById('discountMessage');
+    if (discountCodes[code]) {
+        discountPercent = discountCodes[code];
+        messageEl.innerHTML = `<p class="text-green-600">Áp dụng mã thành công! Bạn được giảm ${discountPercent}%.</p>`;
+    } else {
+        discountPercent = 0;
+        messageEl.innerHTML = `<p class="text-red-500">Mã giảm giá không hợp lệ.</p>`;
+    }
+    updateCartDisplay();
+}
+
 // --- PAYMENT & FRANCHISE FLOW ---
 function proceedToOrder() {
-    if (!isLoggedIn) { showNotification("Vui lòng đăng nhập để thanh toán."); showSection('login'); return; }
+    if (!isLoggedIn) { showNotification("Vui lòng đăng nhập để thanh toán.", true); showSection('login'); return; }
+    
+    const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+    const discountAmount = subtotal * (discountPercent / 100);
+    const orderTotal = subtotal - discountAmount;
+    const debt = currentUser.debt || 0;
+    const finalTotal = orderTotal + debt;
+
     const modal = document.getElementById('paymentOptionsModal');
     modal.innerHTML = TEMPLATES.paymentOptionsModal;
-    const total = cart.reduce((s, i) => s + (i.price * i.quantity), 0);
-    document.getElementById('orderSummaryInModal').innerHTML = `<p class="text-center">Tổng tiền: <strong class="text-emerald-600">${total.toLocaleString()}đ</strong></p>`;
+    
+    document.getElementById('orderSummaryInModal').innerHTML = `
+        <div class="flex justify-between"><span>Tổng đơn hàng mới:</span><strong>${orderTotal.toLocaleString()}đ</strong></div>
+        ${discountPercent > 0 ? `<div class="flex justify-between text-green-600"><span>(Đã giảm ${discountAmount.toLocaleString()}đ)</span></div>` : ''}
+        <div class="flex justify-between"><span>Công nợ cũ:</span><strong>${debt.toLocaleString()}đ</strong></div>
+        <hr class="my-2">
+        <div class="flex justify-between font-bold text-lg"><span class="text-gray-800">Tổng thanh toán:</span><strong class="text-emerald-600">${finalTotal.toLocaleString()}đ</strong></div>
+    `;
     modal.classList.remove('hidden');
 }
 
@@ -383,19 +447,22 @@ function generateVietQRUrl(amount, content) {
 function showBankingPayment() {
     const modal = document.getElementById('bankingPaymentModal');
     modal.innerHTML = TEMPLATES.bankingPaymentModal;
-    const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+    const orderTotal = cart.reduce((s, i) => s + i.price * i.quantity, 0) * (1 - discountPercent / 100);
+    const totalToPay = orderTotal + (currentUser.debt || 0);
     const orderId = 'DH' + Date.now().toString().slice(-6);
     const qrContent = `TT ${orderId}`;
-    document.getElementById('bankingQrImage').src = generateVietQRUrl(total, qrContent);
-    document.getElementById('bankingAmount').textContent = `${total.toLocaleString()}đ`;
+    document.getElementById('bankingQrImage').src = generateVietQRUrl(totalToPay, qrContent);
+    document.getElementById('bankingAmount').textContent = `${totalToPay.toLocaleString()}đ`;
     document.getElementById('bankingContent').textContent = qrContent;
     modal.classList.remove('hidden');
 }
 
 function confirmBankingPayment() {
-    const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+    const total = cart.reduce((s, i) => s + i.price * i.quantity, 0) * (1 - discountPercent / 100);
     orderHistory.push({ id: orderHistory.length + 1, code: 'DH' + Date.now().toString().slice(-6), status: 'Đang xử lý', total: total, date: new Date() });
+    currentUser.debt = 0; // Assume all debt is paid
     cart = [];
+    discountPercent = 0;
     closeModal('bankingPaymentModal');
     showNotification("Thanh toán thành công! Đơn hàng đang được xử lý.");
     updateAllUI();
@@ -403,24 +470,25 @@ function confirmBankingPayment() {
 }
 
 function checkDebtLimitAndProcess() {
-    const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
-    const newDebt = (currentUser.debt || 0) + total;
-    if (newDebt > currentUser.creditLimit) {
-        showDebtWarning(currentUser.debt, newDebt - currentUser.creditLimit);
+    const orderTotal = cart.reduce((s, i) => s + i.price * i.quantity, 0) * (1 - discountPercent / 100);
+    const newDebtTotal = (currentUser.debt || 0) + orderTotal;
+    if (newDebtTotal > currentUser.creditLimit) {
+        showDebtWarning(currentUser.debt, orderTotal, currentUser.creditLimit);
     } else {
-        currentUser.debt = newDebt;
-        orderHistory.push({ id: orderHistory.length + 1, code: 'DH' + Date.now().toString().slice(-6), status: 'Đang xử lý (Công nợ)', total: total, date: new Date() });
+        currentUser.debt = newDebtTotal;
+        orderHistory.push({ id: orderHistory.length + 1, code: 'DH' + Date.now().toString().slice(-6), status: 'Đang xử lý (Công nợ)', total: orderTotal, date: new Date() });
         cart = [];
+        discountPercent = 0;
         showNotification("Đặt hàng công nợ thành công!");
         updateAllUI();
         showSection('dashboard');
     }
 }
 
-function showDebtWarning(currentDebt, amountOver) {
+function showDebtWarning(currentDebt, orderTotal, creditLimit) {
     const modal = document.getElementById('debtWarningModal');
     modal.innerHTML = TEMPLATES.debtWarningModal;
-    document.getElementById('debtWarningContent').innerHTML = `<p>Công nợ hiện tại: <strong class="text-red-600">${currentDebt.toLocaleString()}đ</strong></p><p>Đơn hàng này sẽ vượt hạn mức: <strong class="text-red-600">${amountOver.toLocaleString()}đ</strong></p>`;
+    document.getElementById('debtWarningContent').innerHTML = `<p>Công nợ hiện tại: <strong class="text-red-600">${currentDebt.toLocaleString()}đ</strong></p><p>Đơn hàng mới: <strong>${orderTotal.toLocaleString()}đ</strong></p><p>Tổng công nợ mới sẽ là <strong class="text-red-600">${(currentDebt + orderTotal).toLocaleString()}đ</strong>, vượt quá hạn mức <strong>${creditLimit.toLocaleString()}đ</strong>.</p>`;
     document.getElementById('debtQrImage').src = generateVietQRUrl(currentDebt, `TT Cong No ${currentUser.phone}`);
     modal.classList.remove('hidden');
 }
@@ -433,12 +501,8 @@ function confirmDebtPayment() {
 }
 
 function handleFranchiseClick() {
-    if (isLoggedIn) {
-        showSection('franchise');
-    } else {
-        showNotification("Vui lòng đăng nhập để đăng ký đại lý.", true);
-        showSection('login');
-    }
+    if (isLoggedIn) showSection('franchise');
+    else { showNotification("Vui lòng đăng nhập để đăng ký.", true); showSection('login'); }
 }
 
 function prefillFranchiseForm() {
@@ -452,8 +516,7 @@ function prefillFranchiseForm() {
 function handleFranchiseSubmit(event) {
     event.preventDefault();
     if (!document.getElementById('franchiseTerms').checked) {
-        showNotification("Bạn phải đồng ý với điều khoản để tiếp tục.", true);
-        return;
+        showNotification("Bạn phải đồng ý với điều khoản để tiếp tục.", true); return;
     }
     showNotification("Yêu cầu của bạn đã được gửi. Chúng tôi sẽ liên hệ lại sớm!");
     setTimeout(() => showSection('intro'), 2000);
@@ -541,20 +604,6 @@ function loadProfileInfo() {
     el.innerHTML = `<div class="bg-white p-6 rounded-lg shadow-sm max-w-md"><h3 class="font-bold text-lg mb-4">Thông Tin Tài Khoản</h3><div class="space-y-2"><p><strong>Họ tên:</strong> ${currentUser.name}</p><p><strong>Email:</strong> ${currentUser.email}</p><p><strong>SĐT:</strong> ${currentUser.phone}</p><p><strong>Địa chỉ:</strong> ${currentUser.address || "Chưa cập nhật"}</p></div></div>`;
 }
 
-// --- TRACKING & DEBT (Public) ---
-function trackOrder() {
-    const code = document.getElementById('orderCode').value.toUpperCase();
-    const resultEl = document.getElementById('trackingResult');
-    const order = orderHistory.find(o => o.code === code);
-    resultEl.innerHTML = order ? `<div class="bg-green-50 p-4 rounded-lg"><p>Đơn hàng <strong>${code}</strong></p><p>Trạng thái: <span class="font-semibold text-green-700">${order.status}</span></p></div>` : `<div class="bg-red-50 p-4 rounded-lg"><p>Không tìm thấy đơn hàng <strong>${code}</strong>.</p></div>`;
-}
-
-function checkDebt() {
-    const phone = document.getElementById('debtPhone').value;
-    const resultEl = document.getElementById('debtResult');
-    const user = demoUsers.find(u => u.phone === phone);
-    resultEl.innerHTML = user ? `<div class="bg-emerald-50 p-4 rounded-lg"><p>Khách hàng: <strong>${user.name}</strong></p><p>Công nợ: <span class="font-semibold text-red-500">${(user.debt || 0).toLocaleString()}đ</span></p></div>` : `<div class="bg-red-50 p-4 rounded-lg"><p>Không tìm thấy thông tin cho SĐT này.</p></div>`;
-}
 
 // --- UTILITY ---
 function showNotification(message, isError = false) {
@@ -567,7 +616,7 @@ function showNotification(message, isError = false) {
 }
 
 function updateAllUI() {
-    document.querySelectorAll('#cartCount, #mobileCartCount').forEach(el => { el.textContent = cart.length; });
+    document.querySelectorAll('#cartCount, #mobileCartCount').forEach(el => { el.textContent = cart.reduce((total, item) => total + item.quantity, 0); });
     updateMenuVisibility();
     updateLoginUI();
     const visibleSection = document.querySelector('main > section:not(.hidden)');
