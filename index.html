@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -6,133 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chả Cá Vũng Tàu - Đặt Hàng Online</title>
     
-    <!-- Meta tags for social sharing -->
     <meta name="description" content="🐟 Đặc sản biển tươi ngon - Hương vị đại dương 🌊 - Chả Cá Vũng Tàu chuyên cung cấp chả cá tươi ngon, đặt hàng online nhanh chóng">
-    <meta property="og:title" content="Chả Cá Vũng Tàu - Đặt Hàng Online">
-    <meta property="og:description" content="🐟 Đặc sản biển tươi ngon - Hương vị đại dương 🌊 - Chả Cá Vũng Tàu chuyên cung cấp chả cá tươi ngon, đặt hàng online nhanh chóng">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Chả Cá Vũng Tàu - Đặt Hàng Online">
-    <meta name="twitter:description" content="🐟 Đặc sản biển tươi ngon - Hương vị đại dương 🌊 - Chả Cá Vũng Tàu chuyên cung cấp chả cá tươi ngon, đặt hàng online nhanh chóng">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .gradient-bg { background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%); }
-        .ocean-wave { background: linear-gradient(45deg, #06b6d4 0%, #0891b2 50%, #0e7490 100%); }
-        .fresh-gradient { background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 50%, #0891b2 100%); }
-        .seafoam { background: linear-gradient(135deg, #67e8f9 0%, #22d3ee 50%, #06b6d4 100%); }
         .card-shadow { box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .animate-fade-in { animation: fadeIn 0.5s ease-in; }
-        .wave-animation { animation: wave 3s ease-in-out infinite; }
-        .float-animation { animation: float 4s ease-in-out infinite; }
-        .shimmer { animation: shimmer 2s linear infinite; }
         .dropdown { position: relative; }
         .dropdown-menu { 
-            position: absolute; 
-            top: 100%; 
-            right: 0; 
-            background: white; 
-            border-radius: 8px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
-            min-width: 200px; 
-            z-index: 50; 
-            transform: translateY(10px) scale(0.95); 
-            opacity: 0; 
-            visibility: hidden; 
-            transition: all 0.2s ease; 
+            position: absolute; top: 100%; right: 0; background: white; 
+            border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
+            min-width: 200px; z-index: 50; transform: translateY(10px) scale(0.95);
+            opacity: 0; visibility: hidden; transition: all 0.2s ease; 
         }
-        .dropdown-menu.show { 
-            transform: translateY(0) scale(1); 
-            opacity: 1; 
-            visibility: visible; 
-        }
-        .mobile-nav-btn.active { 
-            color: #2563eb; 
-            background-color: #eff6ff; 
-        }
+        .dropdown-menu.show { transform: translateY(0) scale(1); opacity: 1; visibility: visible; }
+        .mobile-nav-btn.active { color: #2563eb; background-color: #eff6ff; }
+        .dashboard-tab.active { border-bottom-width: 2px; border-color: #2563eb; color: #2563eb; }
         @media (max-width: 768px) {
-            main { 
-                padding-bottom: 80px; 
-            }
+            main { padding-bottom: 80px; }
         }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes wave { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
-        @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-15px) rotate(2deg); } }
-        @keyframes shimmer { 0% { background-position: -200px 0; } 100% { background-position: 200px 0; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
-    <header class="gradient-bg text-white shadow-lg">
-        <div class="container mx-auto px-4 py-6">
+    <header class="gradient-bg text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
             <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <img src="https://gpems.net/logo-icon.png" alt="Logo" class="w-12 h-12 rounded-lg bg-white p-1" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <div class="text-3xl wave-animation" style="display: none;">🌊</div>
-                    <div>
-                        <h1 class="text-2xl font-bold">Chả Cá Vũng Tàu</h1>
-                    </div>
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="showSection('intro')">
+                    <img src="https://raw.githubusercontent.com/HienNguyenEMS/chacavungtau/refs/heads/main/logo.jpg" alt="Logo" class="w-10 h-10 rounded-lg">
+                    <div><h1 class="text-xl font-bold">Đồng Nhân Food</h1></div>
                 </div>
                 <nav class="hidden md:flex space-x-6 items-center">
-                    <button id="navHome" onclick="showSection('intro')" class="hover:text-blue-200 transition-colors cursor-pointer">Trang chủ</button>
-                    <button id="navMenu" onclick="showSection('menu')" class="hover:text-blue-200 transition-colors cursor-pointer">Sản phẩm</button>
-                    <button id="navStores" onclick="showSection('stores')" class="hover:text-blue-200 transition-colors cursor-pointer">Cửa hàng</button>
-                    <div class="relative group">
-                        <button class="hover:text-blue-200 transition-colors cursor-pointer">Tra cứu ▼</button>
+                    <button onclick="showSection('intro')" class="hover:text-blue-200 transition-colors">Trang chủ</button>
+                    <button onclick="showSection('menu')" class="hover:text-blue-200 transition-colors">Sản phẩm</button>
+                    <button onclick="showSection('stores')" class="hover:text-blue-200 transition-colors">Cửa hàng</button>
+                     <div class="relative group">
+                        <button class="hover:text-blue-200 transition-colors cursor-pointer">Tra cứu</button>
                         <div class="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-lg py-2 min-w-[200px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                            <button id="navTracking" onclick="showSection('tracking')" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 cursor-pointer">📦 Tra cứu đơn hàng</button>
-                            <button id="navDebt" onclick="showSection('debt')" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 cursor-pointer">💳 Tra cứu công nợ</button>
+                            <button onclick="showSection('tracking')" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-blue-50">📦 Tra cứu đơn hàng</button>
+                            <button onclick="showSection('debt')" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-blue-50">💳 Tra cứu công nợ</button>
                         </div>
                     </div>
-                    <button id="navCart" onclick="showSection('cart')" class="hover:text-blue-200 transition-colors relative cursor-pointer">
-                        Giỏ hàng <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-xs rounded-full px-1 hidden">0</span>
+                    <button id="navCart" onclick="showSection('cart')" class="hover:text-blue-200 transition-colors relative hidden">
+                        Giỏ hàng <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
                     </button>
-                    
-                    <!-- User Menu -->
-                    <div id="userMenu" class="relative">
-                        <!-- Not logged in -->
+                    <div id="userMenuContainer" class="relative">
                         <div id="notLoggedIn" class="flex space-x-3">
-                            <button onclick="showSection('login')" class="bg-white bg-opacity-20 px-4 py-2 rounded-lg hover:bg-opacity-30 transition-colors">Đăng nhập</button>
-                            <button onclick="showSection('register')" class="bg-white text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors">Đăng ký</button>
+                            <button onclick="showSection('login')" class="bg-white bg-opacity-20 px-4 py-2 rounded-lg hover:bg-opacity-30">Đăng nhập</button>
+                            <button onclick="showSection('register')" class="bg-amber-400 text-slate-800 px-4 py-2 rounded-lg hover:bg-amber-300 font-semibold">Đăng ký</button>
                         </div>
-                        
-                        <!-- Logged in -->
-                        <div id="loggedIn" class="hidden flex items-center space-x-3">
-                            <button onclick="showSection('dashboard')" class="relative bg-white bg-opacity-20 px-3 py-2 rounded-lg hover:bg-opacity-30 transition-colors">
-                                <span class="text-xl">🔔</span>
-                                <span id="notificationBellBadge" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1 min-w-[16px] h-4 flex items-center justify-center">3</span>
-                            </button>
-                            
-                            <!-- User Dropdown -->
+                        <div id="loggedIn" class="hidden">
                             <div class="dropdown">
-                                <button onclick="toggleUserDropdown()" class="flex items-center space-x-2 bg-white bg-opacity-20 px-4 py-2 rounded-lg hover:bg-opacity-30 transition-colors">
-                                    <span class="text-xl">👤</span>
-                                    <span id="userName" class="font-medium"></span>
-                                    <svg class="w-4 h-4 transition-transform" id="userDropdownIcon" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                    </svg>
+                                <button onclick="toggleUserDropdown()" class="flex items-center space-x-2 bg-white bg-opacity-20 px-4 py-2 rounded-lg hover:bg-opacity-30">
+                                    <span class="text-xl">👤</span><span id="userName" class="font-medium"></span>
+                                    <svg class="w-4 h-4 transition-transform" id="userDropdownIcon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                 </button>
                                 <div id="userDropdownMenu" class="dropdown-menu">
-                                    <div class="py-2">
-                                        <button onclick="showSection('dashboard'); closeUserDropdown();" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors flex items-center space-x-2">
-                                            <span>👤</span>
-                                            <span>Hồ sơ của tôi</span>
-                                        </button>
-                                        <button onclick="showDashboardTab('orders'); showSection('dashboard'); closeUserDropdown();" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors flex items-center space-x-2">
-                                            <span>📦</span>
-                                            <span>Đơn hàng</span>
-                                        </button>
-                                        <button onclick="showDashboardTab('debt'); showSection('dashboard'); closeUserDropdown();" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors flex items-center space-x-2">
-                                            <span>💳</span>
-                                            <span>Công nợ</span>
-                                        </button>
-                                        <hr class="my-2">
-                                        <button onclick="logout(); closeUserDropdown();" class="w-full text-left px-4 py-2 text-red-600 hover:bg-red-50 transition-colors flex items-center space-x-2">
-                                            <span>🚪</span>
-                                            <span>Đăng xuất</span>
-                                        </button>
-                                    </div>
+                                    <button onclick="showSection('dashboard'); closeUserDropdown();" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-emerald-50 flex items-center space-x-2"><span>📊</span><span>Dashboard</span></button>
+                                    <hr class="my-1">
+                                    <button onclick="logout(); closeUserDropdown();" class="w-full text-left px-4 py-2 text-red-600 hover:bg-red-50 flex items-center space-x-2"><span>🚪</span><span>Đăng xuất</span></button>
                                 </div>
                             </div>
                         </div>
@@ -141,1785 +75,484 @@
             </div>
         </div>
     </header>
-
+    
     <!-- Mobile Bottom Navigation -->
-    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-40">
-        <div class="grid grid-cols-5 h-16">
-            <button id="mobileNavHome" onclick="showSection('intro')" class="mobile-nav-btn flex flex-col items-center justify-center space-y-1 text-gray-600 hover:text-blue-600 transition-colors active cursor-pointer" data-section="intro">
-                <span class="text-xl">🏠</span>
-                <span class="text-xs font-medium">Trang chủ</span>
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t z-40">
+        <div id="mobileNavGrid" class="grid grid-cols-3 h-16">
+            <button onclick="showSection('intro')" class="mobile-nav-btn flex flex-col items-center justify-center space-y-1 text-gray-600 active" data-section="intro">
+                <span class="text-xl">🏠</span><span class="text-xs font-medium">Trang chủ</span>
             </button>
-            <button id="mobileNavMenu" onclick="showSection('menu')" class="mobile-nav-btn flex flex-col items-center justify-center space-y-1 text-gray-600 hover:text-blue-600 transition-colors cursor-pointer" data-section="menu">
-                <span class="text-xl">🐟</span>
-                <span class="text-xs font-medium">Sản phẩm</span>
+            <button onclick="showSection('menu')" class="mobile-nav-btn flex flex-col items-center justify-center space-y-1 text-gray-600" data-section="menu">
+                <span class="text-xl">🥖</span><span class="text-xs font-medium">Sản phẩm</span>
             </button>
-            <button id="mobileNavStores" onclick="showSection('stores')" class="mobile-nav-btn flex flex-col items-center justify-center space-y-1 text-gray-600 hover:text-blue-600 transition-colors cursor-pointer" data-section="stores">
-                <span class="text-xl">🏪</span>
-                <span class="text-xs font-medium">Cửa hàng</span>
+            <button id="mobileNavCart" onclick="showSection('cart')" class="mobile-nav-btn flex-col items-center justify-center space-y-1 text-gray-600 relative hidden" data-section="cart">
+                <span class="text-xl">🛒</span><span class="text-xs font-medium">Giỏ hàng</span>
+                <span id="mobileCartCount" class="absolute top-1 right-4 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
             </button>
-            <button id="mobileNavCart" onclick="showSection('cart')" class="mobile-nav-btn flex flex-col items-center justify-center space-y-1 text-gray-600 hover:text-blue-600 transition-colors relative cursor-pointer" data-section="cart">
-                <span class="text-xl">🛒</span>
-                <span class="text-xs font-medium">Giỏ hàng</span>
-                <span id="mobileCartCount" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1 min-w-[16px] h-4 flex items-center justify-center hidden">0</span>
+             <button onclick="isLoggedIn ? showSection('dashboard') : showSection('login')" class="mobile-nav-btn flex flex-col items-center justify-center space-y-1 text-gray-600" data-section="login">
+                <span class="text-xl">👤</span><span class="text-xs font-medium">Tài khoản</span>
             </button>
-            <div class="relative">
-                <button id="mobileNavSearch" onclick="toggleMobileSearch()" class="mobile-nav-btn flex flex-col items-center justify-center space-y-1 text-gray-600 hover:text-blue-600 transition-colors w-full h-full cursor-pointer">
-                    <span class="text-xl">🔍</span>
-                    <span class="text-xs font-medium">Tra cứu</span>
-                </button>
-                <div id="mobileSearchMenu" class="absolute bottom-full left-0 right-0 bg-white border border-gray-200 rounded-t-lg shadow-lg hidden">
-                    <button id="mobileNavTracking" onclick="showSection('tracking'); closeMobileSearch();" class="w-full px-4 py-3 text-left text-gray-700 hover:bg-blue-50 border-b border-gray-200 cursor-pointer">
-                        📦 Tra cứu đơn hàng
-                    </button>
-                    <button id="mobileNavDebt" onclick="showSection('debt'); closeMobileSearch();" class="w-full px-4 py-3 text-left text-gray-700 hover:bg-blue-50 cursor-pointer">
-                        💳 Tra cứu công nợ
-                    </button>
-                </div>
-            </div>
         </div>
     </div>
 
-    <!-- Main Content -->
     <main class="container mx-auto px-4 py-8">
-        <!-- Introduction Section -->
-        <section id="introSection" class="animate-fade-in">
-            <!-- Hero Banner -->
-            <div class="gradient-bg text-white rounded-2xl p-8 mb-8 card-shadow relative overflow-hidden">
-                <div class="absolute inset-0 opacity-10">
-                    <div class="wave-animation text-9xl absolute top-4 left-4">🌊</div>
-                    <div class="float-animation text-6xl absolute top-8 right-8">🐠</div>
-                    <div class="wave-animation text-4xl absolute bottom-4 left-1/4">🐟</div>
-                </div>
-                <div class="text-center relative z-10">
-                    <div class="text-8xl mb-4 float-animation">🌊🐟🌊</div>
-                    <h1 class="text-4xl font-bold mb-4">Chả Cá Tươi Vũng Tàu</h1>
-                    <p class="text-xl mb-6 text-cyan-100">🌊 Chuyên Cung Cấp Chả Cá Tươi Vũng Tàu - Hương Vị Đại Dương 🌊</p>
-                    <p class="text-lg mb-8 text-cyan-100">🚐 Nhượng Quyền Kinh Doanh Xe Bánh Mì Chả Cá Nóng 🔥</p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <div class="flex items-center space-x-2 bg-white bg-opacity-20 px-6 py-3 rounded-full">
-                            <span class="text-2xl">📞</span>
-                            <span class="font-semibold text-lg">Hotline: 0934945967</span>
-                        </div>
-                        <button onclick="showSection('menu')" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors">
-                            Xem Sản Phẩm
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- About Us -->
-            <div class="grid md:grid-cols-2 gap-8 mb-12">
-                <div class="bg-white rounded-lg card-shadow p-8 border-l-4 border-cyan-500">
-                    <h2 class="text-2xl font-bold mb-4 text-cyan-800">🌊 Về Chúng Tôi</h2>
-                    <p class="text-gray-600 mb-4">
-                        Với hơn 10 năm kinh nghiệm trong ngành chế biến hải sản, Chả Cá Vũng Tàu tự hào là đơn vị cung cấp chả cá tươi ngon, chất lượng cao từ vùng biển Vũng Tàu.
-                    </p>
-                    <p class="text-gray-600 mb-4">
-                        Chúng tôi cam kết mang đến cho khách hàng những sản phẩm tươi ngon nhất với quy trình chế biến hiện đại, đảm bảo vệ sinh an toàn thực phẩm.
-                    </p>
-                    <div class="flex items-center space-x-4 text-sm text-blue-600">
-                        <span class="flex items-center"><span class="mr-1">✓</span> Tươi ngon</span>
-                        <span class="flex items-center"><span class="mr-1">✓</span> Chất lượng cao</span>
-                        <span class="flex items-center"><span class="mr-1">✓</span> Giao hàng nhanh</span>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-lg card-shadow p-8 border-l-4 border-blue-500">
-                    <h2 class="text-2xl font-bold mb-4 text-blue-800">🚐 Nhượng Quyền Kinh Doanh</h2>
-                    <p class="text-gray-600 mb-4">
-                        Cơ hội kinh doanh xe bánh mì chả cá nóng với mô hình đã được chứng minh thành công tại nhiều địa phương.
-                    </p>
-                    <div class="space-y-3">
-                        <div class="flex items-center space-x-3">
-                            <span class="text-green-500 text-xl">💰</span>
-                            <span class="text-gray-700">Đầu tư thấp, lợi nhuận cao</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <span class="text-blue-500 text-xl">📚</span>
-                            <span class="text-gray-700">Đào tạo miễn phí</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <span class="text-purple-500 text-xl">🤝</span>
-                            <span class="text-gray-700">Hỗ trợ marketing</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <span class="text-orange-500 text-xl">🚚</span>
-                            <span class="text-gray-700">Cung cấp nguyên liệu ổn định</span>
-                        </div>
-                    </div>
-                    <button onclick="window.open('tel:0934945967')" class="mt-4 bg-cyan-600 text-white px-6 py-2 rounded-lg hover:bg-cyan-700 transition-colors">
-                        Liên hệ ngay
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Menu Section -->
-        <section id="menuSection" class="hidden animate-fade-in">
-            <div class="text-center mb-8">
-                <div class="text-6xl mb-4 float-animation">🌊🐟🌊</div>
-                <h2 class="text-3xl font-bold text-cyan-800 mb-4">Sản Phẩm Chả Cá Vũng Tàu</h2>
-                <p class="text-cyan-600">🌊 Hương vị tươi ngon từ đại dương 🌊</p>
-            </div>
-            
-            <!-- Category Filter -->
-            <div class="flex flex-wrap justify-center gap-4 mb-8">
-                <button onclick="filterProducts('all')" class="category-btn active bg-cyan-600 text-white px-6 py-2 rounded-full hover:bg-cyan-700 transition-colors shadow-lg">🌊 Tất cả</button>
-                <button onclick="filterProducts('fish')" class="category-btn bg-white text-cyan-700 border-2 border-cyan-200 px-6 py-2 rounded-full hover:bg-cyan-50 transition-colors shadow-md">🐟 Chả cá</button>
-                <button onclick="filterProducts('sauce')" class="category-btn bg-white text-cyan-700 border-2 border-cyan-200 px-6 py-2 rounded-full hover:bg-cyan-50 transition-colors shadow-md">🍯 Nước mắm</button>
-                <button onclick="filterProducts('packaging')" class="category-btn bg-white text-cyan-700 border-2 border-cyan-200 px-6 py-2 rounded-full hover:bg-cyan-50 transition-colors shadow-md">📦 Bao bì</button>
-                <button onclick="filterProducts('accessories')" class="category-btn bg-white text-cyan-700 border-2 border-cyan-200 px-6 py-2 rounded-full hover:bg-cyan-50 transition-colors shadow-md">🧻 Phụ kiện</button>
-            </div>
-
-            <div id="productGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Products will be dynamically loaded here -->
-            </div>
-        </section>
-
-        <!-- Stores Section -->
-        <section id="storesSection" class="hidden animate-fade-in">
-            <div class="text-center mb-8">
-                <div class="text-6xl mb-4 float-animation">🏪🌊🏪</div>
-                <h2 class="text-3xl font-bold text-cyan-800 mb-4">Hệ Thống Cửa Hàng & Chi Nhánh</h2>
-                <p class="text-cyan-600">🌊 Phục vụ khách hàng trên toàn tỉnh Bà Rịa - Vũng Tàu 🌊</p>
-            </div>
-
-            <!-- Store Map/Overview -->
-            <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-8 mb-8 border border-cyan-200">
-                <div class="text-center mb-6">
-                    <h3 class="text-2xl font-bold text-cyan-800 mb-2">🗺️ Bản Đồ Phủ Sóng</h3>
-                    <p class="text-cyan-600">Chúng tôi có mặt tại các khu vực chính trong tỉnh</p>
-                </div>
-                <div class="grid md:grid-cols-3 gap-6 text-center">
-                    <div class="bg-white rounded-lg p-4 shadow-md">
-                        <div class="text-3xl mb-2">🏙️</div>
-                        <h4 class="font-semibold text-gray-800">Thành phố Vũng Tàu</h4>
-                        <p class="text-sm text-gray-600">3 chi nhánh</p>
-                    </div>
-                    <div class="bg-white rounded-lg p-4 shadow-md">
-                        <div class="text-3xl mb-2">🏘️</div>
-                        <h4 class="font-semibold text-gray-800">Thành phố Bà Rịa</h4>
-                        <p class="text-sm text-gray-600">1 chi nhánh</p>
-                    </div>
-                    <div class="bg-white rounded-lg p-4 shadow-md">
-                        <div class="text-3xl mb-2">🌾</div>
-                        <h4 class="font-semibold text-gray-800">Các huyện</h4>
-                        <p class="text-sm text-gray-600">2 chi nhánh</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Store List -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-white rounded-lg card-shadow p-6 hover:shadow-xl transition-shadow border-l-4 border-blue-500">
-                    <div class="text-center mb-4">
-                        <div class="text-4xl mb-2">🏢</div>
-                        <h3 class="font-bold text-lg text-gray-800">Chi nhánh Trung tâm</h3>
-                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Cửa hàng chính</span>
-                    </div>
-                    <div class="space-y-3 text-sm text-gray-600">
-                        <div class="flex items-start space-x-2">
-                            <span class="text-blue-500 mt-0.5">📍</span>
-                            <span>123 Đường Thùy Vân, Phường Thắng Tam, TP. Vũng Tàu</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-green-500">📞</span>
-                            <a href="tel:0254123456" class="hover:text-blue-600">0254.123.4567</a>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-orange-500">🚚</span>
-                            <span>Giao hàng: 30-45 phút</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-purple-500">🕒</span>
-                            <span>7:00 - 22:00 (Hàng ngày)</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 pt-4 border-t">
-                        <div class="flex space-x-2">
-                            <button onclick="selectStoreForOrder('vt-center')" class="flex-1 bg-blue-600 text-white py-2 px-3 rounded text-sm hover:bg-blue-700 transition-colors">
-                                Đặt hàng
-                            </button>
-                            <button onclick="window.open('tel:0254123456')" class="bg-green-600 text-white py-2 px-3 rounded text-sm hover:bg-green-700 transition-colors">
-                                📞
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg card-shadow p-6 hover:shadow-xl transition-shadow border-l-4 border-cyan-500">
-                    <div class="text-center mb-4">
-                        <div class="text-4xl mb-2">🏖️</div>
-                        <h3 class="font-bold text-lg text-gray-800">Chi nhánh Bãi Sau</h3>
-                        <span class="inline-block bg-cyan-100 text-cyan-800 text-xs px-2 py-1 rounded-full">Khu du lịch</span>
-                    </div>
-                    <div class="space-y-3 text-sm text-gray-600">
-                        <div class="flex items-start space-x-2">
-                            <span class="text-blue-500 mt-0.5">📍</span>
-                            <span>456 Đường Hạ Long, Phường Thắng Nhì, TP. Vũng Tàu</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-green-500">📞</span>
-                            <a href="tel:0254234567" class="hover:text-blue-600">0254.234.5678</a>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-orange-500">🚚</span>
-                            <span>Giao hàng: 25-40 phút</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-purple-500">🕒</span>
-                            <span>7:00 - 22:00 (Hàng ngày)</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 pt-4 border-t">
-                        <div class="flex space-x-2">
-                            <button onclick="selectStoreForOrder('vt-back-beach')" class="flex-1 bg-cyan-600 text-white py-2 px-3 rounded text-sm hover:bg-cyan-700 transition-colors">
-                                Đặt hàng
-                            </button>
-                            <button onclick="window.open('tel:0254234567')" class="bg-green-600 text-white py-2 px-3 rounded text-sm hover:bg-green-700 transition-colors">
-                                📞
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg card-shadow p-6 hover:shadow-xl transition-shadow border-l-4 border-teal-500">
-                    <div class="text-center mb-4">
-                        <div class="text-4xl mb-2">🌊</div>
-                        <h3 class="font-bold text-lg text-gray-800">Chi nhánh Bãi Trước</h3>
-                        <span class="inline-block bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded-full">Trung tâm TP</span>
-                    </div>
-                    <div class="space-y-3 text-sm text-gray-600">
-                        <div class="flex items-start space-x-2">
-                            <span class="text-blue-500 mt-0.5">📍</span>
-                            <span>789 Đường Quang Trung, Phường 1, TP. Vũng Tàu</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-green-500">📞</span>
-                            <a href="tel:0254345678" class="hover:text-blue-600">0254.345.6789</a>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-orange-500">🚚</span>
-                            <span>Giao hàng: 20-35 phút</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-purple-500">🕒</span>
-                            <span>7:00 - 22:00 (Hàng ngày)</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 pt-4 border-t">
-                        <div class="flex space-x-2">
-                            <button onclick="selectStoreForOrder('vt-front-beach')" class="flex-1 bg-teal-600 text-white py-2 px-3 rounded text-sm hover:bg-teal-700 transition-colors">
-                                Đặt hàng
-                            </button>
-                            <button onclick="window.open('tel:0254345678')" class="bg-green-600 text-white py-2 px-3 rounded text-sm hover:bg-green-700 transition-colors">
-                                📞
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg card-shadow p-6 hover:shadow-xl transition-shadow border-l-4 border-orange-500">
-                    <div class="text-center mb-4">
-                        <div class="text-4xl mb-2">🏘️</div>
-                        <h3 class="font-bold text-lg text-gray-800">Chi nhánh Bà Rịa</h3>
-                        <span class="inline-block bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">Thành phố Bà Rịa</span>
-                    </div>
-                    <div class="space-y-3 text-sm text-gray-600">
-                        <div class="flex items-start space-x-2">
-                            <span class="text-blue-500 mt-0.5">📍</span>
-                            <span>321 Đường Lê Duẩn, Phường Phước Hiệp, TP. Bà Rịa</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-green-500">📞</span>
-                            <a href="tel:0254456789" class="hover:text-blue-600">0254.456.7890</a>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-orange-500">🚚</span>
-                            <span>Giao hàng: 45-60 phút</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-purple-500">🕒</span>
-                            <span>7:00 - 21:00 (Hàng ngày)</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 pt-4 border-t">
-                        <div class="flex space-x-2">
-                            <button onclick="selectStoreForOrder('ba-ria')" class="flex-1 bg-orange-600 text-white py-2 px-3 rounded text-sm hover:bg-orange-700 transition-colors">
-                                Đặt hàng
-                            </button>
-                            <button onclick="window.open('tel:0254456789')" class="bg-green-600 text-white py-2 px-3 rounded text-sm hover:bg-green-700 transition-colors">
-                                📞
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg card-shadow p-6 hover:shadow-xl transition-shadow border-l-4 border-green-500">
-                    <div class="text-center mb-4">
-                        <div class="text-4xl mb-2">🌾</div>
-                        <h3 class="font-bold text-lg text-gray-800">Chi nhánh Long Điền</h3>
-                        <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Huyện Long Điền</span>
-                    </div>
-                    <div class="space-y-3 text-sm text-gray-600">
-                        <div class="flex items-start space-x-2">
-                            <span class="text-blue-500 mt-0.5">📍</span>
-                            <span>654 Đường Nguyễn Văn Cừ, Thị trấn Long Điền</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-green-500">📞</span>
-                            <a href="tel:0254567890" class="hover:text-blue-600">0254.567.8901</a>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-orange-500">🚚</span>
-                            <span>Giao hàng: 50-70 phút</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-purple-500">🕒</span>
-                            <span>7:00 - 21:00 (Hàng ngày)</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 pt-4 border-t">
-                        <div class="flex space-x-2">
-                            <button onclick="selectStoreForOrder('long-dien')" class="flex-1 bg-green-600 text-white py-2 px-3 rounded text-sm hover:bg-green-700 transition-colors">
-                                Đặt hàng
-                            </button>
-                            <button onclick="window.open('tel:0254567890')" class="bg-green-600 text-white py-2 px-3 rounded text-sm hover:bg-green-700 transition-colors">
-                                📞
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg card-shadow p-6 hover:shadow-xl transition-shadow border-l-4 border-purple-500">
-                    <div class="text-center mb-4">
-                        <div class="text-4xl mb-2">🏞️</div>
-                        <h3 class="font-bold text-lg text-gray-800">Chi nhánh Đất Đỏ</h3>
-                        <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Huyện Đất Đỏ</span>
-                    </div>
-                    <div class="space-y-3 text-sm text-gray-600">
-                        <div class="flex items-start space-x-2">
-                            <span class="text-blue-500 mt-0.5">📍</span>
-                            <span>987 Đường Võ Thị Sáu, Thị trấn Đất Đỏ</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-green-500">📞</span>
-                            <a href="tel:0254678901" class="hover:text-blue-600">0254.678.9012</a>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-orange-500">🚚</span>
-                            <span>Giao hàng: 60-80 phút</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-purple-500">🕒</span>
-                            <span>7:00 - 21:00 (Hàng ngày)</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 pt-4 border-t">
-                        <div class="flex space-x-2">
-                            <button onclick="selectStoreForOrder('dat-do')" class="flex-1 bg-purple-600 text-white py-2 px-3 rounded text-sm hover:bg-purple-700 transition-colors">
-                                Đặt hàng
-                            </button>
-                            <button onclick="window.open('tel:0254678901')" class="bg-green-600 text-white py-2 px-3 rounded text-sm hover:bg-green-700 transition-colors">
-                                📞
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contact Info -->
-            <div class="mt-8 text-center bg-cyan-50 rounded-lg p-6 border border-cyan-200">
-                <h3 class="text-xl font-bold mb-4 text-cyan-800">📞 Liên Hệ Tổng Đài</h3>
-                <div class="grid md:grid-cols-2 gap-4 mb-4">
-                    <div class="bg-white p-4 rounded-lg border border-cyan-200">
-                        <p class="font-semibold text-cyan-800 mb-2">👤 Người liên hệ</p>
-                        <p class="text-gray-700">Nguyễn Chí Thành</p>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg border border-cyan-200">
-                        <p class="font-semibold text-cyan-800 mb-2">📍 Địa chỉ trụ sở</p>
-                        <p class="text-gray-700 text-sm">3/564 Ấp 64 Xã Xuân Thới Sơn, TPHCM</p>
-                    </div>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <a href="tel:0934945967" class="flex items-center space-x-2 bg-cyan-600 text-white px-6 py-3 rounded-full hover:bg-cyan-700 transition-colors">
-                        <span class="text-xl">📱</span>
-                        <span class="font-semibold">0934945967</span>
-                    </a>
-                    <a href="tel:079089023103" class="flex items-center space-x-2 bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-colors">
-                        <span class="text-xl">📞</span>
-                        <span class="font-semibold">079089023103</span>
-                    </a>
-                    <div class="text-gray-600">
-                        <p class="font-medium">Thời gian hoạt động:</p>
-                        <p class="text-sm">7:00 - 22:00 (Tất cả các ngày)</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Order Section -->
-        <section id="orderSection" class="hidden animate-fade-in">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Đặt Hàng</h2>
-            <div class="max-w-2xl mx-auto bg-white rounded-lg card-shadow p-8">
-                <!-- Login Status Indicator -->
-                <div id="loginStatusIndicator" class="mb-6 p-4 rounded-lg border hidden">
-                    <div class="flex items-center space-x-3">
-                        <span class="text-2xl">👤</span>
-                        <div>
-                            <p class="font-semibold text-green-800">Đã đăng nhập</p>
-                            <p class="text-sm text-green-600">Thông tin sẽ được tự động điền vào form</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <form id="orderForm">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Họ tên *</label>
-                            <input type="text" id="customerName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Số điện thoại *</label>
-                            <input type="tel" id="customerPhone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        </div>
-                    </div>
-                    <div class="mt-6">
-                        <label class="block text-gray-700 font-medium mb-2">Địa chỉ giao hàng *</label>
-                        <textarea id="customerAddress" required rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
-                    </div>
-                    <div class="mt-6">
-                        <label class="block text-gray-700 font-medium mb-2">Chi nhánh phục vụ *</label>
-                        <select id="selectedBranch" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                            <option value="">Chọn chi nhánh</option>
-                        </select>
-                        <div id="branchSuggestion" class="mt-2 text-sm"></div>
-                        <div id="branchInfo" class="mt-3 p-3 bg-blue-50 rounded-lg hidden">
-                            <h4 class="font-semibold text-blue-800 mb-2">Thông tin chi nhánh</h4>
-                            <div id="branchDetails"></div>
-                        </div>
-                    </div>
-                    <div class="mt-6">
-                        <label class="block text-gray-700 font-medium mb-2">Mã giảm giá</label>
-                        <div class="flex gap-2">
-                            <input type="text" id="discountCode" placeholder="Nhập mã giảm giá" class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                            <button type="button" onclick="applyDiscount()" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">Áp dụng</button>
-                        </div>
-                        <div id="discountMessage" class="mt-2 text-sm"></div>
-                    </div>
-                    <div class="mt-8 p-4 bg-gray-50 rounded-lg">
-                        <h3 class="font-semibold mb-4">Tóm tắt đơn hàng</h3>
-                        <div id="orderSummary"></div>
-                        <div class="border-t pt-4 mt-4">
-                            <div class="flex justify-between items-center text-lg font-bold">
-                                <span>Tổng cộng:</span>
-                                <span id="totalAmount">0đ</span>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="submit" class="w-full mt-6 bg-blue-600 text-white py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors">Tiến hành đặt hàng</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- Order Tracking Section -->
-        <section id="trackingSection" class="hidden animate-fade-in">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Tra Cứu Đơn Hàng</h2>
-            <div class="max-w-md mx-auto bg-white rounded-lg card-shadow p-8">
-                <div class="text-center mb-6">
-                    <div class="text-6xl mb-4">📦</div>
-                    <p class="text-gray-600">Nhập mã đơn hàng để kiểm tra trạng thái</p>
-                </div>
-                <div class="space-y-4">
-                    <input type="text" id="orderCode" placeholder="Mã đơn hàng (VD: DH123456)" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                    <button onclick="trackOrder()" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors">Tra cứu</button>
-                </div>
-                <div id="trackingResult" class="mt-6"></div>
-            </div>
-        </section>
-
-        <!-- Debt Check Section -->
-        <section id="debtSection" class="hidden animate-fade-in">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Tra Cứu Công Nợ</h2>
-            <div class="max-w-md mx-auto bg-white rounded-lg card-shadow p-8">
-                <div class="text-center mb-6">
-                    <div class="text-6xl mb-4">📱</div>
-                    <p class="text-gray-600">Nhập số điện thoại để kiểm tra công nợ</p>
-                </div>
-                <div class="space-y-4">
-                    <input type="tel" id="debtPhone" placeholder="Số điện thoại" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                    <button onclick="checkDebt()" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors">Kiểm tra</button>
-                </div>
-                <div id="debtResult" class="mt-6"></div>
-            </div>
-        </section>
-
-        <!-- Cart Section -->
-        <section id="cartSection" class="hidden animate-fade-in">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Giỏ Hàng</h2>
-            <div class="max-w-4xl mx-auto">
-                <div id="cartItems" class="space-y-6"></div>
-                <div id="cartActions" class="mt-8 text-center">
-                    <button onclick="proceedToOrder()" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors text-lg font-semibold">
-                        Tiến hành đặt hàng 🛒
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Login Section -->
-        <section id="loginSection" class="hidden animate-fade-in">
-            <div class="max-w-md mx-auto bg-white rounded-lg card-shadow p-8">
-                <div class="text-center mb-8">
-                    <div class="text-6xl mb-4">🔐</div>
-                    <h2 class="text-3xl font-bold text-gray-800">Đăng Nhập</h2>
-                    <p class="text-gray-600 mt-2">Đăng nhập để quản lý đơn hàng và công nợ</p>
-                </div>
-                
-                <form id="loginForm">
-                    <div class="space-y-4">
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Email hoặc Số điện thoại *</label>
-                            <input type="text" id="loginIdentifier" required placeholder="Nhập email hoặc số điện thoại" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Mật khẩu *</label>
-                            <input type="password" id="loginPassword" required placeholder="Nhập mật khẩu" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <label class="flex items-center">
-                                <input type="checkbox" class="mr-2">
-                                <span class="text-sm text-gray-600">Ghi nhớ đăng nhập</span>
-                            </label>
-                            <button type="button" class="text-sm text-blue-600 hover:underline">Quên mật khẩu?</button>
-                        </div>
-                        <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">Đăng nhập</button>
-                    </div>
-                </form>
-                
-                <div class="mt-6 text-center">
-                    <p class="text-gray-600">Chưa có tài khoản? 
-                        <button onclick="showSection('register')" class="text-blue-600 hover:underline font-medium">Đăng ký ngay</button>
-                    </p>
-                </div>
-                
-                <div id="loginMessage" class="mt-4 text-center text-sm"></div>
-            </div>
-        </section>
-
-        <!-- Register Section -->
-        <section id="registerSection" class="hidden animate-fade-in">
-            <div class="max-w-md mx-auto bg-white rounded-lg card-shadow p-8">
-                <div class="text-center mb-8">
-                    <div class="text-6xl mb-4">📝</div>
-                    <h2 class="text-3xl font-bold text-gray-800">Đăng Ký</h2>
-                    <p class="text-gray-600 mt-2">Chọn cách đăng ký phù hợp với bạn</p>
-                </div>
-                
-                <!-- Registration Options -->
-                <div class="space-y-4 mb-6">
-                    <!-- Google Registration -->
-                    <button onclick="registerWithGoogle()" class="w-full flex items-center justify-center space-x-3 bg-white border-2 border-gray-300 text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-50 hover:border-gray-400 transition-colors font-medium">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24">
-                            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                        </svg>
-                        <span>Đăng ký với Google</span>
-                    </button>
-                    
-                    <!-- Divider -->
-                    <div class="relative">
-                        <div class="absolute inset-0 flex items-center">
-                            <div class="w-full border-t border-gray-300"></div>
-                        </div>
-                        <div class="relative flex justify-center text-sm">
-                            <span class="px-2 bg-white text-gray-500">hoặc</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Manual Registration Toggle -->
-                    <button onclick="toggleManualRegister()" id="manualRegisterToggle" class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium">
-                        Đăng ký thủ công
-                    </button>
-                </div>
-                
-                <!-- Manual Registration Form -->
-                <form id="registerForm" class="hidden">
-                    <div class="space-y-4">
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Họ và tên *</label>
-                            <input type="text" id="registerName" required placeholder="Nhập họ và tên" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Email *</label>
-                            <input type="email" id="registerEmail" required placeholder="Nhập email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Số điện thoại *</label>
-                            <input type="tel" id="registerPhone" required placeholder="Nhập số điện thoại" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Mật khẩu *</label>
-                            <input type="password" id="registerPassword" required placeholder="Nhập mật khẩu (tối thiểu 6 ký tự)" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        </div>
-                        <div class="flex items-start">
-                            <input type="checkbox" id="agreeTerms" required class="mr-2 mt-1">
-                            <label for="agreeTerms" class="text-sm text-gray-600">
-                                Tôi đồng ý với <button type="button" class="text-blue-600 hover:underline">Điều khoản sử dụng</button> và <button type="button" class="text-blue-600 hover:underline">Chính sách bảo mật</button>
-                            </label>
-                        </div>
-                        <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">Đăng ký</button>
-                    </div>
-                </form>
-                
-                <div class="mt-6 text-center">
-                    <p class="text-gray-600">Đã có tài khoản? 
-                        <button onclick="showSection('login')" class="text-blue-600 hover:underline font-medium">Đăng nhập</button>
-                    </p>
-                </div>
-                
-                <div id="registerMessage" class="mt-4 text-center text-sm"></div>
-            </div>
-        </section>
-
-        <!-- Dashboard Section -->
-        <section id="dashboardSection" class="hidden animate-fade-in">
-            <div class="max-w-6xl mx-auto">
-                <div class="flex items-center justify-between mb-8">
-                    <div>
-                        <h2 class="text-3xl font-bold text-gray-800">Dashboard</h2>
-                        <p class="text-gray-600 mt-1">Chào mừng trở lại, <span id="dashboardUserName" class="font-medium text-blue-600"></span>!</p>
-                    </div>
-                    <div class="text-right text-sm text-gray-500">
-                        <p>Lần đăng nhập cuối: <span id="lastLogin"></span></p>
-                    </div>
-                </div>
-
-                <!-- Dashboard Navigation -->
-                <div class="bg-white rounded-lg card-shadow mb-8">
-                    <div class="flex flex-wrap border-b">
-                        <button onclick="showDashboardTab('overview')" class="dashboard-tab active px-6 py-4 font-medium border-b-2 border-blue-600 text-blue-600">Tổng quan</button>
-                        <button onclick="showDashboardTab('orders')" class="dashboard-tab px-6 py-4 font-medium text-gray-600 hover:text-blue-600">Đơn hàng</button>
-                        <button onclick="showDashboardTab('debt')" class="dashboard-tab px-6 py-4 font-medium text-gray-600 hover:text-blue-600">Công nợ</button>
-                        <button onclick="showDashboardTab('history')" class="dashboard-tab px-6 py-4 font-medium text-gray-600 hover:text-blue-600">Lịch sử</button>
-                        <button onclick="showDashboardTab('notifications')" class="dashboard-tab px-6 py-4 font-medium text-gray-600 hover:text-blue-600 relative">
-                            Thông báo <span id="notificationBadge" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1">3</span>
-                        </button>
-                        <button onclick="showDashboardTab('profile')" class="dashboard-tab px-6 py-4 font-medium text-gray-600 hover:text-blue-600">Tài khoản</button>
-                    </div>
-
-                    <!-- Dashboard Content -->
-                    <div class="p-6">
-                        <!-- Overview Tab -->
-                        <div id="overviewTab" class="dashboard-content">
-                            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                                <div class="bg-blue-50 rounded-lg p-6 border border-blue-200">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <p class="text-blue-600 text-sm font-medium">Tổng đơn hàng</p>
-                                            <p class="text-2xl font-bold text-blue-800" id="totalOrders">12</p>
-                                        </div>
-                                        <div class="text-3xl text-blue-600">📦</div>
-                                    </div>
-                                </div>
-                                <div class="bg-green-50 rounded-lg p-6 border border-green-200">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <p class="text-green-600 text-sm font-medium">Đã giao</p>
-                                            <p class="text-2xl font-bold text-green-800" id="deliveredOrders">8</p>
-                                        </div>
-                                        <div class="text-3xl text-green-600">✅</div>
-                                    </div>
-                                </div>
-                                <div class="bg-orange-50 rounded-lg p-6 border border-orange-200">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <p class="text-orange-600 text-sm font-medium">Đang xử lý</p>
-                                            <p class="text-2xl font-bold text-orange-800" id="processingOrders">3</p>
-                                        </div>
-                                        <div class="text-3xl text-orange-600">⏳</div>
-                                    </div>
-                                </div>
-                                <div class="bg-red-50 rounded-lg p-6 border border-red-200">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <p class="text-red-600 text-sm font-medium">Công nợ</p>
-                                            <p class="text-2xl font-bold text-red-800" id="currentDebt">150,000đ</p>
-                                        </div>
-                                        <div class="text-3xl text-red-600">💳</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Recent Orders -->
-                            <div class="bg-gray-50 rounded-lg p-6">
-                                <h3 class="text-lg font-semibold mb-4">Đơn hàng gần đây</h3>
-                                <div id="recentOrdersList" class="space-y-3">
-                                    <!-- Recent orders will be loaded here -->
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Orders Tab -->
-                        <div id="ordersTab" class="dashboard-content hidden">
-                            <div class="flex justify-between items-center mb-6">
-                                <h3 class="text-xl font-semibold">Quản lý đơn hàng</h3>
-                                <div class="flex space-x-2">
-                                    <select id="orderStatusFilter" class="px-3 py-2 border border-gray-300 rounded-lg">
-                                        <option value="all">Tất cả trạng thái</option>
-                                        <option value="confirmed">Đã xác nhận</option>
-                                        <option value="preparing">Đang chuẩn bị</option>
-                                        <option value="shipping">Đang giao hàng</option>
-                                        <option value="delivered">Đã giao hàng</option>
-                                        <option value="cancelled">Đã hủy</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div id="userOrdersList" class="space-y-4">
-                                <!-- User orders will be loaded here -->
-                            </div>
-                        </div>
-
-                        <!-- Debt Tab -->
-                        <div id="debtTab" class="dashboard-content hidden">
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div class="bg-white border border-gray-200 rounded-lg p-6">
-                                    <h3 class="text-lg font-semibold mb-4">Thông tin công nợ</h3>
-                                    <div class="space-y-4">
-                                        <div class="flex justify-between items-center">
-                                            <span class="text-gray-600">Công nợ hiện tại:</span>
-                                            <span class="text-2xl font-bold text-red-600" id="userCurrentDebt">150,000đ</span>
-                                        </div>
-                                        <div class="flex justify-between items-center">
-                                            <span class="text-gray-600">Hạn mức tín dụng:</span>
-                                            <span class="text-lg font-semibold text-green-600" id="userCreditLimit">200,000đ</span>
-                                        </div>
-                                        <div class="flex justify-between items-center">
-                                            <span class="text-gray-600">Còn lại:</span>
-                                            <span class="text-lg font-semibold text-blue-600" id="userRemainingCredit">50,000đ</span>
-                                        </div>
-                                        <div class="pt-4 border-t">
-                                            <button onclick="showDebtPayment(currentUser.phone, currentUser.debt)" class="w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition-colors">
-                                                Thanh toán công nợ
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bg-white border border-gray-200 rounded-lg p-6">
-                                    <h3 class="text-lg font-semibold mb-4">Lịch sử thanh toán</h3>
-                                    <div id="paymentHistory" class="space-y-3">
-                                        <!-- Payment history will be loaded here -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- History Tab -->
-                        <div id="historyTab" class="dashboard-content hidden">
-                            <div class="flex justify-between items-center mb-6">
-                                <h3 class="text-xl font-semibold">Lịch sử đặt hàng</h3>
-                                <div class="flex space-x-2">
-                                    <input type="date" id="historyFromDate" class="px-3 py-2 border border-gray-300 rounded-lg">
-                                    <input type="date" id="historyToDate" class="px-3 py-2 border border-gray-300 rounded-lg">
-                                    <button onclick="filterHistory()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Lọc</button>
-                                </div>
-                            </div>
-                            <div id="orderHistory" class="space-y-4">
-                                <!-- Order history will be loaded here -->
-                            </div>
-                        </div>
-
-                        <!-- Notifications Tab -->
-                        <div id="notificationsTab" class="dashboard-content hidden">
-                            <div class="flex justify-between items-center mb-6">
-                                <h3 class="text-xl font-semibold">Thông báo</h3>
-                                <button onclick="markAllNotificationsRead()" class="text-blue-600 hover:underline">Đánh dấu tất cả đã đọc</button>
-                            </div>
-                            <div id="notificationsList" class="space-y-3">
-                                <!-- Notifications will be loaded here -->
-                            </div>
-                        </div>
-
-                        <!-- Profile Tab -->
-                        <div id="profileTab" class="dashboard-content hidden">
-                            <div class="grid md:grid-cols-2 gap-8">
-                                <div class="bg-white border border-gray-200 rounded-lg p-6">
-                                    <h3 class="text-lg font-semibold mb-4">Thông tin cá nhân</h3>
-                                    <form id="profileForm">
-                                        <div class="space-y-4">
-                                            <div>
-                                                <label class="block text-gray-700 font-medium mb-2">Họ và tên</label>
-                                                <input type="text" id="profileName" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                            </div>
-                                            <div>
-                                                <label class="block text-gray-700 font-medium mb-2">Email</label>
-                                                <input type="email" id="profileEmail" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                            </div>
-                                            <div>
-                                                <label class="block text-gray-700 font-medium mb-2">Số điện thoại</label>
-                                                <input type="tel" id="profilePhone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                            </div>
-                                            <div>
-                                                <label class="block text-gray-700 font-medium mb-2">Địa chỉ</label>
-                                                <textarea id="profileAddress" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
-                                            </div>
-                                            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors">Cập nhật thông tin</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                
-                                <div class="bg-white border border-gray-200 rounded-lg p-6">
-                                    <h3 class="text-lg font-semibold mb-4">Đổi mật khẩu</h3>
-                                    <form id="changePasswordForm">
-                                        <div class="space-y-4">
-                                            <div>
-                                                <label class="block text-gray-700 font-medium mb-2">Mật khẩu hiện tại</label>
-                                                <input type="password" id="currentPassword" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                            </div>
-                                            <div>
-                                                <label class="block text-gray-700 font-medium mb-2">Mật khẩu mới</label>
-                                                <input type="password" id="newPassword" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                            </div>
-                                            <div>
-                                                <label class="block text-gray-700 font-medium mb-2">Xác nhận mật khẩu mới</label>
-                                                <input type="password" id="confirmNewPassword" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                            </div>
-                                            <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors">Đổi mật khẩu</button>
-                                        </div>
-                                    </form>
-                                    <div id="passwordChangeMessage" class="mt-4 text-sm text-center"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Payment Modal -->
-        <div id="paymentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
-                <h3 class="text-2xl font-bold mb-6 text-center">Thanh toán VietQR</h3>
-                <div class="text-center">
-                    <div class="bg-cyan-50 p-8 rounded-lg mb-6 border border-cyan-200">
-                        <div id="vietqrCode" class="w-64 h-64 mx-auto bg-white rounded-lg border-2 border-gray-300 flex items-center justify-center mb-4">
-                            <div class="text-center">
-                                <div class="text-4xl mb-2">📱</div>
-                                <p class="text-sm text-gray-600">Mã VietQR</p>
-                            </div>
-                        </div>
-                        <p class="text-cyan-800 font-semibold">Quét mã VietQR để thanh toán</p>
-                        <p class="text-sm text-cyan-600 mt-2">Tự động điền thông tin chuyển khoản</p>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg border border-cyan-200 mb-4">
-                        <div class="grid grid-cols-2 gap-4 text-sm">
-                            <div><strong>Ngân hàng:</strong> MBBank</div>
-                            <div><strong>Số TK:</strong> 0934945967</div>
-                            <div class="col-span-2"><strong>Tên:</strong> NGUYEN CHI THANH</div>
-                        </div>
-                    </div>
-                    <div class="space-y-2 text-sm bg-cyan-50 p-4 rounded-lg">
-                        <p><strong>Số tiền:</strong> <span id="paymentAmount" class="text-cyan-700 font-bold"></span></p>
-                        <p><strong>Nội dung:</strong> <span id="paymentContent" class="text-cyan-700"></span></p>
-                    </div>
-                    <div class="mt-6 space-y-3">
-                        <button onclick="confirmPayment()" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors">Xác nhận đã thanh toán</button>
-                        <button onclick="closePaymentModal()" class="w-full bg-gray-300 text-gray-700 py-3 rounded-lg hover:bg-gray-400 transition-colors">Đóng</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Debt Warning Modal -->
-        <div id="debtWarningModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div class="bg-white rounded-lg p-8 max-w-lg w-full mx-4">
-                <div class="text-center mb-6">
-                    <div class="text-6xl mb-4">⚠️</div>
-                    <h3 class="text-2xl font-bold text-red-600">Cảnh báo công nợ</h3>
-                </div>
-                
-                <div id="debtWarningContent" class="space-y-4">
-                    <!-- Content will be filled dynamically -->
-                </div>
-                
-                <div class="mt-6 space-y-3">
-                    <button id="payDebtBtn" onclick="proceedToDebtPayment()" class="w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition-colors font-semibold">
-                        Thanh toán công nợ ngay
-                    </button>
-                    <button onclick="closeDebtWarningModal()" class="w-full bg-gray-300 text-gray-700 py-3 rounded-lg hover:bg-gray-400 transition-colors">
-                        Hủy đặt hàng
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Debt Payment Modal -->
-        <div id="debtPaymentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
-                <h3 class="text-2xl font-bold mb-6 text-center text-red-600">Thanh toán công nợ</h3>
-                <div class="text-center">
-                    <div class="bg-red-50 p-6 rounded-lg mb-6 border border-red-200">
-                        <div id="debtQrCode" class="w-64 h-64 mx-auto bg-white rounded-lg border-2 border-gray-300 flex items-center justify-center mb-4">
-                            <div class="text-center">
-                                <div class="text-4xl mb-2">💳</div>
-                                <p class="text-sm text-gray-600">Mã VietQR công nợ</p>
-                            </div>
-                        </div>
-                        <p class="text-red-700 font-semibold">Quét mã VietQR để thanh toán công nợ</p>
-                        <p class="text-sm text-red-600 mt-2">Tự động điền thông tin chuyển khoản</p>
-                    </div>
-                    
-                    <div class="bg-white p-4 rounded-lg border border-red-200 mb-4">
-                        <div class="grid grid-cols-2 gap-4 text-sm">
-                            <div><strong>Ngân hàng:</strong> MBBank</div>
-                            <div><strong>Số TK:</strong> 0934945967</div>
-                            <div class="col-span-2"><strong>Tên:</strong> NGUYEN CHI THANH</div>
-                        </div>
-                    </div>
-                    
-                    <div class="space-y-2 text-sm bg-gray-50 p-4 rounded-lg">
-                        <p><strong>Khách hàng:</strong> <span id="debtCustomerName"></span></p>
-                        <p><strong>Số điện thoại:</strong> <span id="debtCustomerPhone"></span></p>
-                        <p><strong>Số tiền công nợ:</strong> <span id="debtAmount" class="text-red-600 font-bold"></span></p>
-                        <p><strong>Nội dung:</strong> <span id="debtPaymentContent"></span></p>
-                    </div>
-                    <div class="mt-6 space-y-3">
-                        <button onclick="confirmDebtPayment()" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors">Xác nhận đã thanh toán công nợ</button>
-                        <button onclick="closeDebtPaymentModal()" class="w-full bg-gray-300 text-gray-700 py-3 rounded-lg hover:bg-gray-400 transition-colors">Đóng</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Payment Options Modal -->
-        <div id="paymentOptionsModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div class="bg-white rounded-lg p-8 max-w-lg w-full mx-4">
-                <div class="text-center mb-6">
-                    <div class="text-6xl mb-4">💳</div>
-                    <h3 class="text-2xl font-bold text-gray-800">Chọn hình thức thanh toán</h3>
-                </div>
-                
-                <div id="orderSummaryInModal" class="bg-blue-50 p-4 rounded-lg mb-6 border border-blue-200">
-                    <!-- Order summary will be filled here -->
-                </div>
-                
-                <div class="space-y-4">
-                    <button onclick="selectPaymentMethod('immediate')" class="w-full bg-blue-600 text-white py-4 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center space-x-3">
-                        <span class="text-2xl">📱</span>
-                        <div class="text-left">
-                            <div class="font-semibold">Thanh toán ngay</div>
-                            <div class="text-sm opacity-90">Quét mã VietQR để thanh toán ngay</div>
-                        </div>
-                    </button>
-                    
-                    <button onclick="selectPaymentMethod('debt')" class="w-full bg-orange-600 text-white py-4 rounded-lg hover:bg-orange-700 transition-colors flex items-center justify-center space-x-3">
-                        <span class="text-2xl">📋</span>
-                        <div class="text-left">
-                            <div class="font-semibold">Ghi công nợ</div>
-                            <div class="text-sm opacity-90">Kiểm tra hạn mức và thanh toán sau</div>
-                        </div>
-                    </button>
-                </div>
-                
-                <div class="mt-6">
-                    <button onclick="closePaymentOptionsModal()" class="w-full bg-gray-300 text-gray-700 py-3 rounded-lg hover:bg-gray-400 transition-colors">
-                        Hủy
-                    </button>
-                </div>
-            </div>
-        </div>
+        <section id="introSection" class="animate-fade-in"></section>
+        <section id="menuSection" class="hidden animate-fade-in"></section>
+        <section id="storesSection" class="hidden animate-fade-in"></section>
+        <section id="cartSection" class="hidden animate-fade-in"></section>
+        <section id="loginSection" class="hidden animate-fade-in"></section>
+        <section id="registerSection" class="hidden animate-fade-in"></section>
+        <section id="dashboardSection" class="hidden animate-fade-in"></section>
+        <section id="trackingSection" class="hidden animate-fade-in"></section>
+        <section id="debtSection" class="hidden animate-fade-in"></section>
     </main>
-
-    <script>
-        // Global variables
-        let cart = [];
-        let currentOrderId = null;
-        let discountPercent = 0;
-        let currentCategory = 'all';
-        let currentDebtPhone = null;
-        let currentUser = null;
-        let isLoggedIn = false;
-        
-        // Navigation functions
-        function showSection(sectionName) {
-            // Hide all main sections
-            const sections = document.querySelectorAll('main > section');
-            sections.forEach(section => {
-                section.classList.add('hidden');
-            });
-            
-            // Show the target section
-            const targetSection = document.getElementById(sectionName + 'Section');
-            if (targetSection) {
-                targetSection.classList.remove('hidden');
-            }
-            
-            // Update mobile navigation active state
-            updateMobileNavigation(sectionName);
-
-            // Scroll to top of the page for better UX
-            window.scrollTo(0, 0);
-            
-            // Load section-specific data
-            if (sectionName === 'menu') {
-                loadProducts();
-            } else if (sectionName === 'cart') {
-                updateCartDisplay();
-            } else if (sectionName === 'dashboard' && isLoggedIn) {
-                loadDashboard();
-            }
-        }
-        
-        function updateMobileNavigation(activeSection) {
-            const mobileNavBtns = document.querySelectorAll('.mobile-nav-btn');
-            mobileNavBtns.forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.getAttribute('data-section') === activeSection) {
-                    btn.classList.add('active');
-                }
-            });
-        }
-
-        function toggleMobileSearch() {
-            const menu = document.getElementById('mobileSearchMenu');
-            menu.classList.toggle('hidden');
-        }
-        
-        function closeMobileSearch() {
-            const menu = document.getElementById('mobileSearchMenu');
-            if (!menu.classList.contains('hidden')) {
-                menu.classList.add('hidden');
-            }
-        }
-        
-        // Product and Cart functions
-        function loadProducts() {
-            const productGrid = document.getElementById('productGrid');
-            if (!productGrid) return;
-            
-            const filteredProducts = currentCategory === 'all' ? products : products.filter(p => p.category === currentCategory);
-            
-            productGrid.innerHTML = filteredProducts.map(product => `
-                <div class="bg-white rounded-lg card-shadow overflow-hidden hover:shadow-xl transition-shadow product-card" data-category="${product.category}">
-                    <div class="relative">
-                        <div class="h-48 bg-gradient-to-br ${product.gradient} p-4 flex items-center justify-center">
-                            ${product.image}
-                        </div>
-                        ${product.isNew ? '<span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">Mới</span>' : ''}
-                        ${product.discount ? `<span class="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">-${product.discount}%</span>` : ''}
+    
+    <footer class="bg-slate-800 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <img src="https://raw.githubusercontent.com/HienNguyenEMS/chacavungtau/refs/heads/main/logo.jpg" alt="Logo" class="w-10 h-10 rounded-lg">
+                        <span class="font-bold text-lg">Đồng Nhân Food</span>
                     </div>
-                    <div class="p-6">
-                        <h3 class="font-bold text-lg mb-2">${product.name}</h3>
-                        <p class="text-gray-600 text-sm mb-4">${product.description}</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex items-center space-x-2">
-                                <span class="text-2xl font-bold text-blue-600">${product.price.toLocaleString()}đ</span>
-                                ${product.originalPrice ? `<span class="text-gray-400 line-through text-sm">${product.originalPrice.toLocaleString()}đ</span>` : ''}
-                            </div>
-                        </div>
-                        <button onclick="addToCart(${product.id})" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
-                            Thêm vào giỏ hàng 🛒
-                        </button>
+                    <p class="text-slate-400 text-sm">Mang những sản phẩm chất lượng, an toàn và tiện lợi đến mọi nhà.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Liên kết nhanh</h3>
+                    <ul class="space-y-2 text-slate-400 text-sm">
+                        <li><a href="#" onclick="event.preventDefault(); showSection('intro')" class="hover:text-white">Trang chủ</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); showSection('menu')" class="hover:text-white">Sản phẩm</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); showSection('stores')" class="hover:text-white">Cửa hàng</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); showSection('tracking')" class="hover:text-white">Tra cứu đơn hàng</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Liên hệ</h3>
+                    <ul class="space-y-2 text-slate-400 text-sm">
+                        <li><strong>Hotline:</strong> 0934.945.967</li>
+                        <li><strong>Email:</strong> lienhe@dongnhanfood.com</li>
+                        <li><strong>Trụ sở:</strong> 3/564 Ấp 64, Xuân Thới Sơn, TPHCM</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Mạng xã hội</h3>
+                     <div class="flex space-x-4">
+                        <a href="#" class="text-slate-400 hover:text-white">Facebook</a>
+                        <a href="#" class="text-slate-400 hover:text-white">Zalo</a>
                     </div>
                 </div>
-            `).join('');
-        }
-        
-        function filterProducts(category) {
-            currentCategory = category;
-            
-            document.querySelectorAll('.category-btn').forEach(btn => {
-                btn.classList.remove('active', 'bg-cyan-600', 'text-white');
-                btn.classList.add('bg-white', 'text-cyan-700', 'border-2', 'border-cyan-200');
-            });
-            
-            event.currentTarget.classList.remove('bg-white', 'text-cyan-700', 'border-2', 'border-cyan-200');
-            event.currentTarget.classList.add('active', 'bg-cyan-600', 'text-white');
-            
-            loadProducts();
-        }
+            </div>
+            <div class="border-t border-slate-700 pt-6 text-center text-sm text-slate-500">
+                <p>&copy; 2024 Đồng Nhân Food. All Rights Reserved.</p>
+                <a href="#" class="hover:text-white mt-2 inline-block">Tuyên bố quyền riêng tư</a>
+            </div>
+        </div>
+    </footer>
 
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
-            
-            const existingItem = cart.find(item => item.id === productId);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ ...product, quantity: 1 });
-            }
-            
-            updateCartCount();
-            showNotification('Đã thêm vào giỏ hàng! 🛒');
-        }
 
-        function updateCartCount() {
-            const count = cart.reduce((total, item) => total + item.quantity, 0);
-            const cartCountElements = document.querySelectorAll('#cartCount, #mobileCartCount');
-            cartCountElements.forEach(element => {
-                element.textContent = count;
-                element.classList.toggle('hidden', count === 0);
-            });
-        }
-
-        function updateCartDisplay() {
-            const cartItems = document.getElementById('cartItems');
-            const cartActions = document.getElementById('cartActions');
-            if (!cartItems || !cartActions) return;
-            
-            if (cart.length === 0) {
-                cartItems.innerHTML = `
-                    <div class="text-center py-12">
-                        <div class="text-6xl mb-4">🛒</div>
-                        <h3 class="text-xl font-semibold text-gray-600 mb-2">Giỏ hàng trống</h3>
-                        <p class="text-gray-500 mb-6">Hãy thêm sản phẩm vào giỏ hàng</p>
-                        <button onclick="showSection('menu')" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
-                            Xem sản phẩm
-                        </button>
-                    </div>
-                `;
-                cartActions.classList.add('hidden');
-                return;
-            }
-            
-            cartActions.classList.remove('hidden');
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            
-            cartItems.innerHTML = cart.map(item => `
-                <div class="bg-white rounded-lg card-shadow p-6 flex items-center space-x-4">
-                    <div class="w-20 h-20 bg-gradient-to-br ${item.gradient} rounded-lg flex items-center justify-center flex-shrink-0">
-                        <div class="w-16 h-16">${item.image}</div>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="font-semibold text-lg">${item.name}</h3>
-                        <p class="text-blue-600 font-bold">${item.price.toLocaleString()}đ</p>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <button onclick="updateCartQuantity(${item.id}, -1)" class="bg-gray-200 text-gray-700 w-8 h-8 rounded-full hover:bg-gray-300 transition-colors">-</button>
-                        <span class="font-semibold text-lg w-8 text-center">${item.quantity}</span>
-                        <button onclick="updateCartQuantity(${item.id}, 1)" class="bg-blue-600 text-white w-8 h-8 rounded-full hover:bg-blue-700 transition-colors">+</button>
-                    </div>
-                    <div class="text-right">
-                        <p class="font-bold text-lg">${(item.price * item.quantity).toLocaleString()}đ</p>
-                        <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 text-sm">Xóa</button>
-                    </div>
-                </div>
-            `).join('') + `
-                <div class="bg-blue-50 rounded-lg p-6 border border-blue-200 mt-6">
-                    <div class="flex justify-between items-center text-xl font-bold">
-                        <span>Tổng cộng:</span>
-                        <span class="text-blue-600">${total.toLocaleString()}đ</span>
-                    </div>
-                </div>
-            `;
-        }
-        
-        function updateCartQuantity(productId, change) {
-            const item = cart.find(item => item.id === productId);
-            if (!item) return;
-            
-            item.quantity += change;
-            if (item.quantity <= 0) {
-                removeFromCart(productId);
-            } else {
-                updateCartCount();
-                updateCartDisplay();
-            }
-        }
-        
-        function removeFromCart(productId) {
-            cart = cart.filter(item => item.id !== productId);
-            updateCartCount();
-            updateCartDisplay();
-        }
-
-        // Order and Payment functions
-        function proceedToOrder() {
-            if (cart.length === 0) {
-                showNotification('Giỏ hàng trống! Vui lòng thêm sản phẩm.');
-                return;
-            }
-
-            if (isLoggedIn) {
-                // If logged in, skip form, go to payment options
-                showPaymentOptions();
-            } else {
-                // If not logged in, show the order form
-                showSection('order');
-                populateOrderForm();
-            }
-        }
-
-        function populateOrderForm() {
-            // Can pre-fill if there is saved info, otherwise just prepare summary
-            updateOrderSummary();
-        }
-
-        function showPaymentOptions() {
-            const modal = document.getElementById('paymentOptionsModal');
-            const summaryEl = document.getElementById('orderSummaryInModal');
-            
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const finalTotal = total * (1 - discountPercent / 100);
-            
-            summaryEl.innerHTML = `
-                <h4 class="font-semibold mb-3">Tóm tắt đơn hàng</h4>
-                <div class="space-y-2 text-sm">
-                    ${cart.map(item => `
-                        <div class="flex justify-between">
-                            <span>${item.name} x${item.quantity}</span>
-                            <span>${(item.price * item.quantity).toLocaleString()}đ</span>
-                        </div>
-                    `).join('')}
-                    ${discountPercent > 0 ? `
-                        <div class="flex justify-between text-green-600">
-                            <span>Giảm giá (${discountPercent}%):</span>
-                            <span>-${(total * discountPercent / 100).toLocaleString()}đ</span>
-                        </div>
-                    ` : ''}
-                    <hr class="my-2">
-                    <div class="flex justify-between font-bold text-lg">
-                        <span>Tổng cộng:</span>
-                        <span class="text-blue-600">${finalTotal.toLocaleString()}đ</span>
-                    </div>
-                </div>
-            `;
-            modal.classList.remove('hidden');
-        }
-
-        function selectPaymentMethod(method) {
-            closePaymentOptionsModal();
-            if (method === 'immediate') {
-                showImmediatePayment();
-            } else if (method === 'debt') {
-                checkDebtLimitAndProcess();
-            }
-        }
-
-        function showImmediatePayment() {
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const finalTotal = total * (1 - discountPercent / 100);
-            currentOrderId = 'DH' + Date.now().toString().slice(-6);
-            
-            document.getElementById('paymentAmount').textContent = finalTotal.toLocaleString() + 'đ';
-            document.getElementById('paymentContent').textContent = `Thanh toan don hang ${currentOrderId}`;
-            document.getElementById('paymentModal').classList.remove('hidden');
-        }
-
-        function checkDebtLimitAndProcess() {
-            if (!isLoggedIn) {
-                showNotification('Vui lòng đăng nhập để sử dụng tính năng công nợ!');
-                showSection('login');
-                return;
-            }
-            
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const finalTotal = total * (1 - discountPercent / 100);
-            const currentDebt = currentUser.debt || 0;
-            const creditLimit = currentUser.creditLimit || 200000;
-            
-            if (currentDebt + finalTotal > creditLimit) {
-                showDebtLimitWarning(currentDebt, creditLimit, finalTotal);
-            } else {
-                processDebtOrder(finalTotal);
-            }
-        }
-
-        function processDebtOrder(orderAmount) {
-            currentOrderId = 'DH' + Date.now().toString().slice(-6);
-            currentUser.debt = (currentUser.debt || 0) + orderAmount;
-            
-            showOrderConfirmation(currentOrderId, orderAmount, 'debt');
-            cart = [];
-            updateCartCount();
-        }
-
-        function confirmPayment() {
-            if (!currentOrderId) return;
-            const finalTotal = parseFloat(document.getElementById('paymentAmount').textContent.replace(/[đ,.]/g, ''));
-            
-            showOrderConfirmation(currentOrderId, finalTotal, 'immediate');
-            cart = [];
-            updateCartCount();
-            closePaymentModal();
-        }
-        
-        // Other UI functions (modals, dropdowns, etc.)
-        function showNotification(message) {
-            const notification = document.createElement('div');
-            notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fade-in';
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            setTimeout(() => { notification.remove(); }, 3000);
-        }
-
-        function closePaymentModal() { document.getElementById('paymentModal').classList.add('hidden'); }
-        function closePaymentOptionsModal() { document.getElementById('paymentOptionsModal').classList.add('hidden'); }
-        function closeDebtWarningModal() { document.getElementById('debtWarningModal').classList.add('hidden'); }
-        function closeDebtPaymentModal() { document.getElementById('debtPaymentModal').classList.add('hidden'); }
-
-        function showOrderConfirmation(orderId, amount, paymentMethod) {
-            // This function creates and shows a success modal, then removes it
-            const paymentText = paymentMethod === 'debt' ? 'Ghi công nợ' : 'Thanh toán ngay';
-            const modalId = 'orderConfirmationModal';
-            
-            // Remove existing modal if any
-            const existingModal = document.getElementById(modalId);
-            if (existingModal) existingModal.remove();
-
-            const confirmationHtml = `
-                <div id="${modalId}" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                    <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 animate-fade-in">
-                        <div class="text-center">
-                            <div class="text-6xl mb-4">✅</div>
-                            <h3 class="text-2xl font-bold text-green-600 mb-4">Đặt hàng thành công!</h3>
-                            <div class="bg-green-50 p-4 rounded-lg border border-green-200 mb-6 text-left">
-                                <div class="space-y-2 text-sm">
-                                    <div class="flex justify-between"><span>Mã đơn hàng:</span><span class="font-bold text-green-700">${orderId}</span></div>
-                                    <div class="flex justify-between"><span>Tổng tiền:</span><span class="font-bold">${amount.toLocaleString()}đ</span></div>
-                                    <div class="flex justify-between"><span>Hình thức:</span><span class="font-bold">${paymentText}</span></div>
-                                </div>
-                            </div>
-                            <div class="space-y-3">
-                                <button onclick="document.getElementById('${modalId}').remove(); showSection('dashboard');" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700">Xem đơn hàng</button>
-                                <button onclick="document.getElementById('${modalId}').remove(); showSection('intro');" class="w-full bg-gray-300 text-gray-700 py-3 rounded-lg hover:bg-gray-400">Về trang chủ</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-            document.body.insertAdjacentHTML('beforeend', confirmationHtml);
-        }
-
-        // Login, Logout, and User Management
-        function login(identifier, password) {
-            const user = demoUsers.find(u => (u.email === identifier || u.phone === identifier) && u.password === password);
-            if (user) {
-                currentUser = user;
-                isLoggedIn = true;
-                updateLoginUI();
-                showNotification(`Chào mừng, ${currentUser.name}!`);
-                showSection('intro'); // Go to intro page after login
-                return true;
-            } else {
-                document.getElementById('loginMessage').innerHTML = `<p class="text-red-500">Thông tin đăng nhập không chính xác.</p>`;
-                return false;
-            }
-        }
-        
-        function logout() {
-            currentUser = null;
-            isLoggedIn = false;
-            updateLoginUI();
-            showNotification('Đã đăng xuất!');
-            showSection('intro');
-        }
-        
-        function updateLoginUI() {
-            const notLoggedIn = document.getElementById('notLoggedIn');
-            const loggedIn = document.getElementById('loggedIn');
-            if (isLoggedIn && currentUser) {
-                notLoggedIn.classList.add('hidden');
-                loggedIn.classList.remove('hidden');
-                document.getElementById('userName').textContent = currentUser.name.split(' ').pop(); // Show last name
-            } else {
-                notLoggedIn.classList.remove('hidden');
-                loggedIn.classList.add('hidden');
-            }
-        }
-
-        function toggleUserDropdown() {
-            const menu = document.getElementById('userDropdownMenu');
-            const icon = document.getElementById('userDropdownIcon');
-            menu.classList.toggle('show');
-            icon.style.transform = menu.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
-        }
-
-        function closeUserDropdown() {
-            const menu = document.getElementById('userDropdownMenu');
-            menu.classList.remove('show');
-            document.getElementById('userDropdownIcon').style.transform = 'rotate(0deg)';
-        }
-
-        // Dashboard functions
-        function showDashboardTab(tabName) {
-            document.querySelectorAll('.dashboard-content').forEach(tab => tab.classList.add('hidden'));
-            document.getElementById(tabName + 'Tab').classList.remove('hidden');
-            
-            document.querySelectorAll('.dashboard-tab').forEach(btn => {
-                btn.classList.remove('active', 'border-blue-600', 'text-blue-600');
-                btn.classList.add('text-gray-600');
-            });
-            event.currentTarget.classList.add('active', 'border-blue-600', 'text-blue-600');
-            event.currentTarget.classList.remove('text-gray-600');
-        }
-
-        function loadDashboard() {
-            // Dummy load function
-        }
-        
-        // Tracking and Debt Check
-        function trackOrder() { /* Logic unchanged */ }
-        function checkDebt() { /* Logic unchanged */ }
-        
-        // Initial setup on DOM loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            loadProducts();
-            updateCartCount();
-            updateLoginUI();
-
-            // Login form handler
-            document.getElementById('loginForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                login(
-                    document.getElementById('loginIdentifier').value,
-                    document.getElementById('loginPassword').value
-                );
-            });
-
-            // Close user dropdown if clicked outside
-            window.addEventListener('click', function(e) {
-                const dropdown = document.querySelector('.dropdown');
-                if (dropdown && !dropdown.contains(e.target)) {
-                    closeUserDropdown();
-                }
-            });
-        });
-
-        // Dummy data (unchanged)
-        const products = [
-            // Chả cá
-            {
-                id: 1,
-                name: 'Chả cá tươi (kg)',
-                price: 60000,
-                originalPrice: 70000,
-                discount: 15,
-                category: 'fish',
-                description: '🌊 Chả cá tươi ngon từ biển Vũng Tàu - Hương vị đại dương tươi mát 🐟',
-                image: `<svg viewBox="0 0 200 120" class="w-full h-full">
-                    <defs>
-                        <linearGradient id="fishGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#0ea5e9"/>
-                            <stop offset="50%" style="stop-color:#06b6d4"/>
-                            <stop offset="100%" style="stop-color:#0891b2"/>
-                        </linearGradient>
-                        <radialGradient id="fishBody1" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" style="stop-color:#fef3c7"/>
-                            <stop offset="70%" style="stop-color:#fbbf24"/>
-                            <stop offset="100%" style="stop-color:#f59e0b"/>
-                        </radialGradient>
-                    </defs>
-                    <rect width="200" height="120" fill="url(#fishGrad1)" opacity="0.1" rx="12"/>
-                    <ellipse cx="100" cy="60" rx="70" ry="32" fill="url(#fishBody1)" opacity="0.95"/>
-                    <ellipse cx="82" cy="58" rx="55" ry="24" fill="#fbbf24" opacity="0.9"/>
-                    <ellipse cx="75" cy="56" rx="45" ry="18" fill="#fef3c7" opacity="0.8"/>
-                    <circle cx="65" cy="52" r="5" fill="#1f2937"/>
-                    <circle cx="67" cy="50" r="2" fill="#ffffff"/>
-                    <path d="M150 60 L180 40 L185 60 L180 80 Z" fill="#f59e0b"/>
-                    <path d="M55 45 Q45 60 55 75" stroke="#d97706" stroke-width="3" fill="none"/>
-                    <path d="M75 48 Q70 60 75 72" stroke="#d97706" stroke-width="2" fill="none"/>
-                    <path d="M95 50 Q90 60 95 70" stroke="#d97706" stroke-width="1.5" fill="none"/>
-                    <ellipse cx="90" cy="60" rx="25" ry="8" fill="#fed7aa" opacity="0.6"/>
-                    <text x="100" y="110" text-anchor="middle" class="text-xs fill-cyan-700 font-bold">🐟 Chả Cá Tươi Premium 🌊</text>
-                </svg>`,
-                gradient: 'from-cyan-400 to-blue-500',
-                isNew: true
-            },
-            {
-                id: 2,
-                name: 'Chả cá thêm (kg)',
-                price: 56000,
-                category: 'fish',
-                description: '🌊 Chả cá tươi bổ sung - Thêm hương vị biển cả vào bữa ăn 🐠',
-                image: `<svg viewBox="0 0 200 120" class="w-full h-full">
-                    <defs>
-                        <linearGradient id="fishGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#14b8a6"/>
-                            <stop offset="50%" style="stop-color:#0d9488"/>
-                            <stop offset="100%" style="stop-color:#0f766e"/>
-                        </linearGradient>
-                        <radialGradient id="fishBody2" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" style="stop-color:#fb923c"/>
-                            <stop offset="70%" style="stop-color:#f97316"/>
-                            <stop offset="100%" style="stop-color:#ea580c"/>
-                        </radialGradient>
-                    </defs>
-                    <rect width="200" height="120" fill="url(#fishGrad2)" opacity="0.15"/>
-                    <ellipse cx="100" cy="60" rx="60" ry="25" fill="url(#fishBody2)" opacity="0.9"/>
-                    <ellipse cx="88" cy="60" rx="45" ry="18" fill="#fb923c" opacity="0.8"/>
-                    <circle cx="75" cy="56" r="3.5" fill="#1f2937"/>
-                    <circle cx="76" cy="54" r="1" fill="#ffffff"/>
-                    <path d="M140 60 L162 48 L165 60 L162 72 Z" fill="#f97316"/>
-                    <path d="M65 48 Q58 60 65 72" stroke="#ea580c" stroke-width="2" fill="none"/>
-                    <text x="100" y="105" text-anchor="middle" class="text-xs fill-teal-700 font-semibold">Chả Cá Bổ Sung</text>
-                </svg>`,
-                gradient: 'from-teal-400 to-cyan-500'
-            },
-            {
-                id: 3,
-                name: 'Chả cá Nha Trang (kg)',
-                price: 80000,
-                originalPrice: 95000,
-                discount: 20,
-                category: 'fish',
-                description: '🌊 Chả cá Nha Trang cao cấp - Đặc sản biển miền Trung thơm ngon 🎣',
-                image: `<svg viewBox="0 0 200 120" class="w-full h-full">
-                    <defs>
-                        <linearGradient id="fishGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#3b82f6"/>
-                            <stop offset="50%" style="stop-color:#2563eb"/>
-                            <stop offset="100%" style="stop-color:#1d4ed8"/>
-                        </linearGradient>
-                        <radialGradient id="fishBody3" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" style="stop-color:#ef4444"/>
-                            <stop offset="70%" style="stop-color:#dc2626"/>
-                            <stop offset="100%" style="stop-color:#b91c1c"/>
-                        </radialGradient>
-                    </defs>
-                    <rect width="200" height="120" fill="url(#fishGrad3)" opacity="0.15"/>
-                    <ellipse cx="100" cy="60" rx="70" ry="30" fill="url(#fishBody3)" opacity="0.9"/>
-                    <ellipse cx="82" cy="60" rx="52" ry="22" fill="#ef4444" opacity="0.8"/>
-                    <circle cx="65" cy="54" r="4" fill="#1f2937"/>
-                    <circle cx="67" cy="52" r="1.5" fill="#ffffff"/>
-                    <path d="M150 60 L178 42 L182 60 L178 78 Z" fill="#dc2626"/>
-                    <path d="M55 45 Q45 60 55 75" stroke="#b91c1c" stroke-width="2.5" fill="none"/>
-                    <path d="M75 48 Q70 60 75 72" stroke="#b91c1c" stroke-width="2" fill="none"/>
-                    <text x="100" y="105" text-anchor="middle" class="text-xs fill-blue-700 font-semibold">Chả Cá Nha Trang Cao Cấp</text>
-                </svg>`,
-                gradient: 'from-blue-400 to-indigo-500',
-                isNew: true
-            },
-            {
-                id: 4,
-                name: 'Chả cá sợi (kg)',
-                price: 80000,
-                originalPrice: 90000,
-                discount: 10,
-                category: 'fish',
-                description: '🌊 Chả cá sợi mềm mại - Tan trong miệng, hương vị biển cả đậm đà 🍜',
-                image: `<svg viewBox="0 0 200 120" class="w-full h-full">
-                    <defs>
-                        <linearGradient id="fishGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#06b6d4"/>
-                            <stop offset="50%" style="stop-color:#0891b2"/>
-                            <stop offset="100%" style="stop-color:#0e7490"/>
-                        </linearGradient>
-                        <linearGradient id="noodleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style="stop-color:#fbbf24"/>
-                            <stop offset="50%" style="stop-color:#f59e0b"/>
-                            <stop offset="100%" style="stop-color:#d97706"/>
-                        </linearGradient>
-                    </defs>
-                    <rect width="200" height="120" fill="url(#fishGrad4)" opacity="0.15"/>
-                    <rect x="50" y="45" width="100" height="30" rx="15" fill="url(#noodleGrad)" opacity="0.9"/>
-                    <rect x="60" y="50" width="80" height="20" rx="10" fill="#fbbf24" opacity="0.8"/>
-                    <path d="M70 52 Q75 58 70 68 Q75 62 70 68" stroke="#fed7aa" stroke-width="1.5" fill="none"/>
-                    <path d="M80 52 Q85 58 80 68 Q85 62 80 68" stroke="#fed7aa" stroke-width="1.5" fill="none"/>
-                    <path d="M90 52 Q95 58 90 68 Q95 62 90 68" stroke="#fed7aa" stroke-width="1.5" fill="none"/>
-                    <path d="M100 52 Q105 58 100 68 Q105 62 100 68" stroke="#fed7aa" stroke-width="1.5" fill="none"/>
-                    <path d="M110 52 Q115 58 110 68 Q115 62 110 68" stroke="#fed7aa" stroke-width="1.5" fill="none"/>
-                    <path d="M120 52 Q125 58 120 68 Q125 62 120 68" stroke="#fed7aa" stroke-width="1.5" fill="none"/>
-                    <path d="M130 52 Q135 58 130 68 Q135 62 130 68" stroke="#fed7aa" stroke-width="1.5" fill="none"/>
-                    <text x="100" y="105" text-anchor="middle" class="text-xs fill-cyan-700 font-semibold">Chả Cá Sợi Mềm Mại</text>
-                </svg>`,
-                gradient: 'from-cyan-400 to-teal-500'
-            },
-            // Nước mắm
-            {
-                id: 5,
-                name: 'Nước mắm biển',
-                price: 60000,
-                originalPrice: 75000,
-                discount: 25,
-                category: 'sauce',
-                description: '🌊 Nước mắm truyền thống Vũng Tàu - Tinh túy từ biển cả 🍯',
-                image: `<svg viewBox="0 0 200 120" class="w-full h-full">
-                    <defs>
-                        <linearGradient id="sauceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#fef3c7"/>
-                            <stop offset="50%" style="stop-color:#f59e0b"/>
-                            <stop offset="100%" style="stop-color:#b45309"/>
-                        </linearGradient>
-                        <linearGradient id="bottleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#92400e"/>
-                            <stop offset="50%" style="stop-color:#78350f"/>
-                            <stop offset="100%" style="stop-color:#451a03"/>
-                        </linearGradient>
-                        <linearGradient id="liquidGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#fbbf24"/>
-                            <stop offset="50%" style="stop-color:#f59e0b"/>
-                            <stop offset="100%" style="stop-color:#d97706"/>
-                        </linearGradient>
-                    </defs>
-                    <rect width="200" height="120" fill="url(#sauceGrad)" opacity="0.1" rx="12"/>
-                    <rect x="65" y="15" width="70" height="85" rx="12" fill="url(#bottleGrad)" opacity="0.95"/>
-                    <rect x="70" y="20" width="60" height="75" rx="8" fill="#92400e" opacity="0.9"/>
-                    <rect x="75" y="25" width="50" height="65" rx="5" fill="url(#liquidGrad)" opacity="0.85"/>
-                    <rect x="80" y="8" width="40" height="20" rx="10" fill="#374151"/>
-                    <rect x="85" y="12" width="30" height="12" rx="6" fill="#6b7280"/>
-                    <ellipse cx="100" cy="45" rx="18" ry="10" fill="#fed7aa" opacity="0.7"/>
-                    <ellipse cx="100" cy="65" rx="15" ry="8" fill="#fbbf24" opacity="0.6"/>
-                    <rect x="78" y="30" width="44" height="3" fill="#fef3c7" opacity="0.8"/>
-                    <rect x="78" y="85" width="44" height="3" fill="#fef3c7" opacity="0.8"/>
-                    <text x="100" y="110" text-anchor="middle" class="text-xs fill-amber-700 font-bold">🍯 Nước Mắm Truyền Thống 🌊</text>
-                </svg>`,
-                gradient: 'from-amber-400 to-orange-500'
-            },
-            // Bao bì
-            {
-                id: 6,
-                name: 'Bao bì biển xanh',
-                price: 28000,
-                category: 'packaging',
-                description: '🌊 Bao bì màu xanh biển - Giữ trọn hương vị tươi ngon 📦',
-                image: `<svg viewBox="0 0 200 120" class="w-full h-full">
-                    <defs>
-                        <linearGradient id="packGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#0ea5e9"/>
-                            <stop offset="50%" style="stop-color:#0284c7"/>
-                            <stop offset="100%" style="stop-color:#0369a1"/>
-                        </linearGradient>
-                    </defs>
-                    <rect width="200" height="120" fill="#0ea5e9" opacity="0.1"/>
-                    <rect x="50" y="25" width="100" height="70" rx="8" fill="url(#packGrad1)" opacity="0.9"/>
-                    <rect x="55" y="30" width="90" height="60" rx="5" fill="#0ea5e9" opacity="0.8"/>
-                    <rect x="60" y="35" width="80" height="50" rx="3" fill="#38bdf8" opacity="0.7"/>
-                    <path d="M70 45 L130 45 M70 55 L130 55 M70 65 L130 65" stroke="#7dd3fc" stroke-width="2"/>
-                    <circle cx="75" cy="50" r="3" fill="#0284c7"/>
-                    <circle cx="125" cy="70" r="2" fill="#0284c7"/>
-                    <text x="100" y="110" text-anchor="middle" class="text-xs fill-blue-700 font-semibold">Bao Bì Xanh Biển</text>
-                </svg>`,
-                gradient: 'from-cyan-300 to-blue-500'
-            },
-            {
-                id: 7,
-                name: 'Bao bì xanh lá',
-                price: 28000,
-                originalPrice: 32000,
-                discount: 12,
-                category: 'packaging',
-                description: '🌊 Bao bì xanh lá thân thiện môi trường - Bảo vệ đại dương 🌱',
-                image: `<svg viewBox="0 0 200 120" class="w-full h-full">
-                    <defs>
-                        <linearGradient id="packGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#10b981"/>
-                            <stop offset="50%" style="stop-color:#059669"/>
-                            <stop offset="100%" style="stop-color:#047857"/>
-                        </linearGradient>
-                    </defs>
-                    <rect width="200" height="120" fill="#10b981" opacity="0.1"/>
-                    <rect x="50" y="25" width="100" height="70" rx="8" fill="url(#packGrad2)" opacity="0.9"/>
-                    <rect x="55" y="30" width="90" height="60" rx="5" fill="#10b981" opacity="0.8"/>
-                    <rect x="60" y="35" width="80" height="50" rx="3" fill="#34d399" opacity="0.7"/>
-                    <path d="M70 45 L130 45 M70 55 L130 55 M70 65 L130 65" stroke="#6ee7b7" stroke-width="2"/>
-                    <path d="M85 40 Q90 35 95 40 Q90 45 85 40" fill="#059669"/>
-                    <path d="M105 75 Q110 70 115 75 Q110 80 105 75" fill="#059669"/>
-                    <text x="100" y="110" text-anchor="middle" class="text-xs fill-green-700 font-semibold">Bao Bì Thân Thiện</text>
-                </svg>`,
-                gradient: 'from-green-300 to-emerald-500',
-                isNew: true
-            },
-            {
-                id: 8,
-                name: 'Bao bì bạc biển',
-                price: 28000,
-                category: 'packaging',
-                description: '🌊 Bao bì bạc sang trọng - Như ánh bạc trên mặt biển ✨',
-                image: `<svg viewBox="0 0 200 120" class="w-full h-full">
-                    <defs>
-                        <linearGradient id="packGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#64748b"/>
-                            <stop offset="50%" style="stop-color:#475569"/>
-                            <stop offset="100%" style="stop-color:#334155"/>
-                        </linearGradient>
-                        <radialGradient id="silverShine" cx="30%" cy="30%" r="70%">
-                            <stop offset="0%" style="stop-color:#f1f5f9"/>
-                            <stop offset="50%" style="stop-color:#cbd5e1"/>
-                            <stop offset="100%" style="stop-color:#94a3b8"/>
-                        </radialGradient>
-                    </defs>
-                    <rect width="200" height="120" fill="#64748b" opacity="0.1"/>
-                    <rect x="50" y="25" width="100" height="70" rx="8" fill="url(#packGrad3)" opacity="0.9"/>
-                    <rect x="55" y="30" width="90" height="60" rx="5" fill="url(#silverShine)" opacity="0.8"/>
-                    <rect x="60" y="35" width="80" height="50" rx="3" fill="#94a3b8" opacity="0.7"/>
-                    <path d="M70 45 L130 45 M70 55 L130 55 M70 65 L130 65" stroke="#e2e8f0" stroke-width="2"/>
-                    <ellipse cx="85" cy="50" rx="8" ry="4" fill="#f1f5f9" opacity="0.8"/>
-                    <ellipse cx="115" cy="70" rx="6" ry="3" fill="#f1f5f9" opacity="0.6"/>
-                    <text x="100" y="110" text-anchor="middle" class="text-xs fill-slate-700 font-semibold">Bao Bì Bạc Sang Trọng</text>
-                </svg>`,
-                gradient: 'from-slate-300 to-gray-500'
-            },
-            {
-                id: 9,
-                name: 'Bao bì san hô',
-                price: 28000,
-                category: 'packaging',
-                description: '🌊 Bao bì màu san hô - Sắc màu rạn san hô nhiệt đới 🪸',
-                image: `<svg viewBox="0 0 200 120" class="w-full h-full">
-                    <defs>
-                        <linearGradient id="packGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#f97316"/>
-                            <stop offset="50%" style="stop-color:#ea580c"/>
-                            <stop offset="100%" style="stop-color:#c2410c"/>
-                        </linearGradient>
-                    </defs>
-                    <rect width="200" height="120" fill="#f97316" opacity="0.1"/>
-                    <rect x="50" y="25" width="100" height="70" rx="8" fill="url(#packGrad4)" opacity="0.9"/>
-                    <rect x="55" y="30" width="90" height="60" rx="5" fill="#f97316" opacity="0.8"/>
-                    <rect x="60" y="35" width="80" height="50" rx="3" fill="#fb923c" opacity="0.7"/>
-                    <path d="M70 45 L130 45 M70 55 L130 55 M70 65 L130 65" stroke="#fed7aa" stroke-width="2"/>
-                    <path d="M80 40 Q85 35 90 40 Q95 35 100 40 Q95 45 90 40 Q85 45 80 40" fill="#ea580c"/>
-                    <path d="M110 75 Q115 70 120 75 Q115 80 110 75" fill="#ea580c"/>
-                    <text x="100" y="110" text-anchor="middle" class="text-xs fill-orange-700 font-semibold">Bao Bì San Hô</text>
-                </svg>`,
-                gradient: 'from-orange-300 to-red-500'
-            },
-            // Phụ kiện
-            {
-                id: 10,
-                name: 'Khăn biển cao cấp',
-                price: 75000,
-                originalPrice: 85000,
-                discount: 12,
-                category: 'accessories',
-                description: '🌊 Khăn cao cấp màu biển - Thấm hút tốt, mềm mại như làn gió biển 🧻',
-                image: `<svg viewBox="0 0 200 120" class="w-full h-full">
-                    <defs>
-                        <linearGradient id="towelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#0ea5e9"/>
-                            <stop offset="50%" style="stop-color:#0284c7"/>
-                            <stop offset="100%" style="stop-color:#0369a1"/>
-                        </linearGradient>
-                        <pattern id="towelPattern" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
-                            <rect width="10" height="10" fill="#38bdf8" opacity="0.3"/>
-                            <circle cx="5" cy="5" r="2" fill="#0ea5e9" opacity="0.5"/>
-                        </pattern>
-                    </defs>
-                    <rect width="200" height="120" fill="#0ea5e9" opacity="0.1"/>
-                    <rect x="40" y="30" width="120" height="60" rx="10" fill="url(#towelGrad)" opacity="0.9"/>
-                    <rect x="45" y="35" width="110" height="50" rx="8" fill="#0ea5e9" opacity="0.8"/>
-                    <rect x="50" y="40" width="100" height="40" rx="5" fill="url(#towelPattern)"/>
-                    <path d="M55 45 L145 45 M55 55 L145 55 M55 65 L145 65 M55 75 L145 75" stroke="#7dd3fc" stroke-width="1.5"/>
-                    <path d="M60 50 L140 50 M60 60 L140 60 M60 70 L140 70" stroke="#38bdf8" stroke-width="1"/>
-                    <rect x="50" y="40" width="100" height="8" rx="4" fill="#0284c7" opacity="0.6"/>
-                    <rect x="50" y="72" width="100" height="8" rx="4" fill="#0284c7" opacity="0.6"/>
-                    <text x="100" y="110" text-anchor="middle" class="text-xs fill-sky-700 font-semibold">Khăn Biển Cao Cấp</text>
-                </svg>`,
-                gradient: 'from-sky-300 to-cyan-500'
-            }
-        ];
-        const branches = [
-            { id: 'vt-center', name: 'Chi nhánh Trung tâm Vũng Tàu', address: '123 Đường Thùy Vân, Phường Thắng Tam, TP. Vũng Tàu', phone: '0254.123.4567', areas: ['vũng tàu', 'thắng tam'], deliveryTime: '30-45 phút', emoji: '🏢' },
-            { id: 'ba-ria', name: 'Chi nhánh Bà Rịa', address: '321 Đường Lê Duẩn, Phường Phước Hiệp, TP. Bà Rịa', phone: '0254.456.7890', areas: ['bà rịa', 'phước hiệp'], deliveryTime: '45-60 phút', emoji: '🏘️' }
-        ];
-        const demoUsers = [
-            { id: 1, name: 'Nguyễn Văn A', email: 'demo@example.com', phone: '0901234567', password: '123456', debt: 150000, creditLimit: 200000, address: '123 Đường ABC, Vũng Tàu' }
-        ];
-
-    </script>
+    <!-- MODALS -->
+    <div id="paymentOptionsModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"></div>
+    <div id="bankingPaymentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"></div>
+    <div id="debtWarningModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"></div>
 </body>
+
+<script>
+// --- STATE MANAGEMENT ---
+let cart = [];
+let currentUser = null;
+let isLoggedIn = false;
+let orderHistory = [];
+let demoUsers = [
+    { id: 1, name: 'Nguyễn Văn A', email: 'demo@example.com', phone: '0901234567', password: '123456', debt: 150000, creditLimit: 200000, address: "123 Đường ABC, Vũng Tàu" }
+];
+
+// --- TEMPLATES ---
+const TEMPLATES = {
+    intro: `
+        <div class="bg-emerald-600 text-white rounded-2xl p-8 mb-12 card-shadow">
+            <div class="text-center relative z-10">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Bánh Mì Ngon - Gắn Kết Cộng Đồng</h1>
+                <p class="text-lg md:text-xl mb-8 text-emerald-100">Sản phẩm chất lượng từ Đồng Nhân Food</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <div class="flex items-center space-x-2 bg-white bg-opacity-20 px-6 py-3 rounded-full">
+                        <span class="text-2xl">📞</span><span class="font-semibold text-lg">Hotline: 0934.945.967</span>
+                    </div>
+                    <button onclick="showSection('menu')" class="bg-white text-emerald-600 px-8 py-3 rounded-full font-semibold hover:bg-emerald-50">Xem Sản Phẩm Ngay</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 text-center">
+            <div class="bg-white p-6 rounded-lg card-shadow"><div class="text-4xl mb-3">🌿</div><h3 class="text-xl font-bold mb-2">Nguyên Liệu Sạch</h3><p class="text-gray-600">Nguồn nguyên liệu được chọn lọc kỹ lưỡng, đảm bảo an toàn và tươi ngon.</p></div>
+            <div class="bg-white p-6 rounded-lg card-shadow"><div class="text-4xl mb-3">🛡️</div><h3 class="text-xl font-bold mb-2">An Toàn Vệ Sinh</h3><p class="text-gray-600">Quy trình sản xuất hiện đại, đạt chuẩn an toàn vệ sinh thực phẩm.</p></div>
+            <div class="bg-white p-6 rounded-lg card-shadow"><div class="text-4xl mb-3">🚚</div><h3 class="text-xl font-bold mb-2">Tiện Lợi & Nhanh Chóng</h3><p class="text-gray-600">Hệ thống phân phối rộng khắp, mang sản phẩm đến tay bạn nhanh nhất.</p></div>
+        </div>
+
+        <div class="bg-white rounded-lg card-shadow p-8 md:p-12 mb-16">
+            <h2 class="text-3xl font-bold text-center text-emerald-800 mb-8">Sản Phẩm Nổi Bật</h2>
+            <div id="featuredProductsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+            <div class="text-center mt-8"><button onclick="showSection('menu')" class="bg-emerald-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-emerald-700">Xem Tất Cả Sản Phẩm</button></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-16">
+            <div class="bg-white rounded-lg card-shadow p-8">
+                 <h2 class="text-3xl font-bold text-emerald-800 mb-4">Dịch Vụ Của Chúng Tôi</h2>
+                <div class="space-y-6">
+                    <div><h3 class="text-xl font-semibold mb-2">📦 Cung cấp Sỉ & Lẻ</h3><p class="text-gray-600">Chúng tôi cung cấp các sản phẩm thực phẩm chất lượng cho đối tác nhà hàng, quán ăn và khách hàng cá nhân với giá cả cạnh tranh.</p></div>
+                    <div><h3 class="text-xl font-semibold mb-2">🤝 Nhượng Quyền Kinh Doanh</h3><p class="text-gray-600">Mô hình kinh doanh đã được chứng minh thành công. Chúng tôi cung cấp gói nhượng quyền toàn diện: đào tạo, cung cấp nguyên liệu, hỗ trợ marketing.</p></div>
+                </div>
+            </div>
+            <div class="text-center"><img src="https://raw.githubusercontent.com/HienNguyenEMS/chacavungtau/refs/heads/main/logo.jpg" alt="Đồng Nhân Food" class="rounded-lg shadow-lg mx-auto max-w-sm w-full"></div>
+        </div>
+        
+        <div class="bg-emerald-600 text-white rounded-lg p-8 text-center"><h2 class="text-3xl font-bold mb-4">Sẵn sàng thưởng thức sản phẩm chất lượng?</h2><button onclick="showSection('menu')" class="bg-white text-emerald-600 px-8 py-3 rounded-full font-semibold hover:bg-emerald-50 mt-4">Đặt Hàng Ngay</button></div>`,
+    menu: `<h2 class="text-3xl font-bold text-emerald-800 mb-8 text-center">Sản Phẩm Của Chúng Tôi</h2><div id="productGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>`,
+    stores: `
+        <h2 class="text-3xl font-bold text-emerald-800 mb-8 text-center">Hệ Thống Cửa Hàng</h2>
+        <div id="storeGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>`,
+    cart: `<h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Giỏ Hàng Của Bạn</h2><div class="max-w-4xl mx-auto"><div id="cartItems" class="space-y-4"></div><div id="cartActions" class="mt-8 text-center hidden"><button onclick="proceedToOrder()" class="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 text-lg font-semibold">Tiến hành thanh toán 🛒</button></div></div>`,
+    login: `<div class="max-w-md mx-auto bg-white rounded-lg card-shadow p-8"><h2 class="text-3xl font-bold text-center mb-8">Đăng Nhập</h2><form id="loginForm"><div class="space-y-4"><input type="text" id="loginIdentifier" required placeholder="Email hoặc SĐT" class="w-full px-4 py-3 border rounded-lg"><input type="password" id="loginPassword" required placeholder="Mật khẩu" class="w-full px-4 py-3 border rounded-lg"><button type="submit" class="w-full bg-emerald-600 text-white py-3 rounded-lg font-semibold">Đăng nhập</button></div></form><div id="loginMessage" class="mt-4 text-center text-sm"></div><p class="mt-6 text-center">Chưa có tài khoản? <button onclick="showSection('register')" class="text-emerald-600 font-medium">Đăng ký</button></p></div>`,
+    register: `<div class="max-w-md mx-auto bg-white rounded-lg card-shadow p-8"><h2 class="text-3xl font-bold text-center mb-8">Đăng Ký Tài Khoản</h2><form id="registerForm"><div class="space-y-4"><input type="text" id="registerName" required placeholder="Họ và tên" class="w-full px-4 py-3 border rounded-lg"><input type="tel" id="registerPhone" required placeholder="Số điện thoại" class="w-full px-4 py-3 border rounded-lg"><input type="email" id="registerEmail" required placeholder="Email" class="w-full px-4 py-3 border rounded-lg"><input type="password" id="registerPassword" required minlength="6" placeholder="Mật khẩu (ít nhất 6 ký tự)" class="w-full px-4 py-3 border rounded-lg"><button type="submit" class="w-full bg-emerald-600 text-white py-3 rounded-lg font-semibold">Tạo tài khoản</button></div></form><div id="registerMessage" class="mt-4 text-center text-sm"></div><p class="mt-6 text-center">Đã có tài khoản? <button onclick="showSection('login')" class="text-emerald-600 font-medium">Đăng nhập</button></p></div>`,
+    dashboard: `<div class="max-w-6xl mx-auto"><div class="flex items-center justify-between mb-4"><h2 class="text-3xl font-bold">Dashboard</h2></div><div class="bg-white rounded-lg card-shadow"><div class="flex flex-wrap border-b"><button onclick="showDashboardTab('overview', this)" class="dashboard-tab active px-6 py-3 font-medium">Tổng quan</button><button onclick="showDashboardTab('orders', this)" class="dashboard-tab px-6 py-3 font-medium">Đơn hàng</button><button onclick="showDashboardTab('debt', this)" class="dashboard-tab px-6 py-3 font-medium">Công nợ</button><button onclick="showDashboardTab('profile', this)" class="dashboard-tab px-6 py-3 font-medium">Tài khoản</button></div><div class="p-6"><div id="overviewTab" class="dashboard-content animate-fade-in"></div><div id="ordersTab" class="dashboard-content hidden animate-fade-in"></div><div id="debtTab" class="dashboard-content hidden animate-fade-in"></div><div id="profileTab" class="dashboard-content hidden animate-fade-in"></div></div></div></div>`,
+    tracking: `<h2 class="text-3xl font-bold text-center mb-8">Tra Cứu Đơn Hàng</h2><div class="max-w-md mx-auto bg-white rounded-lg card-shadow p-8"><p class="text-center text-gray-600 mb-4">Nhập mã đơn hàng để kiểm tra trạng thái</p><div class="flex gap-2"><input type="text" id="orderCode" placeholder="Mã đơn hàng (VD: DH123456)" class="w-full px-4 py-2 border rounded-lg"><button onclick="trackOrder()" class="bg-emerald-600 text-white px-6 rounded-lg">Tra cứu</button></div><div id="trackingResult" class="mt-6"></div></div>`,
+    debt: `<h2 class="text-3xl font-bold text-center mb-8">Tra Cứu Công Nợ</h2><div class="max-w-md mx-auto bg-white rounded-lg card-shadow p-8"><p class="text-center text-gray-600 mb-4">Nhập số điện thoại để kiểm tra công nợ</p><div class="flex gap-2"><input type="tel" id="debtPhone" placeholder="Số điện thoại" class="w-full px-4 py-2 border rounded-lg"><button onclick="checkDebt()" class="bg-emerald-600 text-white px-6 rounded-lg">Kiểm tra</button></div><div id="debtResult" class="mt-6"></div></div>`,
+    paymentOptionsModal: `<div class="bg-white rounded-lg p-6 max-w-lg w-full animate-fade-in"><h3 class="text-2xl font-bold text-center mb-4">Chọn hình thức thanh toán</h3><div id="orderSummaryInModal" class="bg-emerald-50 p-4 rounded-lg mb-6 border"></div><div class="space-y-4"><button onclick="selectPaymentMethod('banking')" class="w-full bg-emerald-600 text-white py-3 rounded-lg flex items-center justify-center space-x-2"><span>💳</span><span>Thanh toán Banking</span></button><button onclick="selectPaymentMethod('debt')" class="w-full bg-amber-500 text-white py-3 rounded-lg flex items-center justify-center space-x-2"><span>📋</span><span>Ghi công nợ</span></button></div><button onclick="closeModal('paymentOptionsModal')" class="w-full mt-6 bg-gray-300 py-2 rounded-lg">Hủy</button></div>`,
+    bankingPaymentModal: `<div class="bg-white rounded-lg p-6 max-w-md w-full animate-fade-in"><h3 class="text-2xl font-bold mb-4 text-center">Thanh toán VietQR</h3><img id="bankingQrImage" src="" alt="VietQR Code" class="w-64 h-64 mx-auto bg-gray-100 rounded-lg border"><div class="my-4 text-sm bg-gray-50 p-3 rounded-lg"><p><strong>Số tiền:</strong> <span id="bankingAmount" class="text-emerald-700 font-bold"></span></p><p><strong>Nội dung:</strong> <span id="bankingContent" class="text-emerald-700"></span></p></div><button onclick="confirmBankingPayment()" class="w-full bg-green-600 text-white py-3 rounded-lg">Tôi đã thanh toán</button><button onclick="closeModal('bankingPaymentModal')" class="w-full mt-3 bg-gray-300 py-2 rounded-lg">Đóng</button></div>`,
+    debtWarningModal: `<div class="bg-white rounded-lg p-6 max-w-lg w-full animate-fade-in"><h3 class="text-2xl font-bold text-red-600 text-center mb-4">⚠️ Vượt Hạn Mức Công Nợ</h3><div id="debtWarningContent" class="bg-red-50 p-4 rounded-lg border border-red-200 mb-4 text-sm space-y-2"></div><p class="text-center mb-4">Vui lòng thanh toán công nợ cũ để tiếp tục.</p><img id="debtQrImage" src="" alt="VietQR for Debt" class="w-56 h-56 mx-auto bg-gray-100 rounded-lg border"><button onclick="confirmDebtPayment()" class="w-full mt-4 bg-green-600 text-white py-3 rounded-lg">Tôi đã thanh toán công nợ</button><button onclick="closeModal('debtWarningModal')" class="w-full mt-3 bg-gray-300 py-2 rounded-lg">Đóng</button></div>`
+};
+
+// --- UI & NAVIGATION ---
+function showSection(sectionName) {
+    document.querySelectorAll('main > section').forEach(sec => sec.classList.add('hidden'));
+    const sectionEl = document.getElementById(sectionName + 'Section');
+    if (sectionEl) {
+        sectionEl.innerHTML = TEMPLATES[sectionName] || '';
+        sectionEl.classList.remove('hidden');
+    }
+    updateMobileNavigation(sectionName);
+    window.scrollTo(0, 0);
+
+    if (sectionName.match(/login|register/)) {
+        document.getElementById(`${sectionName}Form`).addEventListener('submit', sectionName === 'login' ? handleLogin : handleRegister);
+    }
+    if (sectionName === 'intro') loadFeaturedProducts();
+    if (sectionName === 'menu') loadProducts();
+    if (sectionName === 'stores') loadStores();
+    if (sectionName === 'cart') updateCartDisplay();
+    if (sectionName === 'dashboard') loadDashboard();
+}
+
+function updateMobileNavigation(activeSection) {
+    document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-section') === activeSection);
+    });
+}
+
+function updateMenuVisibility() {
+    const hasItems = cart.length > 0;
+    document.getElementById('navCart').classList.toggle('hidden', !hasItems);
+    const mobileNavCart = document.getElementById('mobileNavCart');
+    mobileNavCart.classList.toggle('hidden', !hasItems);
+    mobileNavCart.classList.toggle('flex', hasItems);
+    
+    const mobileNavGrid = document.getElementById('mobileNavGrid');
+    let visibleItems = 2 + (hasItems ? 1 : 0) + 1; // home, products, account + cart if exists
+    mobileNavGrid.style.gridTemplateColumns = `repeat(${visibleItems}, 1fr)`;
+}
+
+function closeModal(modalId) { 
+    const modal = document.getElementById(modalId);
+    if(modal) {
+        modal.innerHTML = ''; 
+        modal.classList.add('hidden');
+    }
+}
+
+// --- CONTENT LOADING ---
+function loadFeaturedProducts() {
+    const grid = document.getElementById('featuredProductsGrid');
+    if(grid) grid.innerHTML = products.slice(0, 3).map(p => {
+        return `<div class="bg-gray-50 rounded-lg p-4 text-center">
+            <div class="h-40 bg-gray-200 flex items-center justify-center rounded-lg">${p.image}</div>
+            <h4 class="font-bold mt-4">${p.name}</h4>
+            <p class="text-emerald-600 font-semibold">${p.price.toLocaleString()}đ</p>
+        </div>`;
+    }).join('');
+}
+
+function loadProducts() {
+    const grid = document.getElementById('productGrid');
+    if(grid) grid.innerHTML = products.map(p => {
+        const inCart = cart.some(item => item.id === p.id);
+        const btn = {
+            class: inCart ? "bg-green-600 hover:bg-green-700" : "bg-emerald-600 hover:bg-emerald-700",
+            text: inCart ? "Tới giỏ hàng ✅" : "Thêm vào giỏ hàng 🛒",
+            action: inCart ? "showSection('cart')" : `addToCart(${p.id})`
+        };
+        return `<div class="bg-white rounded-lg card-shadow overflow-hidden"><div class="h-48 bg-gray-100 flex items-center justify-center">${p.image}</div><div class="p-4"><h3 class="font-bold text-lg">${p.name}</h3><p class="text-gray-600 text-sm h-10">${p.description}</p><div class="flex items-center justify-between mt-2 mb-4"><span class="text-xl font-bold text-emerald-600">${p.price.toLocaleString()}đ</span></div><button id="product-btn-${p.id}" onclick="${btn.action}" class="w-full text-white py-2 rounded-lg font-semibold ${btn.class}">${btn.text}</button></div></div>`;
+    }).join('');
+}
+
+function loadStores() {
+    const grid = document.getElementById('storeGrid');
+    if(grid) grid.innerHTML = branches.map(b => `<div class="bg-white rounded-lg card-shadow p-6 border-l-4 border-amber-500"><h3 class="font-bold text-lg">${b.emoji} ${b.name}</h3><p class="text-sm text-gray-600 mt-2">📍 ${b.address}</p><p class="text-sm text-gray-600 mt-1">📞 ${b.phone}</p></div>`).join('');
+}
+
+// --- CART LOGIC ---
+function addToCart(productId) {
+    if (cart.some(item => item.id === productId)) return;
+    const product = products.find(p => p.id === productId);
+    cart.push({ ...product, quantity: 1 });
+    showNotification(`${product.name} đã được thêm vào giỏ.`);
+    updateAllUI();
+}
+
+function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    updateAllUI();
+}
+
+function updateCartDisplay() {
+    const itemsEl = document.getElementById('cartItems');
+    const actionsEl = document.getElementById('cartActions');
+    if(!itemsEl) return;
+    if (cart.length === 0) {
+        itemsEl.innerHTML = `<div class="text-center py-12"><h3 class="text-xl text-gray-600">Giỏ hàng của bạn đang trống.</h3><button onclick="showSection('menu')" class="mt-4 bg-emerald-600 text-white px-6 py-2 rounded-lg">Mua sắm ngay</button></div>`;
+        actionsEl.classList.add('hidden');
+    } else {
+        const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+        itemsEl.innerHTML = cart.map(item => `<div class="bg-white rounded-lg card-shadow p-4 flex items-center gap-4"><div class="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">${item.image}</div><div class="flex-1"><h3 class="font-semibold">${item.name}</h3><p class="text-emerald-600">${item.price.toLocaleString()}đ</p></div><p class="font-bold text-lg">${(item.price * item.quantity).toLocaleString()}đ</p><button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 p-2">✖</button></div>`).join('') + `<div class="text-right mt-4 text-xl font-bold">Tổng cộng: <span class="text-emerald-600">${total.toLocaleString()}đ</span></div>`;
+        actionsEl.classList.remove('hidden');
+    }
+}
+
+// --- PAYMENT FLOW ---
+function proceedToOrder() {
+    if (!isLoggedIn) {
+        showNotification("Vui lòng đăng nhập để thanh toán.");
+        showSection('login');
+        return;
+    }
+    const modal = document.getElementById('paymentOptionsModal');
+    modal.innerHTML = TEMPLATES.paymentOptionsModal;
+    const total = cart.reduce((s, i) => s + (i.price * i.quantity), 0);
+    document.getElementById('orderSummaryInModal').innerHTML = `<p class="text-center">Tổng tiền: <strong class="text-emerald-600">${total.toLocaleString()}đ</strong></p>`;
+    modal.classList.remove('hidden');
+}
+
+function selectPaymentMethod(method) {
+    closeModal('paymentOptionsModal');
+    method === 'banking' ? showBankingPayment() : checkDebtLimitAndProcess();
+}
+
+function generateVietQRUrl(amount, content) {
+    const accountInfo = { bank: "970422", acc: "0934945967", name: "NGUYEN CHI THANH" };
+    return `https://api.vietqr.io/v2/generate?accountNo=${accountInfo.acc}&accountName=${encodeURIComponent(accountInfo.name)}&acqId=${accountInfo.bank}&amount=${amount}&addInfo=${encodeURIComponent(content)}&template=compact2`;
+}
+
+function showBankingPayment() {
+    const modal = document.getElementById('bankingPaymentModal');
+    modal.innerHTML = TEMPLATES.bankingPaymentModal;
+    const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+    const orderId = 'DH' + Date.now().toString().slice(-6);
+    const qrContent = `TT ${orderId}`;
+    document.getElementById('bankingQrImage').src = generateVietQRUrl(total, qrContent);
+    document.getElementById('bankingAmount').textContent = `${total.toLocaleString()}đ`;
+    document.getElementById('bankingContent').textContent = qrContent;
+    modal.classList.remove('hidden');
+}
+
+function confirmBankingPayment() {
+    const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+    orderHistory.push({ id: orderHistory.length + 1, code: 'DH' + Date.now().toString().slice(-6), status: 'Đang xử lý', total: total, date: new Date() });
+    cart = [];
+    closeModal('bankingPaymentModal');
+    showNotification("Thanh toán thành công! Đơn hàng đang được xử lý.");
+    updateAllUI();
+    showSection('dashboard');
+}
+
+function checkDebtLimitAndProcess() {
+    const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+    const newDebt = (currentUser.debt || 0) + total;
+    if (newDebt > currentUser.creditLimit) {
+        showDebtWarning(currentUser.debt, newDebt - currentUser.creditLimit);
+    } else {
+        currentUser.debt = newDebt;
+        orderHistory.push({ id: orderHistory.length + 1, code: 'DH' + Date.now().toString().slice(-6), status: 'Đang xử lý (Công nợ)', total: total, date: new Date() });
+        cart = [];
+        showNotification("Đặt hàng công nợ thành công!");
+        updateAllUI();
+        showSection('dashboard');
+    }
+}
+
+function showDebtWarning(currentDebt, amountOver) {
+    const modal = document.getElementById('debtWarningModal');
+    modal.innerHTML = TEMPLATES.debtWarningModal;
+    document.getElementById('debtWarningContent').innerHTML = `<p>Công nợ hiện tại: <strong class="text-red-600">${currentDebt.toLocaleString()}đ</strong></p><p>Đơn hàng này sẽ vượt hạn mức: <strong class="text-red-600">${amountOver.toLocaleString()}đ</strong></p>`;
+    document.getElementById('debtQrImage').src = generateVietQRUrl(currentDebt, `TT Cong No ${currentUser.phone}`);
+    modal.classList.remove('hidden');
+}
+
+function confirmDebtPayment() {
+    showNotification("Thanh toán công nợ thành công! Vui lòng đặt lại đơn hàng.");
+    currentUser.debt = 0;
+    closeModal('debtWarningModal');
+    updateAllUI();
+}
+
+// --- LOGIN & REGISTER & USER ---
+function handleLogin(event) {
+    event.preventDefault();
+    const id = document.getElementById('loginIdentifier').value;
+    const pass = document.getElementById('loginPassword').value;
+    const user = demoUsers.find(u => (u.email === id || u.phone === id) && u.password === pass);
+    if (user) {
+        currentUser = user;
+        isLoggedIn = true;
+        showNotification(`Chào mừng, ${currentUser.name}!`);
+        updateAllUI();
+        showSection('intro');
+    } else {
+        document.getElementById('loginMessage').innerHTML = `<p class="text-red-500">Thông tin không chính xác.</p>`;
+    }
+}
+
+function logout() {
+    currentUser = null;
+    isLoggedIn = false;
+    showNotification('Đã đăng xuất!');
+    updateAllUI();
+    showSection('intro');
+}
+
+function handleRegister(event) {
+    event.preventDefault();
+    const [name, phone, email, pass] = ['registerName', 'registerPhone', 'registerEmail', 'registerPassword'].map(id => document.getElementById(id).value);
+    const msgEl = document.getElementById('registerMessage');
+    if (demoUsers.some(u => u.email === email || u.phone === phone)) {
+        msgEl.innerHTML = `<p class="text-red-500">Email hoặc SĐT đã tồn tại.</p>`; return;
+    }
+    const newUser = { id: Date.now(), name, email, phone, password: pass, debt: 0, creditLimit: 200000, address: "" };
+    demoUsers.push(newUser);
+    msgEl.innerHTML = `<p class="text-green-500">Đăng ký thành công! Đang tự động đăng nhập...</p>`;
+    setTimeout(() => {
+        const user = demoUsers.find(u => u.email === email && u.password === pass);
+        if(user) { currentUser = user; isLoggedIn = true; showNotification(`Chào mừng, ${currentUser.name}!`); updateAllUI(); showSection('intro'); }
+    }, 1500);
+}
+
+// --- DASHBOARD ---
+function loadDashboard() {
+    showDashboardTab('overview', document.querySelector('#dashboardSection .dashboard-tab'));
+}
+
+function showDashboardTab(tabName, clickedElement) {
+    document.querySelectorAll('.dashboard-content').forEach(el => el.classList.add('hidden'));
+    document.getElementById(tabName + 'Tab').classList.remove('hidden');
+    document.querySelectorAll('.dashboard-tab').forEach(btn => btn.classList.remove('active'));
+    clickedElement.classList.add('active');
+
+    if (tabName === 'overview') loadDashboardOverview();
+    if (tabName === 'orders') loadOrders();
+    if (tabName === 'debt') loadDebtInfo();
+    if (tabName === 'profile') loadProfileInfo();
+}
+
+function loadDashboardOverview() {
+    const el = document.getElementById('overviewTab');
+    const processing = orderHistory.filter(o => o.status.includes('Đang xử lý')).length;
+    el.innerHTML = `<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-emerald-50 p-6 rounded-lg"><p class="font-medium text-emerald-600">Tổng đơn hàng</p><p class="text-2xl font-bold">${orderHistory.length}</p></div>
+        <div class="bg-amber-50 p-6 rounded-lg"><p class="font-medium text-amber-600">Đang xử lý</p><p class="text-2xl font-bold">${processing}</p></div>
+        <div class="bg-red-50 p-6 rounded-lg"><p class="font-medium text-red-600">Công nợ</p><p class="text-2xl font-bold">${(currentUser.debt || 0).toLocaleString()}đ</p></div>
+    </div>`;
+}
+
+function loadOrders() {
+    const el = document.getElementById('ordersTab');
+    if (orderHistory.length === 0) el.innerHTML = '<p>Bạn chưa có đơn hàng nào.</p>';
+    else el.innerHTML = `<h3 class="text-xl font-semibold mb-4">Lịch sử đơn hàng</h3><div class="space-y-4">${orderHistory.map(o => `<div class="bg-gray-50 p-4 rounded-lg shadow-sm"><p><strong>Mã ĐH:</strong> ${o.code}</p><p><strong>Ngày:</strong> ${o.date.toLocaleDateString('vi-VN')}</p><p><strong>Tổng tiền:</strong> ${o.total.toLocaleString()}đ</p><p><strong>Trạng thái:</strong> <span class="text-orange-500 font-semibold">${o.status}</span></p></div>`).join('')}</div>`;
+}
+
+function loadDebtInfo() {
+    const el = document.getElementById('debtTab');
+    el.innerHTML = `<div class="bg-white p-6 rounded-lg shadow-sm max-w-md"><h3 class="font-bold text-lg mb-4">Thông Tin Công Nợ</h3><div class="space-y-2"><p>Công nợ hiện tại: <strong class="text-red-500 text-xl">${(currentUser.debt || 0).toLocaleString()}đ</strong></p><p>Hạn mức tín dụng: <strong>${(currentUser.creditLimit || 0).toLocaleString()}đ</strong></p></div><button onclick="showDebtWarning(currentUser.debt, 0)" class="w-full mt-4 bg-red-600 text-white py-2 rounded-lg">Thanh toán ngay</button></div>`;
+}
+
+function loadProfileInfo() {
+    const el = document.getElementById('profileTab');
+    el.innerHTML = `<div class="bg-white p-6 rounded-lg shadow-sm max-w-md"><h3 class="font-bold text-lg mb-4">Thông Tin Tài Khoản</h3><div class="space-y-2"><p><strong>Họ tên:</strong> ${currentUser.name}</p><p><strong>Email:</strong> ${currentUser.email}</p><p><strong>SĐT:</strong> ${currentUser.phone}</p><p><strong>Địa chỉ:</strong> ${currentUser.address || "Chưa cập nhật"}</p></div></div>`;
+}
+
+// --- TRACKING & DEBT (Public) ---
+function trackOrder() {
+    const code = document.getElementById('orderCode').value.toUpperCase();
+    const resultEl = document.getElementById('trackingResult');
+    const order = orderHistory.find(o => o.code === code);
+    resultEl.innerHTML = order ? `<div class="bg-green-50 p-4 rounded-lg"><p>Đơn hàng <strong>${code}</strong></p><p>Trạng thái: <span class="font-semibold text-green-700">${order.status}</span></p></div>` : `<div class="bg-red-50 p-4 rounded-lg"><p>Không tìm thấy đơn hàng <strong>${code}</strong>.</p></div>`;
+}
+
+function checkDebt() {
+    const phone = document.getElementById('debtPhone').value;
+    const resultEl = document.getElementById('debtResult');
+    const user = demoUsers.find(u => u.phone === phone);
+    resultEl.innerHTML = user ? `<div class="bg-emerald-50 p-4 rounded-lg"><p>Khách hàng: <strong>${user.name}</strong></p><p>Công nợ: <span class="font-semibold text-red-500">${(user.debt || 0).toLocaleString()}đ</span></p></div>` : `<div class="bg-red-50 p-4 rounded-lg"><p>Không tìm thấy thông tin cho SĐT này.</p></div>`;
+}
+
+// --- UTILITY ---
+function showNotification(message) {
+    const el = document.createElement('div');
+    el.className = 'fixed top-20 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fade-in';
+    el.textContent = message;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 3000);
+}
+
+function updateAllUI() {
+    document.querySelectorAll('#cartCount, #mobileCartCount').forEach(el => { el.textContent = cart.length; });
+    updateMenuVisibility();
+    updateLoginUI();
+    const visibleSection = document.querySelector('main > section:not(.hidden)');
+    if (visibleSection) {
+        const sectionId = visibleSection.id.replace('Section', '');
+        if (sectionId === 'menu') loadProducts();
+        if (sectionId === 'cart') updateCartDisplay();
+    }
+}
+
+function updateLoginUI() {
+    document.getElementById('notLoggedIn').classList.toggle('hidden', isLoggedIn);
+    document.getElementById('loggedIn').classList.toggle('hidden', !isLoggedIn);
+    if (isLoggedIn) document.getElementById('userName').textContent = currentUser.name.split(' ').pop();
+}
+
+function toggleUserDropdown() { document.getElementById('userDropdownMenu').classList.toggle('show'); }
+function closeUserDropdown() { document.getElementById('userDropdownMenu').classList.remove('show'); }
+
+// --- INITIALIZATION ---
+document.addEventListener('DOMContentLoaded', () => {
+    showSection('intro');
+    updateAllUI();
+    window.addEventListener('click', (e) => {
+        if (!document.querySelector('.dropdown')?.contains(e.target)) closeUserDropdown();
+    });
+});
+
+// --- DUMMY DATA ---
+const products = [
+    { id: 1, name: 'Bánh mì chả cá', price: 20000, description: 'Bánh mì giòn rụm kẹp chả cá nóng hổi.', image: '<span class="text-5xl">🥖</span>' },
+    { id: 2, name: 'Chả cá tươi (kg)', price: 120000, description: 'Chả cá tươi nguyên chất, dai ngon.', image: '<span class="text-5xl">🐟</span>' },
+    { id: 3, name: 'Nem nướng', price: 25000, description: 'Nem nướng thơm lừng, đậm đà hương vị.', image: '<span class="text-5xl">🍢</span>' },
+    { id: 4, name: 'Xôi chả cá', price: 25000, description: 'Xôi nếp dẻo thơm ăn cùng chả cá.', image: '<span class="text-5xl">🍚</span>' },
+    { id: 5, name: 'Combo gia đình', price: 150000, description: 'Combo tiện lợi cho cả gia đình.', image: '<span class="text-5xl">👨‍👩‍👧‍👦</span>' },
+    { id: 6, name: 'Nước mắm', price: 50000, description: 'Nước mắm truyền thống, nguyên chất.', image: '<span class="text-5xl">🍯</span>' }
+];
+const branches = [
+    { id: 'vt-center', name: 'Chi nhánh Trung tâm', emoji: '🏢', address: '123 Đường A, Quận 1, TPHCM', phone: '028.123.4567' },
+    { id: 'vt-back-beach', name: 'Chi nhánh Gò Vấp', emoji: '🏪', address: '456 Đường B, Quận Gò Vấp, TPHCM', phone: '028.234.5678' },
+    { id: 'ba-ria', name: 'Chi nhánh Bình Thạnh', emoji: '🏘️', address: '789 Đường C, Quận Bình Thạnh, TPHCM', phone: '028.456.7890' },
+];
+</script>
 </html>
