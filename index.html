@@ -16,12 +16,12 @@
         .animate-fade-in { animation: fadeIn 0.5s ease-in-out; }
         .interactive-card {
             transition: all 0.3s ease-in-out;
-            border: 2px solid transparent;
+            border: 2px solid #a7f3d0; /* Viền xanh lá nhạt mặc định */
         }
         .interactive-card:hover {
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 12px 20px rgba(16, 185, 129, 0.2);
-            border-color: #10b981;
+            border-color: #059669; /* Viền xanh lá đậm khi hover */
         }
         .dropdown { position: relative; }
         .dropdown-menu { 
@@ -38,18 +38,27 @@
             main { padding-bottom: 80px; }
         }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* CSS để giảm khoảng cách */
+        main > section {
+            padding-top: 2rem; /* giảm từ py-8 (2rem) thành 1rem */
+            padding-bottom: 2rem; /* giảm từ py-8 (2rem) thành 1rem */
+        }
+        main > section > div {
+            margin-bottom: 2.5rem; /* giảm từ mb-12 (3rem) hoặc mb-16 (4rem) */
+        }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
     <header class="gradient-bg text-white shadow-lg sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4">
+        <div class="container mx-auto px-4 py-3"> <!-- Giảm padding y từ 4 xuống 3 -->
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-3 cursor-pointer" onclick="showSection('intro')">
                     <img src="https://raw.githubusercontent.com/HienNguyenEMS/chacavungtau/refs/heads/main/logo.jpg" alt="Logo" class="w-10 h-10 rounded-lg">
                     <div><h1 class="text-xl font-bold">Đồng Nhân Food</h1></div>
                 </div>
-                <nav class="hidden md:flex space-x-6 items-center">
+                <nav class="hidden md:flex space-x-5 items-center"> <!-- Giảm space-x từ 6 xuống 5 -->
                     <button onclick="showSection('intro')" class="hover:text-amber-300 transition-colors">Trang chủ</button>
                     <button onclick="showSection('menu')" class="hover:text-amber-300 transition-colors">Sản phẩm</button>
                     <button onclick="showSection('stores')" class="hover:text-amber-300 transition-colors">Cửa hàng</button>
@@ -58,12 +67,12 @@
                     </button>
                     <div id="userMenuContainer" class="relative">
                         <div id="notLoggedIn" class="flex space-x-3">
-                            <button onclick="showSection('login')" class="bg-white bg-opacity-20 px-4 py-2 rounded-lg hover:bg-opacity-30">Đăng nhập</button>
-                            <button onclick="showSection('register')" class="bg-amber-400 text-slate-800 px-4 py-2 rounded-lg hover:bg-amber-300 font-semibold">Đăng ký</button>
+                            <button onclick="showSection('login')" class="bg-white bg-opacity-20 px-3 py-1.5 rounded-lg hover:bg-opacity-30">Đăng nhập</button>
+                            <button onclick="showSection('register')" class="bg-amber-400 text-slate-800 px-3 py-1.5 rounded-lg hover:bg-amber-300 font-semibold">Đăng ký</button>
                         </div>
                         <div id="loggedIn" class="hidden">
                             <div class="dropdown">
-                                <button onclick="toggleUserDropdown()" class="flex items-center space-x-2 bg-white bg-opacity-20 px-4 py-2 rounded-lg hover:bg-opacity-30">
+                                <button onclick="toggleUserDropdown()" class="flex items-center space-x-2 bg-white bg-opacity-20 px-3 py-1.5 rounded-lg hover:bg-opacity-30">
                                     <span class="text-xl">👤</span><span id="userName" class="font-medium"></span>
                                     <svg class="w-4 h-4 transition-transform" id="userDropdownIcon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                 </button>
@@ -110,19 +119,19 @@
         <section id="franchiseSection" class="hidden animate-fade-in"></section>
     </main>
     
-    <footer class="bg-slate-800 text-white pt-12 pb-6">
+    <footer class="bg-slate-800 text-white pt-10 pb-5">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-6">
                 <div>
-                    <div class="flex items-center space-x-2 mb-4">
+                    <div class="flex items-center space-x-2 mb-3">
                         <img src="https://raw.githubusercontent.com/HienNguyenEMS/chacavungtau/refs/heads/main/logo.jpg" alt="Logo" class="w-10 h-10 rounded-lg">
                         <span class="font-bold text-lg">Đồng Nhân Food</span>
                     </div>
                     <p class="text-slate-400 text-sm">Mang những sản phẩm chất lượng, an toàn và tiện lợi đến mọi nhà.</p>
                 </div>
                 <div>
-                    <h3 class="font-bold mb-4">Liên kết nhanh</h3>
-                    <ul class="space-y-2 text-slate-400 text-sm">
+                    <h3 class="font-bold mb-3">Liên kết nhanh</h3>
+                    <ul class="space-y-1.5 text-slate-400 text-sm">
                         <li><a href="#" onclick="event.preventDefault(); showSection('intro')" class="hover:text-white">Trang chủ</a></li>
                         <li><a href="#" onclick="event.preventDefault(); showSection('menu')" class="hover:text-white">Sản phẩm</a></li>
                         <li><a href="#" onclick="event.preventDefault(); showSection('stores')" class="hover:text-white">Cửa hàng</a></li>
@@ -130,22 +139,22 @@
                     </ul>
                 </div>
                 <div>
-                    <h3 class="font-bold mb-4">Liên hệ</h3>
-                    <ul class="space-y-2 text-slate-400 text-sm">
+                    <h3 class="font-bold mb-3">Liên hệ</h3>
+                    <ul class="space-y-1.5 text-slate-400 text-sm">
                         <li><strong>Hotline:</strong> 0934.945.967</li>
                         <li><strong>Email:</strong> lienhe@dongnhanfood.com</li>
                         <li><strong>Trụ sở:</strong> 3/564 Ấp 64, Xuân Thới Sơn, TPHCM</li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="font-bold mb-4">Mạng xã hội</h3>
+                    <h3 class="font-bold mb-3">Mạng xã hội</h3>
                      <div class="flex space-x-4">
                         <a href="#" class="text-slate-400 hover:text-white">Facebook</a>
                         <a href="#" class="text-slate-400 hover:text-white">Zalo</a>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-slate-700 pt-6 text-center text-sm text-slate-500">
+            <div class="border-t border-slate-700 pt-5 text-center text-sm text-slate-500">
                 <p>&copy; 2025 Đồng Nhân Food. All Rights Reserved.<a href="#" class="hover:text-white mt-2 inline-block">Tuyên bố quyền riêng tư</a></p>
             </div>
         </div>
@@ -174,28 +183,28 @@ const discountCodes = { 'DONGNHAN10': 10, 'DEAL20': 20 };
 // --- TEMPLATES ---
 const TEMPLATES = {
     intro: `
-        <div class="bg-emerald-600 text-white rounded-2xl p-8 mb-12 card-shadow">
+        <div class="bg-emerald-600 text-white rounded-2xl p-6 md:p-8 mb-10 card-shadow">
             <div class="text-center relative z-10">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">Bánh Mì Ngon - Gắn Kết Cộng Đồng</h1>
-                <p class="text-lg md:text-xl mb-8 text-emerald-100">Sản phẩm chất lượng từ Đồng Nhân Food</p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <div class="flex items-center space-x-2 bg-white bg-opacity-20 px-6 py-3 rounded-full">
-                        <span class="text-2xl">📞</span><span class="font-semibold text-lg">Hotline: 0934.945.967</span>
+                <h1 class="text-3xl md:text-5xl font-bold mb-3">Bánh Mì Ngon - Gắn Kết Cộng Đồng</h1>
+                <p class="text-md md:text-xl mb-6 text-emerald-100">Sản phẩm chất lượng từ Đồng Nhân Food</p>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
+                    <div class="flex items-center space-x-2 bg-white bg-opacity-20 px-4 py-2 rounded-full">
+                        <span class="text-xl">📞</span><span class="font-semibold">Hotline: 0934.945.967</span>
                     </div>
-                    <button onclick="showSection('menu')" class="bg-white text-emerald-600 px-8 py-3 rounded-full font-semibold hover:bg-emerald-50">Xem Sản Phẩm Ngay</button>
+                    <button onclick="showSection('menu')" class="bg-white text-emerald-600 px-6 py-2 rounded-full font-semibold hover:bg-emerald-50">Xem Sản Phẩm Ngay</button>
                 </div>
             </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 text-center">
-            <div class="bg-white p-6 rounded-lg interactive-card"><div class="text-4xl mb-3">🌿</div><h3 class="text-xl font-bold mb-2">Nguyên Liệu Sạch</h3><p class="text-gray-600">Nguồn nguyên liệu được chọn lọc kỹ lưỡng, đảm bảo an toàn và tươi ngon.</p></div>
-            <div class="bg-white p-6 rounded-lg interactive-card"><div class="text-4xl mb-3">🛡️</div><h3 class="text-xl font-bold mb-2">An Toàn Vệ Sinh</h3><p class="text-gray-600">Quy trình sản xuất hiện đại, đạt chuẩn an toàn vệ sinh thực phẩm.</p></div>
-            <div class="bg-white p-6 rounded-lg interactive-card"><div class="text-4xl mb-3">🚚</div><h3 class="text-xl font-bold mb-2">Tiện Lợi & Nhanh Chóng</h3><p class="text-gray-600">Hệ thống phân phối rộng khắp, mang sản phẩm đến tay bạn nhanh nhất.</p></div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 text-center">
+            <div class="bg-white p-4 rounded-lg interactive-card"><div class="text-3xl mb-2">🌿</div><h3 class="text-lg font-bold mb-1">Nguyên Liệu Sạch</h3><p class="text-gray-600 text-sm">Nguồn nguyên liệu được chọn lọc kỹ lưỡng, đảm bảo an toàn và tươi ngon.</p></div>
+            <div class="bg-white p-4 rounded-lg interactive-card"><div class="text-3xl mb-2">🛡️</div><h3 class="text-lg font-bold mb-1">An Toàn Vệ Sinh</h3><p class="text-gray-600 text-sm">Quy trình sản xuất hiện đại, đạt chuẩn an toàn vệ sinh thực phẩm.</p></div>
+            <div class="bg-white p-4 rounded-lg interactive-card"><div class="text-3xl mb-2">🚚</div><h3 class="text-lg font-bold mb-1">Tiện Lợi & Nhanh Chóng</h3><p class="text-gray-600 text-sm">Hệ thống phân phối rộng khắp, mang sản phẩm đến tay bạn nhanh nhất.</p></div>
         </div>
         
-        <div class="bg-white rounded-lg card-shadow p-8 md:p-12 mb-16 grid md:grid-cols-2 gap-12 items-center">
+        <div class="bg-white rounded-lg card-shadow p-6 md:p-10 mb-12 grid md:grid-cols-2 gap-8 items-center">
             <div>
-                <h2 class="text-3xl font-bold text-emerald-800 mb-6">Về Đồng Nhân Food</h2>
-                <div class="text-gray-700 space-y-4">
+                <h2 class="text-2xl font-bold text-emerald-800 mb-4">Về Đồng Nhân Food</h2>
+                <div class="text-gray-700 space-y-3">
                     <p>Với kinh nghiệm lâu năm, Đồng Nhân Food tự hào mang đến những sản phẩm không chỉ ngon miệng mà còn đảm bảo an toàn tuyệt đối cho sức khỏe. Chúng tôi chuyên:</p>
                     <ul class="space-y-2 list-inside list-disc marker:text-emerald-500">
                         <li>Cung cấp Chả Cá Sợi, Chả Cá Tươi, Chả Cá Chợ, Chả Cá Nha Trang chất lượng cao.</li>
@@ -209,24 +218,24 @@ const TEMPLATES = {
             </div>
         </div>
 
-        <div class="bg-white rounded-lg card-shadow p-8 md:p-12 mb-16">
-            <h2 class="text-3xl font-bold text-center text-emerald-800 mb-8">Sản Phẩm Nổi Bật</h2>
-            <div id="featuredProductsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
-            <div class="text-center mt-8"><button onclick="showSection('menu')" class="bg-emerald-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-emerald-700">Xem Tất Cả Sản Phẩm</button></div>
+        <div class="bg-white rounded-lg card-shadow p-6 md:p-10 mb-12">
+            <h2 class="text-2xl font-bold text-center text-emerald-800 mb-6">Sản Phẩm Nổi Bật</h2>
+            <div id="featuredProductsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+            <div class="text-center mt-6"><button onclick="showSection('menu')" class="bg-emerald-600 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-emerald-700">Xem Tất Cả Sản Phẩm</button></div>
         </div>
         
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-16">
-            <div class="bg-white rounded-lg card-shadow p-8 interactive-card">
-                 <h2 class="text-3xl font-bold text-emerald-800 mb-4">Dịch Vụ Của Chúng Tôi</h2>
-                <div class="space-y-6">
-                    <div><h3 class="text-xl font-semibold mb-2">📦 Cung cấp Sỉ & Lẻ</h3><p class="text-gray-600">Cung cấp sản phẩm chất lượng cho đối tác nhà hàng, quán ăn và khách hàng cá nhân với giá cả cạnh tranh.</p></div>
-                    <div><h3 class="text-xl font-semibold mb-2">🤝 Nhượng Quyền Kinh Doanh</h3><p class="text-gray-600">Mô hình kinh doanh thành công. Cung cấp gói nhượng quyền toàn diện: đào tạo, nguyên liệu, hỗ trợ marketing.</p><button onclick="handleFranchiseClick()" class="mt-4 bg-amber-400 text-slate-800 px-6 py-2 rounded-lg hover:bg-amber-300 font-semibold">Đăng ký ngay</button></div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-12">
+            <div class="bg-white rounded-lg card-shadow p-6 interactive-card">
+                 <h2 class="text-2xl font-bold text-emerald-800 mb-4">Dịch Vụ Của Chúng Tôi</h2>
+                <div class="space-y-4">
+                    <div><h3 class="text-lg font-semibold mb-1">📦 Cung cấp Sỉ & Lẻ</h3><p class="text-gray-600 text-sm">Cung cấp sản phẩm chất lượng cho đối tác nhà hàng, quán ăn và khách hàng cá nhân với giá cả cạnh tranh.</p></div>
+                    <div><h3 class="text-lg font-semibold mb-1">🤝 Nhượng Quyền Kinh Doanh</h3><p class="text-gray-600 text-sm">Mô hình kinh doanh thành công. Cung cấp gói nhượng quyền toàn diện: đào tạo, nguyên liệu, hỗ trợ marketing.</p><button onclick="handleFranchiseClick()" class="mt-3 bg-amber-400 text-slate-800 px-5 py-2 rounded-lg hover:bg-amber-300 font-semibold text-sm">Đăng ký ngay</button></div>
                 </div>
             </div>
             <div class="text-center"><img src="https://raw.githubusercontent.com/HienNguyenEMS/chacavungtau/refs/heads/main/logo.jpg" alt="Đồng Nhân Food" class="rounded-lg shadow-lg mx-auto max-w-sm w-full"></div>
         </div>
         
-        <div class="gradient-bg text-white rounded-lg p-8 text-center"><h2 class="text-3xl font-bold mb-4">Sẵn sàng thưởng thức sản phẩm chất lượng?</h2><button onclick="showSection('menu')" class="bg-white text-emerald-600 px-8 py-3 rounded-full font-semibold hover:bg-emerald-50 mt-4">Đặt Hàng Ngay</button></div>`,
+        <div class="gradient-bg text-white rounded-lg p-6 text-center"><h2 class="text-2xl font-bold mb-3">Sẵn sàng thưởng thức sản phẩm chất lượng?</h2><button onclick="showSection('menu')" class="bg-white text-emerald-600 px-6 py-2.5 rounded-full font-semibold hover:bg-emerald-50 mt-2">Đặt Hàng Ngay</button></div>`,
     menu: `<h2 class="text-3xl font-bold text-emerald-800 mb-8 text-center">Sản Phẩm Của Chúng Tôi</h2>
            <div id="category-filters" class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
                <button onclick="filterProducts('all', this)" class="category-btn active px-4 py-2 text-sm md:text-base md:px-6 rounded-full">Tất cả</button>
@@ -264,6 +273,7 @@ function showSection(sectionName) {
     if (sectionName === 'cart') updateCartDisplay();
     if (sectionName === 'dashboard') loadDashboard();
     if (sectionName === 'franchise') {
+       
         document.getElementById('franchiseForm').addEventListener('submit', handleFranchiseSubmit);
         prefillFranchiseForm();
     }
@@ -281,7 +291,7 @@ function updateMenuVisibility() {
     mobileNavCart.classList.toggle('flex', hasItems);
     
     const mobileNavGrid = document.getElementById('mobileNavGrid');
-    let visibleItems = 2 + (hasItems ? 1 : 0) + 1;
+    let visibleItems = 2 + (hasItems ? 1 : 0) + 1; // home, products, account + cart if exists
     mobileNavGrid.style.gridTemplateColumns = `repeat(${visibleItems}, 1fr)`;
 }
 
@@ -300,10 +310,8 @@ function filterProducts(category, element) {
     currentCategory = category;
     document.querySelectorAll('#category-filters .category-btn').forEach(btn => {
         btn.classList.remove('active');
-        btn.classList.add('bg-white', 'border');
     });
     element.classList.add('active');
-    element.classList.remove('bg-white', 'border');
     loadProducts();
 }
 
@@ -313,21 +321,11 @@ function loadProducts() {
     const productsToDisplay = currentCategory === 'all' ? products : products.filter(p => p.category === currentCategory);
 
     grid.innerHTML = productsToDisplay.map(p => {
-        const cartItem = cart.find(item => item.id === p.id);
-        const quantity = cartItem ? cartItem.quantity : 0;
-        
-        const buttonHtml = quantity > 0
-            ? `<div class="flex items-center justify-center gap-4">
-                 <button onclick="updateCartQuantity(${p.id}, -1)" class="w-10 h-10 bg-gray-200 rounded-full font-bold text-lg">-</button>
-                 <span class="text-xl font-semibold">${quantity}</span>
-                 <button onclick="updateCartQuantity(${p.id}, 1)" class="w-10 h-10 bg-gray-200 rounded-full font-bold text-lg">+</button>
-               </div>`
-            : `<button onclick="addToCart(${p.id})" class="w-full text-white py-2 rounded-lg font-semibold bg-emerald-600 hover:bg-emerald-700">Thêm vào giỏ hàng 🛒</button>`;
-            
-        return `<div class="bg-white rounded-lg card-shadow overflow-hidden interactive-card"><div class="h-48 bg-gray-100 flex items-center justify-center">${p.image}</div><div class="p-4"><h3 class="font-bold text-lg">${p.name}</h3><p class="text-gray-600 text-sm h-10">${p.description}</p><div class="flex items-center justify-between mt-2 mb-4"><span class="text-xl font-bold text-emerald-600">${p.price.toLocaleString()}đ</span></div><div id="product-actions-${p.id}">${buttonHtml}</div></div></div>`;
+        const inCart = cart.some(item => item.id === p.id);
+        const btn = { class: inCart ? "bg-green-600 hover:bg-green-700" : "bg-emerald-600 hover:bg-emerald-700", text: inCart ? "Tới giỏ hàng ✅" : "Thêm vào giỏ hàng 🛒", action: inCart ? "showSection('cart')" : `addToCart(${p.id})` };
+        return `<div class="bg-white rounded-lg card-shadow overflow-hidden interactive-card"><div class="h-48 bg-gray-100 flex items-center justify-center">${p.image}</div><div class="p-4"><h3 class="font-bold text-lg">${p.name}</h3><p class="text-gray-600 text-sm h-10">${p.description}</p><div class="flex items-center justify-between mt-2 mb-4"><span class="text-xl font-bold text-emerald-600">${p.price.toLocaleString()}đ</span></div><button id="product-btn-${p.id}" onclick="${btn.action}" class="w-full text-white py-2 rounded-lg font-semibold ${btn.class}">${btn.text}</button></div></div>`;
     }).join('');
 }
-
 
 function loadStores() {
     const grid = document.getElementById('storeGrid');
@@ -336,22 +334,10 @@ function loadStores() {
 
 // --- CART LOGIC ---
 function addToCart(productId) {
+    if (cart.some(item => item.id === productId)) return;
     const product = products.find(p => p.id === productId);
     cart.push({ ...product, quantity: 1 });
     showNotification(`${product.name} đã được thêm vào giỏ.`);
-    updateAllUI();
-}
-
-function updateCartQuantity(productId, change) {
-    const item = cart.find(item => item.id === productId);
-    if (!item) { // If item not in cart, add it (case from product page)
-        if(change > 0) addToCart(productId);
-        return;
-    }
-    item.quantity += change;
-    if (item.quantity <= 0) {
-        cart = cart.filter(i => i.id !== productId);
-    }
     updateAllUI();
 }
 
@@ -362,72 +348,25 @@ function removeFromCart(productId) {
 
 function updateCartDisplay() {
     const itemsEl = document.getElementById('cartItems');
-    const summaryEl = document.getElementById('cartSummary');
     const actionsEl = document.getElementById('cartActions');
     if(!itemsEl) return;
     if (cart.length === 0) {
         itemsEl.innerHTML = `<div class="text-center py-12"><h3 class="text-xl text-gray-600">Giỏ hàng của bạn đang trống.</h3><button onclick="showSection('menu')" class="mt-4 bg-emerald-600 text-white px-6 py-2 rounded-lg">Mua sắm ngay</button></div>`;
-        summaryEl.innerHTML = '';
         actionsEl.classList.add('hidden');
     } else {
-        itemsEl.innerHTML = cart.map(item => `<div class="bg-white rounded-lg card-shadow p-4 flex items-center gap-4"><div class="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">${item.image}</div><div class="flex-1"><h3 class="font-semibold">${item.name}</h3><p class="text-emerald-600">${item.price.toLocaleString()}đ</p></div><div class="flex items-center gap-3"><button onclick="updateCartQuantity(${item.id}, -1)" class="w-8 h-8 bg-gray-200 rounded-full font-bold">-</button><span class="text-lg font-semibold">${item.quantity}</span><button onclick="updateCartQuantity(${item.id}, 1)" class="w-8 h-8 bg-gray-200 rounded-full font-bold">+</button></div><p class="font-bold text-lg w-24 text-right">${(item.price * item.quantity).toLocaleString()}đ</p><button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 p-2">✖</button></div>`).join('');
-        
-        const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
-        const discountAmount = subtotal * (discountPercent / 100);
-        const total = subtotal - discountAmount;
-
-        summaryEl.innerHTML = `
-            <div class="max-w-sm ml-auto bg-white p-6 rounded-lg card-shadow">
-                <div class="flex justify-between items-center mb-4">
-                    <input type="text" id="discountCodeInput" placeholder="Nhập mã giảm giá" class="w-full px-3 py-2 border rounded-l-lg">
-                    <button onclick="applyDiscount()" class="bg-gray-600 text-white px-4 py-2 rounded-r-lg hover:bg-gray-700">Áp dụng</button>
-                </div>
-                <div id="discountMessage" class="text-sm mb-4"></div>
-                <div class="space-y-2 border-t pt-4">
-                    <div class="flex justify-between"><span class="text-gray-600">Tạm tính:</span><span>${subtotal.toLocaleString()}đ</span></div>
-                    ${discountPercent > 0 ? `<div class="flex justify-between text-green-600"><span class="text-gray-600">Giảm giá (${discountPercent}%):</span><span>-${discountAmount.toLocaleString()}đ</span></div>` : ''}
-                    <div class="flex justify-between text-xl font-bold"><span class="text-gray-800">Tổng cộng:</span><span class="text-emerald-600">${total.toLocaleString()}đ</span></div>
-                </div>
-            </div>
-        `;
-
+        const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+        itemsEl.innerHTML = cart.map(item => `<div class="bg-white rounded-lg card-shadow p-4 flex items-center gap-4"><div class="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">${item.image}</div><div class="flex-1"><h3 class="font-semibold">${item.name}</h3><p class="text-emerald-600">${item.price.toLocaleString()}đ</p></div><p class="font-bold text-lg">${(item.price * item.quantity).toLocaleString()}đ</p><button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 p-2">✖</button></div>`).join('') + `<div class="text-right mt-4 text-xl font-bold">Tổng cộng: <span class="text-emerald-600">${total.toLocaleString()}đ</span></div>`;
         actionsEl.classList.remove('hidden');
     }
 }
 
-function applyDiscount() {
-    const code = document.getElementById('discountCodeInput').value.toUpperCase();
-    const messageEl = document.getElementById('discountMessage');
-    if (discountCodes[code]) {
-        discountPercent = discountCodes[code];
-        messageEl.innerHTML = `<p class="text-green-600">Áp dụng mã thành công! Bạn được giảm ${discountPercent}%.</p>`;
-    } else {
-        discountPercent = 0;
-        messageEl.innerHTML = `<p class="text-red-500">Mã giảm giá không hợp lệ.</p>`;
-    }
-    updateCartDisplay();
-}
-
 // --- PAYMENT & FRANCHISE FLOW ---
 function proceedToOrder() {
-    if (!isLoggedIn) { showNotification("Vui lòng đăng nhập để thanh toán.", true); showSection('login'); return; }
-    
-    const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
-    const discountAmount = subtotal * (discountPercent / 100);
-    const orderTotal = subtotal - discountAmount;
-    const debt = currentUser.debt || 0;
-    const finalTotal = orderTotal + debt;
-
+    if (!isLoggedIn) { showNotification("Vui lòng đăng nhập để thanh toán."); showSection('login'); return; }
     const modal = document.getElementById('paymentOptionsModal');
     modal.innerHTML = TEMPLATES.paymentOptionsModal;
-    
-    document.getElementById('orderSummaryInModal').innerHTML = `
-        <div class="flex justify-between"><span>Tổng đơn hàng mới:</span><strong>${orderTotal.toLocaleString()}đ</strong></div>
-        ${discountPercent > 0 ? `<div class="flex justify-between text-green-600"><span>(Đã giảm ${discountAmount.toLocaleString()}đ)</span></div>` : ''}
-        <div class="flex justify-between"><span>Công nợ cũ:</span><strong>${debt.toLocaleString()}đ</strong></div>
-        <hr class="my-2">
-        <div class="flex justify-between font-bold text-lg"><span class="text-gray-800">Tổng thanh toán:</span><strong class="text-emerald-600">${finalTotal.toLocaleString()}đ</strong></div>
-    `;
+    const total = cart.reduce((s, i) => s + (i.price * i.quantity), 0);
+    document.getElementById('orderSummaryInModal').innerHTML = `<p class="text-center">Tổng tiền: <strong class="text-emerald-600">${total.toLocaleString()}đ</strong></p>`;
     modal.classList.remove('hidden');
 }
 
@@ -444,22 +383,19 @@ function generateVietQRUrl(amount, content) {
 function showBankingPayment() {
     const modal = document.getElementById('bankingPaymentModal');
     modal.innerHTML = TEMPLATES.bankingPaymentModal;
-    const orderTotal = cart.reduce((s, i) => s + i.price * i.quantity, 0) * (1 - discountPercent / 100);
-    const totalToPay = orderTotal + (currentUser.debt || 0);
+    const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
     const orderId = 'DH' + Date.now().toString().slice(-6);
     const qrContent = `TT ${orderId}`;
-    document.getElementById('bankingQrImage').src = generateVietQRUrl(totalToPay, qrContent);
-    document.getElementById('bankingAmount').textContent = `${totalToPay.toLocaleString()}đ`;
+    document.getElementById('bankingQrImage').src = generateVietQRUrl(total, qrContent);
+    document.getElementById('bankingAmount').textContent = `${total.toLocaleString()}đ`;
     document.getElementById('bankingContent').textContent = qrContent;
     modal.classList.remove('hidden');
 }
 
 function confirmBankingPayment() {
-    const total = cart.reduce((s, i) => s + i.price * i.quantity, 0) * (1 - discountPercent / 100);
+    const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
     orderHistory.push({ id: orderHistory.length + 1, code: 'DH' + Date.now().toString().slice(-6), status: 'Đang xử lý', total: total, date: new Date() });
-    currentUser.debt = 0; // Assume all debt is paid
     cart = [];
-    discountPercent = 0;
     closeModal('bankingPaymentModal');
     showNotification("Thanh toán thành công! Đơn hàng đang được xử lý.");
     updateAllUI();
@@ -467,25 +403,24 @@ function confirmBankingPayment() {
 }
 
 function checkDebtLimitAndProcess() {
-    const orderTotal = cart.reduce((s, i) => s + i.price * i.quantity, 0) * (1 - discountPercent / 100);
-    const newDebtTotal = (currentUser.debt || 0) + orderTotal;
-    if (newDebtTotal > currentUser.creditLimit) {
-        showDebtWarning(currentUser.debt, orderTotal, currentUser.creditLimit);
+    const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+    const newDebt = (currentUser.debt || 0) + total;
+    if (newDebt > currentUser.creditLimit) {
+        showDebtWarning(currentUser.debt, newDebt - currentUser.creditLimit);
     } else {
-        currentUser.debt = newDebtTotal;
-        orderHistory.push({ id: orderHistory.length + 1, code: 'DH' + Date.now().toString().slice(-6), status: 'Đang xử lý (Công nợ)', total: orderTotal, date: new Date() });
+        currentUser.debt = newDebt;
+        orderHistory.push({ id: orderHistory.length + 1, code: 'DH' + Date.now().toString().slice(-6), status: 'Đang xử lý (Công nợ)', total: total, date: new Date() });
         cart = [];
-        discountPercent = 0;
         showNotification("Đặt hàng công nợ thành công!");
         updateAllUI();
         showSection('dashboard');
     }
 }
 
-function showDebtWarning(currentDebt, orderTotal, creditLimit) {
+function showDebtWarning(currentDebt, amountOver) {
     const modal = document.getElementById('debtWarningModal');
     modal.innerHTML = TEMPLATES.debtWarningModal;
-    document.getElementById('debtWarningContent').innerHTML = `<p>Công nợ hiện tại: <strong class="text-red-600">${currentDebt.toLocaleString()}đ</strong></p><p>Đơn hàng mới: <strong>${orderTotal.toLocaleString()}đ</strong></p><p>Tổng công nợ mới sẽ là <strong class="text-red-600">${(currentDebt + orderTotal).toLocaleString()}đ</strong>, vượt quá hạn mức <strong>${creditLimit.toLocaleString()}đ</strong>.</p>`;
+    document.getElementById('debtWarningContent').innerHTML = `<p>Công nợ hiện tại: <strong class="text-red-600">${currentDebt.toLocaleString()}đ</strong></p><p>Đơn hàng này sẽ vượt hạn mức: <strong class="text-red-600">${amountOver.toLocaleString()}đ</strong></p>`;
     document.getElementById('debtQrImage').src = generateVietQRUrl(currentDebt, `TT Cong No ${currentUser.phone}`);
     modal.classList.remove('hidden');
 }
@@ -498,8 +433,12 @@ function confirmDebtPayment() {
 }
 
 function handleFranchiseClick() {
-    if (isLoggedIn) showSection('franchise');
-    else { showNotification("Vui lòng đăng nhập để đăng ký.", true); showSection('login'); }
+    if (isLoggedIn) {
+        showSection('franchise');
+    } else {
+        showNotification("Vui lòng đăng nhập để đăng ký đại lý.", true);
+        showSection('login');
+    }
 }
 
 function prefillFranchiseForm() {
@@ -513,7 +452,8 @@ function prefillFranchiseForm() {
 function handleFranchiseSubmit(event) {
     event.preventDefault();
     if (!document.getElementById('franchiseTerms').checked) {
-        showNotification("Bạn phải đồng ý với điều khoản để tiếp tục.", true); return;
+        showNotification("Bạn phải đồng ý với điều khoản để tiếp tục.", true);
+        return;
     }
     showNotification("Yêu cầu của bạn đã được gửi. Chúng tôi sẽ liên hệ lại sớm!");
     setTimeout(() => showSection('intro'), 2000);
@@ -601,6 +541,20 @@ function loadProfileInfo() {
     el.innerHTML = `<div class="bg-white p-6 rounded-lg shadow-sm max-w-md"><h3 class="font-bold text-lg mb-4">Thông Tin Tài Khoản</h3><div class="space-y-2"><p><strong>Họ tên:</strong> ${currentUser.name}</p><p><strong>Email:</strong> ${currentUser.email}</p><p><strong>SĐT:</strong> ${currentUser.phone}</p><p><strong>Địa chỉ:</strong> ${currentUser.address || "Chưa cập nhật"}</p></div></div>`;
 }
 
+// --- TRACKING & DEBT (Public) ---
+function trackOrder() {
+    const code = document.getElementById('orderCode').value.toUpperCase();
+    const resultEl = document.getElementById('trackingResult');
+    const order = orderHistory.find(o => o.code === code);
+    resultEl.innerHTML = order ? `<div class="bg-green-50 p-4 rounded-lg"><p>Đơn hàng <strong>${code}</strong></p><p>Trạng thái: <span class="font-semibold text-green-700">${order.status}</span></p></div>` : `<div class="bg-red-50 p-4 rounded-lg"><p>Không tìm thấy đơn hàng <strong>${code}</strong>.</p></div>`;
+}
+
+function checkDebt() {
+    const phone = document.getElementById('debtPhone').value;
+    const resultEl = document.getElementById('debtResult');
+    const user = demoUsers.find(u => u.phone === phone);
+    resultEl.innerHTML = user ? `<div class="bg-emerald-50 p-4 rounded-lg"><p>Khách hàng: <strong>${user.name}</strong></p><p>Công nợ: <span class="font-semibold text-red-500">${(user.debt || 0).toLocaleString()}đ</span></p></div>` : `<div class="bg-red-50 p-4 rounded-lg"><p>Không tìm thấy thông tin cho SĐT này.</p></div>`;
+}
 
 // --- UTILITY ---
 function showNotification(message, isError = false) {
@@ -613,7 +567,7 @@ function showNotification(message, isError = false) {
 }
 
 function updateAllUI() {
-    document.querySelectorAll('#cartCount, #mobileCartCount').forEach(el => { el.textContent = cart.reduce((total, item) => total + item.quantity, 0); });
+    document.querySelectorAll('#cartCount, #mobileCartCount').forEach(el => { el.textContent = cart.length; });
     updateMenuVisibility();
     updateLoginUI();
     const visibleSection = document.querySelector('main > section:not(.hidden)');
