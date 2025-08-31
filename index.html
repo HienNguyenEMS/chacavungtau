@@ -3,16 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chả Cá Vũng Tàu - Đặt Hàng Online</title>
+    <title>Đồng Nhân Food - Bánh Mì & Thực Phẩm Sạch</title>
     
-    <meta name="description" content="🐟 Đặc sản biển tươi ngon - Hương vị đại dương 🌊 - Chả Cá Vũng Tàu chuyên cung cấp chả cá tươi ngon, đặt hàng online nhanh chóng">
+    <meta name="description" content="Đồng Nhân Food chuyên cung cấp bánh mì, chả cá và các sản phẩm thực phẩm sạch. Nhận đặt hàng online và nhượng quyền kinh doanh.">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        .gradient-bg { background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%); }
-        .card-shadow { box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .animate-fade-in { animation: fadeIn 0.5s ease-in; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%); }
+        .card-shadow { box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .animate-fade-in { animation: fadeIn 0.5s ease-in-out; }
+        .interactive-card {
+            transition: all 0.3s ease-in-out;
+            border: 2px solid transparent;
+        }
+        .interactive-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 20px rgba(16, 185, 129, 0.2);
+            border-color: #10b981;
+        }
         .dropdown { position: relative; }
         .dropdown-menu { 
             position: absolute; top: 100%; right: 0; background: white; 
@@ -21,8 +31,9 @@
             opacity: 0; visibility: hidden; transition: all 0.2s ease; 
         }
         .dropdown-menu.show { transform: translateY(0) scale(1); opacity: 1; visibility: visible; }
-        .mobile-nav-btn.active { color: #2563eb; background-color: #eff6ff; }
-        .dashboard-tab.active { border-bottom-width: 2px; border-color: #2563eb; color: #2563eb; }
+        .mobile-nav-btn.active { color: #059669; background-color: #f0fdf4; }
+        .dashboard-tab.active { border-bottom-width: 2px; border-color: #059669; color: #059669; }
+        .category-btn.active { background-color: #059669; color: white; border-color: #059669; }
         @media (max-width: 768px) {
             main { padding-bottom: 80px; }
         }
@@ -39,18 +50,11 @@
                     <div><h1 class="text-xl font-bold">Đồng Nhân Food</h1></div>
                 </div>
                 <nav class="hidden md:flex space-x-6 items-center">
-                    <button onclick="showSection('intro')" class="hover:text-blue-200 transition-colors">Trang chủ</button>
-                    <button onclick="showSection('menu')" class="hover:text-blue-200 transition-colors">Sản phẩm</button>
-                    <button onclick="showSection('stores')" class="hover:text-blue-200 transition-colors">Cửa hàng</button>
-                     <div class="relative group">
-                        <button class="hover:text-blue-200 transition-colors cursor-pointer">Tra cứu</button>
-                        <div class="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-lg py-2 min-w-[200px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                            <button onclick="showSection('tracking')" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-blue-50">📦 Tra cứu đơn hàng</button>
-                            <button onclick="showSection('debt')" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-blue-50">💳 Tra cứu công nợ</button>
-                        </div>
-                    </div>
-                    <button id="navCart" onclick="showSection('cart')" class="hover:text-blue-200 transition-colors relative hidden">
-                        Giỏ hàng <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
+                    <button onclick="showSection('intro')" class="hover:text-amber-300 transition-colors">Trang chủ</button>
+                    <button onclick="showSection('menu')" class="hover:text-amber-300 transition-colors">Sản phẩm</button>
+                    <button onclick="showSection('stores')" class="hover:text-amber-300 transition-colors">Cửa hàng</button>
+                    <button id="navCart" onclick="showSection('cart')" class="hover:text-amber-300 transition-colors relative hidden">
+                        Giỏ hàng <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
                     </button>
                     <div id="userMenuContainer" class="relative">
                         <div id="notLoggedIn" class="flex space-x-3">
@@ -87,7 +91,7 @@
             </button>
             <button id="mobileNavCart" onclick="showSection('cart')" class="mobile-nav-btn flex-col items-center justify-center space-y-1 text-gray-600 relative hidden" data-section="cart">
                 <span class="text-xl">🛒</span><span class="text-xs font-medium">Giỏ hàng</span>
-                <span id="mobileCartCount" class="absolute top-1 right-4 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
+                <span id="mobileCartCount" class="absolute top-1 right-4 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
             </button>
              <button onclick="isLoggedIn ? showSection('dashboard') : showSection('login')" class="mobile-nav-btn flex flex-col items-center justify-center space-y-1 text-gray-600" data-section="login">
                 <span class="text-xl">👤</span><span class="text-xs font-medium">Tài khoản</span>
@@ -103,8 +107,7 @@
         <section id="loginSection" class="hidden animate-fade-in"></section>
         <section id="registerSection" class="hidden animate-fade-in"></section>
         <section id="dashboardSection" class="hidden animate-fade-in"></section>
-        <section id="trackingSection" class="hidden animate-fade-in"></section>
-        <section id="debtSection" class="hidden animate-fade-in"></section>
+        <section id="franchiseSection" class="hidden animate-fade-in"></section>
     </main>
     
     <footer class="bg-slate-800 text-white pt-12 pb-6">
@@ -123,7 +126,7 @@
                         <li><a href="#" onclick="event.preventDefault(); showSection('intro')" class="hover:text-white">Trang chủ</a></li>
                         <li><a href="#" onclick="event.preventDefault(); showSection('menu')" class="hover:text-white">Sản phẩm</a></li>
                         <li><a href="#" onclick="event.preventDefault(); showSection('stores')" class="hover:text-white">Cửa hàng</a></li>
-                        <li><a href="#" onclick="event.preventDefault(); showSection('tracking')" class="hover:text-white">Tra cứu đơn hàng</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); handleFranchiseClick()" class="hover:text-white">Đăng ký nhượng quyền</a></li>
                     </ul>
                 </div>
                 <div>
@@ -162,9 +165,12 @@ let cart = [];
 let currentUser = null;
 let isLoggedIn = false;
 let orderHistory = [];
+let currentCategory = 'all';
+let discountPercent = 0;
 let demoUsers = [
     { id: 1, name: 'Nguyễn Văn A', email: 'demo@example.com', phone: '0901234567', password: '123456', debt: 150000, creditLimit: 200000, address: "123 Đường ABC, Vũng Tàu" }
 ];
+const discountCodes = { 'DONGNHAN10': 10, 'DEAL20': 20 };
 
 // --- TEMPLATES ---
 const TEMPLATES = {
@@ -181,11 +187,27 @@ const TEMPLATES = {
                 </div>
             </div>
         </div>
-
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 text-center">
-            <div class="bg-white p-6 rounded-lg card-shadow"><div class="text-4xl mb-3">🌿</div><h3 class="text-xl font-bold mb-2">Nguyên Liệu Sạch</h3><p class="text-gray-600">Nguồn nguyên liệu được chọn lọc kỹ lưỡng, đảm bảo an toàn và tươi ngon.</p></div>
-            <div class="bg-white p-6 rounded-lg card-shadow"><div class="text-4xl mb-3">🛡️</div><h3 class="text-xl font-bold mb-2">An Toàn Vệ Sinh</h3><p class="text-gray-600">Quy trình sản xuất hiện đại, đạt chuẩn an toàn vệ sinh thực phẩm.</p></div>
-            <div class="bg-white p-6 rounded-lg card-shadow"><div class="text-4xl mb-3">🚚</div><h3 class="text-xl font-bold mb-2">Tiện Lợi & Nhanh Chóng</h3><p class="text-gray-600">Hệ thống phân phối rộng khắp, mang sản phẩm đến tay bạn nhanh nhất.</p></div>
+            <div class="bg-white p-6 rounded-lg interactive-card"><div class="text-4xl mb-3">🌿</div><h3 class="text-xl font-bold mb-2">Nguyên Liệu Sạch</h3><p class="text-gray-600">Nguồn nguyên liệu được chọn lọc kỹ lưỡng, đảm bảo an toàn và tươi ngon.</p></div>
+            <div class="bg-white p-6 rounded-lg interactive-card"><div class="text-4xl mb-3">🛡️</div><h3 class="text-xl font-bold mb-2">An Toàn Vệ Sinh</h3><p class="text-gray-600">Quy trình sản xuất hiện đại, đạt chuẩn an toàn vệ sinh thực phẩm.</p></div>
+            <div class="bg-white p-6 rounded-lg interactive-card"><div class="text-4xl mb-3">🚚</div><h3 class="text-xl font-bold mb-2">Tiện Lợi & Nhanh Chóng</h3><p class="text-gray-600">Hệ thống phân phối rộng khắp, mang sản phẩm đến tay bạn nhanh nhất.</p></div>
+        </div>
+        
+        <div class="bg-white rounded-lg card-shadow p-8 md:p-12 mb-16 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl font-bold text-emerald-800 mb-6">Về Đồng Nhân Food</h2>
+                <div class="text-gray-700 space-y-4">
+                    <p>Với kinh nghiệm lâu năm, Đồng Nhân Food tự hào mang đến những sản phẩm không chỉ ngon miệng mà còn đảm bảo an toàn tuyệt đối cho sức khỏe. Chúng tôi chuyên:</p>
+                    <ul class="space-y-2 list-inside list-disc marker:text-emerald-500">
+                        <li>Cung cấp Chả Cá Sợi, Chả Cá Tươi, Chả Cá Chợ, Chả Cá Nha Trang chất lượng cao.</li>
+                        <li>Hướng dẫn khởi nghiệp mô hình kinh doanh bánh mì chả cá thành công.</li>
+                        <li>Cung cấp và cho thuê xe bánh mì, hỗ trợ đối tác tối đa.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg">
+                 <iframe class="w-full h-full" src="https://www.youtube.com/embed/5kSmizoku8s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </div>
 
         <div class="bg-white rounded-lg card-shadow p-8 md:p-12 mb-16">
@@ -193,30 +215,34 @@ const TEMPLATES = {
             <div id="featuredProductsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
             <div class="text-center mt-8"><button onclick="showSection('menu')" class="bg-emerald-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-emerald-700">Xem Tất Cả Sản Phẩm</button></div>
         </div>
-
+        
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-16">
-            <div class="bg-white rounded-lg card-shadow p-8">
+            <div class="bg-white rounded-lg card-shadow p-8 interactive-card">
                  <h2 class="text-3xl font-bold text-emerald-800 mb-4">Dịch Vụ Của Chúng Tôi</h2>
                 <div class="space-y-6">
-                    <div><h3 class="text-xl font-semibold mb-2">📦 Cung cấp Sỉ & Lẻ</h3><p class="text-gray-600">Chúng tôi cung cấp các sản phẩm thực phẩm chất lượng cho đối tác nhà hàng, quán ăn và khách hàng cá nhân với giá cả cạnh tranh.</p></div>
-                    <div><h3 class="text-xl font-semibold mb-2">🤝 Nhượng Quyền Kinh Doanh</h3><p class="text-gray-600">Mô hình kinh doanh đã được chứng minh thành công. Chúng tôi cung cấp gói nhượng quyền toàn diện: đào tạo, cung cấp nguyên liệu, hỗ trợ marketing.</p></div>
+                    <div><h3 class="text-xl font-semibold mb-2">📦 Cung cấp Sỉ & Lẻ</h3><p class="text-gray-600">Cung cấp sản phẩm chất lượng cho đối tác nhà hàng, quán ăn và khách hàng cá nhân với giá cả cạnh tranh.</p></div>
+                    <div><h3 class="text-xl font-semibold mb-2">🤝 Nhượng Quyền Kinh Doanh</h3><p class="text-gray-600">Mô hình kinh doanh thành công. Cung cấp gói nhượng quyền toàn diện: đào tạo, nguyên liệu, hỗ trợ marketing.</p><button onclick="handleFranchiseClick()" class="mt-4 bg-amber-400 text-slate-800 px-6 py-2 rounded-lg hover:bg-amber-300 font-semibold">Đăng ký ngay</button></div>
                 </div>
             </div>
             <div class="text-center"><img src="https://raw.githubusercontent.com/HienNguyenEMS/chacavungtau/refs/heads/main/logo.jpg" alt="Đồng Nhân Food" class="rounded-lg shadow-lg mx-auto max-w-sm w-full"></div>
         </div>
         
-        <div class="bg-emerald-600 text-white rounded-lg p-8 text-center"><h2 class="text-3xl font-bold mb-4">Sẵn sàng thưởng thức sản phẩm chất lượng?</h2><button onclick="showSection('menu')" class="bg-white text-emerald-600 px-8 py-3 rounded-full font-semibold hover:bg-emerald-50 mt-4">Đặt Hàng Ngay</button></div>`,
-    menu: `<h2 class="text-3xl font-bold text-emerald-800 mb-8 text-center">Sản Phẩm Của Chúng Tôi</h2><div id="productGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>`,
-    stores: `
-        <h2 class="text-3xl font-bold text-emerald-800 mb-8 text-center">Hệ Thống Cửa Hàng</h2>
-        <div id="storeGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>`,
-    cart: `<h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Giỏ Hàng Của Bạn</h2><div class="max-w-4xl mx-auto"><div id="cartItems" class="space-y-4"></div><div id="cartActions" class="mt-8 text-center hidden"><button onclick="proceedToOrder()" class="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 text-lg font-semibold">Tiến hành thanh toán 🛒</button></div></div>`,
+        <div class="gradient-bg text-white rounded-lg p-8 text-center"><h2 class="text-3xl font-bold mb-4">Sẵn sàng thưởng thức sản phẩm chất lượng?</h2><button onclick="showSection('menu')" class="bg-white text-emerald-600 px-8 py-3 rounded-full font-semibold hover:bg-emerald-50 mt-4">Đặt Hàng Ngay</button></div>`,
+    menu: `<h2 class="text-3xl font-bold text-emerald-800 mb-8 text-center">Sản Phẩm Của Chúng Tôi</h2>
+           <div id="category-filters" class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
+               <button onclick="filterProducts('all', this)" class="category-btn active px-4 py-2 text-sm md:text-base md:px-6 rounded-full">Tất cả</button>
+               <button onclick="filterProducts('banhmi', this)" class="category-btn bg-white border px-4 py-2 text-sm md:text-base md:px-6 rounded-full">Bánh Mì</button>
+               <button onclick="filterProducts('chaca', this)" class="category-btn bg-white border px-4 py-2 text-sm md:text-base md:px-6 rounded-full">Chả Cá</button>
+               <button onclick="filterProducts('combo', this)" class="category-btn bg-white border px-4 py-2 text-sm md:text-base md:px-6 rounded-full">Combo</button>
+           </div>
+           <div id="productGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>`,
+    stores: `<h2 class="text-3xl font-bold text-emerald-800 mb-8 text-center">Hệ Thống Cửa Hàng</h2><div id="storeGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>`,
+    cart: `<h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Giỏ Hàng Của Bạn</h2><div class="max-w-4xl mx-auto"><div id="cartItems" class="space-y-4"></div><div id="cartSummary" class="mt-6"></div><div id="cartActions" class="mt-8 text-center hidden"><button onclick="proceedToOrder()" class="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 text-lg font-semibold">Tiến hành thanh toán 🛒</button></div></div>`,
     login: `<div class="max-w-md mx-auto bg-white rounded-lg card-shadow p-8"><h2 class="text-3xl font-bold text-center mb-8">Đăng Nhập</h2><form id="loginForm"><div class="space-y-4"><input type="text" id="loginIdentifier" required placeholder="Email hoặc SĐT" class="w-full px-4 py-3 border rounded-lg"><input type="password" id="loginPassword" required placeholder="Mật khẩu" class="w-full px-4 py-3 border rounded-lg"><button type="submit" class="w-full bg-emerald-600 text-white py-3 rounded-lg font-semibold">Đăng nhập</button></div></form><div id="loginMessage" class="mt-4 text-center text-sm"></div><p class="mt-6 text-center">Chưa có tài khoản? <button onclick="showSection('register')" class="text-emerald-600 font-medium">Đăng ký</button></p></div>`,
     register: `<div class="max-w-md mx-auto bg-white rounded-lg card-shadow p-8"><h2 class="text-3xl font-bold text-center mb-8">Đăng Ký Tài Khoản</h2><form id="registerForm"><div class="space-y-4"><input type="text" id="registerName" required placeholder="Họ và tên" class="w-full px-4 py-3 border rounded-lg"><input type="tel" id="registerPhone" required placeholder="Số điện thoại" class="w-full px-4 py-3 border rounded-lg"><input type="email" id="registerEmail" required placeholder="Email" class="w-full px-4 py-3 border rounded-lg"><input type="password" id="registerPassword" required minlength="6" placeholder="Mật khẩu (ít nhất 6 ký tự)" class="w-full px-4 py-3 border rounded-lg"><button type="submit" class="w-full bg-emerald-600 text-white py-3 rounded-lg font-semibold">Tạo tài khoản</button></div></form><div id="registerMessage" class="mt-4 text-center text-sm"></div><p class="mt-6 text-center">Đã có tài khoản? <button onclick="showSection('login')" class="text-emerald-600 font-medium">Đăng nhập</button></p></div>`,
     dashboard: `<div class="max-w-6xl mx-auto"><div class="flex items-center justify-between mb-4"><h2 class="text-3xl font-bold">Dashboard</h2></div><div class="bg-white rounded-lg card-shadow"><div class="flex flex-wrap border-b"><button onclick="showDashboardTab('overview', this)" class="dashboard-tab active px-6 py-3 font-medium">Tổng quan</button><button onclick="showDashboardTab('orders', this)" class="dashboard-tab px-6 py-3 font-medium">Đơn hàng</button><button onclick="showDashboardTab('debt', this)" class="dashboard-tab px-6 py-3 font-medium">Công nợ</button><button onclick="showDashboardTab('profile', this)" class="dashboard-tab px-6 py-3 font-medium">Tài khoản</button></div><div class="p-6"><div id="overviewTab" class="dashboard-content animate-fade-in"></div><div id="ordersTab" class="dashboard-content hidden animate-fade-in"></div><div id="debtTab" class="dashboard-content hidden animate-fade-in"></div><div id="profileTab" class="dashboard-content hidden animate-fade-in"></div></div></div></div>`,
-    tracking: `<h2 class="text-3xl font-bold text-center mb-8">Tra Cứu Đơn Hàng</h2><div class="max-w-md mx-auto bg-white rounded-lg card-shadow p-8"><p class="text-center text-gray-600 mb-4">Nhập mã đơn hàng để kiểm tra trạng thái</p><div class="flex gap-2"><input type="text" id="orderCode" placeholder="Mã đơn hàng (VD: DH123456)" class="w-full px-4 py-2 border rounded-lg"><button onclick="trackOrder()" class="bg-emerald-600 text-white px-6 rounded-lg">Tra cứu</button></div><div id="trackingResult" class="mt-6"></div></div>`,
-    debt: `<h2 class="text-3xl font-bold text-center mb-8">Tra Cứu Công Nợ</h2><div class="max-w-md mx-auto bg-white rounded-lg card-shadow p-8"><p class="text-center text-gray-600 mb-4">Nhập số điện thoại để kiểm tra công nợ</p><div class="flex gap-2"><input type="tel" id="debtPhone" placeholder="Số điện thoại" class="w-full px-4 py-2 border rounded-lg"><button onclick="checkDebt()" class="bg-emerald-600 text-white px-6 rounded-lg">Kiểm tra</button></div><div id="debtResult" class="mt-6"></div></div>`,
-    paymentOptionsModal: `<div class="bg-white rounded-lg p-6 max-w-lg w-full animate-fade-in"><h3 class="text-2xl font-bold text-center mb-4">Chọn hình thức thanh toán</h3><div id="orderSummaryInModal" class="bg-emerald-50 p-4 rounded-lg mb-6 border"></div><div class="space-y-4"><button onclick="selectPaymentMethod('banking')" class="w-full bg-emerald-600 text-white py-3 rounded-lg flex items-center justify-center space-x-2"><span>💳</span><span>Thanh toán Banking</span></button><button onclick="selectPaymentMethod('debt')" class="w-full bg-amber-500 text-white py-3 rounded-lg flex items-center justify-center space-x-2"><span>📋</span><span>Ghi công nợ</span></button></div><button onclick="closeModal('paymentOptionsModal')" class="w-full mt-6 bg-gray-300 py-2 rounded-lg">Hủy</button></div>`,
+    franchise: `<div class="max-w-3xl mx-auto bg-white rounded-lg card-shadow p-8"><h2 class="text-3xl font-bold text-center mb-2">Đăng Ký Nhượng Quyền & Đại Lý</h2><p class="text-center text-gray-600 mb-8">Cùng Đồng Nhân Food lan tỏa sản phẩm chất lượng</p><div class="grid md:grid-cols-2 gap-8"><form id="franchiseForm"><h3 class="text-xl font-semibold mb-4">Thông tin đăng ký</h3><div class="space-y-4"><input type="text" id="franchiseName" required placeholder="Họ và tên" class="w-full px-4 py-2 border rounded-lg bg-gray-100"><input type="tel" id="franchisePhone" required placeholder="Số điện thoại" class="w-full px-4 py-2 border rounded-lg bg-gray-100"><input type="email" id="franchiseEmail" required placeholder="Email" class="w-full px-4 py-2 border rounded-lg bg-gray-100"><input type="text" id="franchiseArea" required placeholder="Khu vực muốn kinh doanh" class="w-full px-4 py-2 border rounded-lg"><textarea id="franchiseMessage" placeholder="Lời nhắn hoặc câu hỏi thêm..." rows="3" class="w-full px-4 py-2 border rounded-lg"></textarea><div class="flex items-start"><input type="checkbox" id="franchiseTerms" required class="mt-1 mr-2"><label for="franchiseTerms" class="text-sm text-gray-600">Tôi đã đọc và đồng ý với <a href="#" class="text-emerald-600">các điều khoản nhượng quyền</a>.</label></div><button type="submit" class="w-full bg-amber-400 text-slate-800 py-3 rounded-lg font-semibold hover:bg-amber-300">Gửi Yêu Cầu</button></div></form><div><h3 class="text-xl font-semibold mb-4">Quy trình & Hướng dẫn</h3><ul class="list-disc list-inside space-y-3 text-gray-700"><li><strong>Bước 1:</strong> Điền và gửi thông tin của bạn qua form bên cạnh.</li><li><strong>Bước 2:</strong> Đội ngũ của chúng tôi sẽ liên hệ lại trong vòng 24 giờ để tư vấn chi tiết.</li><li><strong>Bước 3:</strong> Trao đổi, thống nhất các điều khoản và ký kết hợp đồng.</li><li><strong>Bước 4:</strong> Chúng tôi sẽ hỗ trợ bạn chuẩn bị mặt bằng, đào tạo và bắt đầu kinh doanh.</li></ul></div></div></div>`,
+    paymentOptionsModal: `<div class="bg-white rounded-lg p-6 max-w-lg w-full animate-fade-in"><h3 class="text-2xl font-bold text-center mb-4">Xác Nhận Thanh Toán</h3><div id="orderSummaryInModal" class="bg-emerald-50 p-4 rounded-lg mb-6 border text-sm space-y-2"></div><div class="space-y-4"><button onclick="selectPaymentMethod('banking')" class="w-full bg-emerald-600 text-white py-3 rounded-lg flex items-center justify-center space-x-2"><span>💳</span><span>Thanh toán Banking</span></button><button onclick="selectPaymentMethod('debt')" class="w-full bg-amber-500 text-white py-3 rounded-lg flex items-center justify-center space-x-2"><span>📋</span><span>Ghi công nợ</span></button></div><button onclick="closeModal('paymentOptionsModal')" class="w-full mt-6 bg-gray-300 py-2 rounded-lg">Hủy</button></div>`,
     bankingPaymentModal: `<div class="bg-white rounded-lg p-6 max-w-md w-full animate-fade-in"><h3 class="text-2xl font-bold mb-4 text-center">Thanh toán VietQR</h3><img id="bankingQrImage" src="" alt="VietQR Code" class="w-64 h-64 mx-auto bg-gray-100 rounded-lg border"><div class="my-4 text-sm bg-gray-50 p-3 rounded-lg"><p><strong>Số tiền:</strong> <span id="bankingAmount" class="text-emerald-700 font-bold"></span></p><p><strong>Nội dung:</strong> <span id="bankingContent" class="text-emerald-700"></span></p></div><button onclick="confirmBankingPayment()" class="w-full bg-green-600 text-white py-3 rounded-lg">Tôi đã thanh toán</button><button onclick="closeModal('bankingPaymentModal')" class="w-full mt-3 bg-gray-300 py-2 rounded-lg">Đóng</button></div>`,
     debtWarningModal: `<div class="bg-white rounded-lg p-6 max-w-lg w-full animate-fade-in"><h3 class="text-2xl font-bold text-red-600 text-center mb-4">⚠️ Vượt Hạn Mức Công Nợ</h3><div id="debtWarningContent" class="bg-red-50 p-4 rounded-lg border border-red-200 mb-4 text-sm space-y-2"></div><p class="text-center mb-4">Vui lòng thanh toán công nợ cũ để tiếp tục.</p><img id="debtQrImage" src="" alt="VietQR for Debt" class="w-56 h-56 mx-auto bg-gray-100 rounded-lg border"><button onclick="confirmDebtPayment()" class="w-full mt-4 bg-green-600 text-white py-3 rounded-lg">Tôi đã thanh toán công nợ</button><button onclick="closeModal('debtWarningModal')" class="w-full mt-3 bg-gray-300 py-2 rounded-lg">Đóng</button></div>`
 };
@@ -232,20 +258,20 @@ function showSection(sectionName) {
     updateMobileNavigation(sectionName);
     window.scrollTo(0, 0);
 
-    if (sectionName.match(/login|register/)) {
-        document.getElementById(`${sectionName}Form`).addEventListener('submit', sectionName === 'login' ? handleLogin : handleRegister);
-    }
+    if (sectionName.match(/login|register/)) document.getElementById(`${sectionName}Form`).addEventListener('submit', sectionName === 'login' ? handleLogin : handleRegister);
     if (sectionName === 'intro') loadFeaturedProducts();
-    if (sectionName === 'menu') loadProducts();
+    if (sectionName === 'menu') filterProducts(currentCategory, document.querySelector('.category-btn.active'));
     if (sectionName === 'stores') loadStores();
     if (sectionName === 'cart') updateCartDisplay();
     if (sectionName === 'dashboard') loadDashboard();
+    if (sectionName === 'franchise') {
+        document.getElementById('franchiseForm').addEventListener('submit', handleFranchiseSubmit);
+        prefillFranchiseForm();
+    }
 }
 
 function updateMobileNavigation(activeSection) {
-    document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('data-section') === activeSection);
-    });
+    document.querySelectorAll('.mobile-nav-btn').forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-section') === activeSection));
 }
 
 function updateMenuVisibility() {
@@ -256,54 +282,77 @@ function updateMenuVisibility() {
     mobileNavCart.classList.toggle('flex', hasItems);
     
     const mobileNavGrid = document.getElementById('mobileNavGrid');
-    let visibleItems = 2 + (hasItems ? 1 : 0) + 1; // home, products, account + cart if exists
+    let visibleItems = 2 + (hasItems ? 1 : 0) + 1;
     mobileNavGrid.style.gridTemplateColumns = `repeat(${visibleItems}, 1fr)`;
 }
 
 function closeModal(modalId) { 
     const modal = document.getElementById(modalId);
-    if(modal) {
-        modal.innerHTML = ''; 
-        modal.classList.add('hidden');
-    }
+    if(modal) { modal.innerHTML = ''; modal.classList.add('hidden'); }
 }
 
 // --- CONTENT LOADING ---
 function loadFeaturedProducts() {
     const grid = document.getElementById('featuredProductsGrid');
-    if(grid) grid.innerHTML = products.slice(0, 3).map(p => {
-        return `<div class="bg-gray-50 rounded-lg p-4 text-center">
-            <div class="h-40 bg-gray-200 flex items-center justify-center rounded-lg">${p.image}</div>
-            <h4 class="font-bold mt-4">${p.name}</h4>
-            <p class="text-emerald-600 font-semibold">${p.price.toLocaleString()}đ</p>
-        </div>`;
-    }).join('');
+    if(grid) grid.innerHTML = products.slice(0, 3).map(p => `<div class="bg-gray-50 rounded-lg p-4 text-center interactive-card"><div class="h-40 bg-gray-200 flex items-center justify-center rounded-lg">${p.image}</div><h4 class="font-bold mt-4">${p.name}</h4><p class="text-emerald-600 font-semibold">${p.price.toLocaleString()}đ</p></div>`).join('');
+}
+
+function filterProducts(category, element) {
+    currentCategory = category;
+    document.querySelectorAll('#category-filters .category-btn').forEach(btn => {
+        btn.classList.remove('active');
+        btn.classList.add('bg-white', 'border');
+    });
+    element.classList.add('active');
+    element.classList.remove('bg-white', 'border');
+    loadProducts();
 }
 
 function loadProducts() {
     const grid = document.getElementById('productGrid');
-    if(grid) grid.innerHTML = products.map(p => {
-        const inCart = cart.some(item => item.id === p.id);
-        const btn = {
-            class: inCart ? "bg-green-600 hover:bg-green-700" : "bg-emerald-600 hover:bg-emerald-700",
-            text: inCart ? "Tới giỏ hàng ✅" : "Thêm vào giỏ hàng 🛒",
-            action: inCart ? "showSection('cart')" : `addToCart(${p.id})`
-        };
-        return `<div class="bg-white rounded-lg card-shadow overflow-hidden"><div class="h-48 bg-gray-100 flex items-center justify-center">${p.image}</div><div class="p-4"><h3 class="font-bold text-lg">${p.name}</h3><p class="text-gray-600 text-sm h-10">${p.description}</p><div class="flex items-center justify-between mt-2 mb-4"><span class="text-xl font-bold text-emerald-600">${p.price.toLocaleString()}đ</span></div><button id="product-btn-${p.id}" onclick="${btn.action}" class="w-full text-white py-2 rounded-lg font-semibold ${btn.class}">${btn.text}</button></div></div>`;
+    if(!grid) return;
+    const productsToDisplay = currentCategory === 'all' ? products : products.filter(p => p.category === currentCategory);
+
+    grid.innerHTML = productsToDisplay.map(p => {
+        const cartItem = cart.find(item => item.id === p.id);
+        const quantity = cartItem ? cartItem.quantity : 0;
+        
+        const buttonHtml = quantity > 0
+            ? `<div class="flex items-center justify-center gap-4">
+                 <button onclick="updateCartQuantity(${p.id}, -1)" class="w-10 h-10 bg-gray-200 rounded-full font-bold text-lg">-</button>
+                 <span class="text-xl font-semibold">${quantity}</span>
+                 <button onclick="updateCartQuantity(${p.id}, 1)" class="w-10 h-10 bg-gray-200 rounded-full font-bold text-lg">+</button>
+               </div>`
+            : `<button onclick="addToCart(${p.id})" class="w-full text-white py-2 rounded-lg font-semibold bg-emerald-600 hover:bg-emerald-700">Thêm vào giỏ hàng 🛒</button>`;
+            
+        return `<div class="bg-white rounded-lg card-shadow overflow-hidden interactive-card"><div class="h-48 bg-gray-100 flex items-center justify-center">${p.image}</div><div class="p-4"><h3 class="font-bold text-lg">${p.name}</h3><p class="text-gray-600 text-sm h-10">${p.description}</p><div class="flex items-center justify-between mt-2 mb-4"><span class="text-xl font-bold text-emerald-600">${p.price.toLocaleString()}đ</span></div><div id="product-actions-${p.id}">${buttonHtml}</div></div></div>`;
     }).join('');
 }
 
+
 function loadStores() {
     const grid = document.getElementById('storeGrid');
-    if(grid) grid.innerHTML = branches.map(b => `<div class="bg-white rounded-lg card-shadow p-6 border-l-4 border-amber-500"><h3 class="font-bold text-lg">${b.emoji} ${b.name}</h3><p class="text-sm text-gray-600 mt-2">📍 ${b.address}</p><p class="text-sm text-gray-600 mt-1">📞 ${b.phone}</p></div>`).join('');
+    if(grid) grid.innerHTML = branches.map(b => `<div class="bg-white rounded-lg card-shadow p-6 border-l-4 border-amber-500 interactive-card"><h3 class="font-bold text-lg">${b.emoji} ${b.name}</h3><p class="text-sm text-gray-600 mt-2">📍 ${b.address}</p><p class="text-sm text-gray-600 mt-1">📞 ${b.phone}</p></div>`).join('');
 }
 
 // --- CART LOGIC ---
 function addToCart(productId) {
-    if (cart.some(item => item.id === productId)) return;
     const product = products.find(p => p.id === productId);
     cart.push({ ...product, quantity: 1 });
     showNotification(`${product.name} đã được thêm vào giỏ.`);
+    updateAllUI();
+}
+
+function updateCartQuantity(productId, change) {
+    const item = cart.find(item => item.id === productId);
+    if (!item) { // If item not in cart, add it (case from product page)
+        if(change > 0) addToCart(productId);
+        return;
+    }
+    item.quantity += change;
+    if (item.quantity <= 0) {
+        cart = cart.filter(i => i.id !== productId);
+    }
     updateAllUI();
 }
 
@@ -314,29 +363,72 @@ function removeFromCart(productId) {
 
 function updateCartDisplay() {
     const itemsEl = document.getElementById('cartItems');
+    const summaryEl = document.getElementById('cartSummary');
     const actionsEl = document.getElementById('cartActions');
     if(!itemsEl) return;
     if (cart.length === 0) {
         itemsEl.innerHTML = `<div class="text-center py-12"><h3 class="text-xl text-gray-600">Giỏ hàng của bạn đang trống.</h3><button onclick="showSection('menu')" class="mt-4 bg-emerald-600 text-white px-6 py-2 rounded-lg">Mua sắm ngay</button></div>`;
+        summaryEl.innerHTML = '';
         actionsEl.classList.add('hidden');
     } else {
-        const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
-        itemsEl.innerHTML = cart.map(item => `<div class="bg-white rounded-lg card-shadow p-4 flex items-center gap-4"><div class="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">${item.image}</div><div class="flex-1"><h3 class="font-semibold">${item.name}</h3><p class="text-emerald-600">${item.price.toLocaleString()}đ</p></div><p class="font-bold text-lg">${(item.price * item.quantity).toLocaleString()}đ</p><button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 p-2">✖</button></div>`).join('') + `<div class="text-right mt-4 text-xl font-bold">Tổng cộng: <span class="text-emerald-600">${total.toLocaleString()}đ</span></div>`;
+        itemsEl.innerHTML = cart.map(item => `<div class="bg-white rounded-lg card-shadow p-4 flex items-center gap-4"><div class="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">${item.image}</div><div class="flex-1"><h3 class="font-semibold">${item.name}</h3><p class="text-emerald-600">${item.price.toLocaleString()}đ</p></div><div class="flex items-center gap-3"><button onclick="updateCartQuantity(${item.id}, -1)" class="w-8 h-8 bg-gray-200 rounded-full font-bold">-</button><span class="text-lg font-semibold">${item.quantity}</span><button onclick="updateCartQuantity(${item.id}, 1)" class="w-8 h-8 bg-gray-200 rounded-full font-bold">+</button></div><p class="font-bold text-lg w-24 text-right">${(item.price * item.quantity).toLocaleString()}đ</p><button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 p-2">✖</button></div>`).join('');
+        
+        const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+        const discountAmount = subtotal * (discountPercent / 100);
+        const total = subtotal - discountAmount;
+
+        summaryEl.innerHTML = `
+            <div class="max-w-sm ml-auto bg-white p-6 rounded-lg card-shadow">
+                <div class="flex justify-between items-center mb-4">
+                    <input type="text" id="discountCodeInput" placeholder="Nhập mã giảm giá" class="w-full px-3 py-2 border rounded-l-lg">
+                    <button onclick="applyDiscount()" class="bg-gray-600 text-white px-4 py-2 rounded-r-lg hover:bg-gray-700">Áp dụng</button>
+                </div>
+                <div id="discountMessage" class="text-sm mb-4"></div>
+                <div class="space-y-2 border-t pt-4">
+                    <div class="flex justify-between"><span class="text-gray-600">Tạm tính:</span><span>${subtotal.toLocaleString()}đ</span></div>
+                    ${discountPercent > 0 ? `<div class="flex justify-between text-green-600"><span class="text-gray-600">Giảm giá (${discountPercent}%):</span><span>-${discountAmount.toLocaleString()}đ</span></div>` : ''}
+                    <div class="flex justify-between text-xl font-bold"><span class="text-gray-800">Tổng cộng:</span><span class="text-emerald-600">${total.toLocaleString()}đ</span></div>
+                </div>
+            </div>
+        `;
+
         actionsEl.classList.remove('hidden');
     }
 }
 
-// --- PAYMENT FLOW ---
-function proceedToOrder() {
-    if (!isLoggedIn) {
-        showNotification("Vui lòng đăng nhập để thanh toán.");
-        showSection('login');
-        return;
+function applyDiscount() {
+    const code = document.getElementById('discountCodeInput').value.toUpperCase();
+    const messageEl = document.getElementById('discountMessage');
+    if (discountCodes[code]) {
+        discountPercent = discountCodes[code];
+        messageEl.innerHTML = `<p class="text-green-600">Áp dụng mã thành công! Bạn được giảm ${discountPercent}%.</p>`;
+    } else {
+        discountPercent = 0;
+        messageEl.innerHTML = `<p class="text-red-500">Mã giảm giá không hợp lệ.</p>`;
     }
+    updateCartDisplay();
+}
+
+// --- PAYMENT & FRANCHISE FLOW ---
+function proceedToOrder() {
+    if (!isLoggedIn) { showNotification("Vui lòng đăng nhập để thanh toán.", true); showSection('login'); return; }
+    
+    const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+    const discountAmount = subtotal * (discountPercent / 100);
+    const orderTotal = subtotal - discountAmount;
+    const debt = currentUser.debt || 0;
+    const finalTotal = orderTotal + debt;
+
     const modal = document.getElementById('paymentOptionsModal');
     modal.innerHTML = TEMPLATES.paymentOptionsModal;
-    const total = cart.reduce((s, i) => s + (i.price * i.quantity), 0);
-    document.getElementById('orderSummaryInModal').innerHTML = `<p class="text-center">Tổng tiền: <strong class="text-emerald-600">${total.toLocaleString()}đ</strong></p>`;
+    
+    document.getElementById('orderSummaryInModal').innerHTML = `
+        <div class="flex justify-between"><span>Tổng đơn hàng mới:</span><strong>${orderTotal.toLocaleString()}đ</strong></div>
+        ${discountPercent > 0 ? `<div class="flex justify-between text-green-600"><span>(Đã giảm ${discountAmount.toLocaleString()}đ)</span></div>` : ''}
+        <div class="flex justify-between"><span>Công nợ cũ:</span><strong>${debt.toLocaleString()}đ</strong></div>
+        <hr class="my-2">
+        <div class="flex justify-between font-bold text-lg"><span class="text-gray-800">Tổng thanh toán:</span><strong class="text-emerald-600">${finalTotal.toLocaleString()}đ</strong></div>
+    `;
     modal.classList.remove('hidden');
 }
 
@@ -353,19 +445,22 @@ function generateVietQRUrl(amount, content) {
 function showBankingPayment() {
     const modal = document.getElementById('bankingPaymentModal');
     modal.innerHTML = TEMPLATES.bankingPaymentModal;
-    const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+    const orderTotal = cart.reduce((s, i) => s + i.price * i.quantity, 0) * (1 - discountPercent / 100);
+    const totalToPay = orderTotal + (currentUser.debt || 0);
     const orderId = 'DH' + Date.now().toString().slice(-6);
     const qrContent = `TT ${orderId}`;
-    document.getElementById('bankingQrImage').src = generateVietQRUrl(total, qrContent);
-    document.getElementById('bankingAmount').textContent = `${total.toLocaleString()}đ`;
+    document.getElementById('bankingQrImage').src = generateVietQRUrl(totalToPay, qrContent);
+    document.getElementById('bankingAmount').textContent = `${totalToPay.toLocaleString()}đ`;
     document.getElementById('bankingContent').textContent = qrContent;
     modal.classList.remove('hidden');
 }
 
 function confirmBankingPayment() {
-    const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+    const total = cart.reduce((s, i) => s + i.price * i.quantity, 0) * (1 - discountPercent / 100);
     orderHistory.push({ id: orderHistory.length + 1, code: 'DH' + Date.now().toString().slice(-6), status: 'Đang xử lý', total: total, date: new Date() });
+    currentUser.debt = 0; // Assume all debt is paid
     cart = [];
+    discountPercent = 0;
     closeModal('bankingPaymentModal');
     showNotification("Thanh toán thành công! Đơn hàng đang được xử lý.");
     updateAllUI();
@@ -373,24 +468,25 @@ function confirmBankingPayment() {
 }
 
 function checkDebtLimitAndProcess() {
-    const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
-    const newDebt = (currentUser.debt || 0) + total;
-    if (newDebt > currentUser.creditLimit) {
-        showDebtWarning(currentUser.debt, newDebt - currentUser.creditLimit);
+    const orderTotal = cart.reduce((s, i) => s + i.price * i.quantity, 0) * (1 - discountPercent / 100);
+    const newDebtTotal = (currentUser.debt || 0) + orderTotal;
+    if (newDebtTotal > currentUser.creditLimit) {
+        showDebtWarning(currentUser.debt, orderTotal, currentUser.creditLimit);
     } else {
-        currentUser.debt = newDebt;
-        orderHistory.push({ id: orderHistory.length + 1, code: 'DH' + Date.now().toString().slice(-6), status: 'Đang xử lý (Công nợ)', total: total, date: new Date() });
+        currentUser.debt = newDebtTotal;
+        orderHistory.push({ id: orderHistory.length + 1, code: 'DH' + Date.now().toString().slice(-6), status: 'Đang xử lý (Công nợ)', total: orderTotal, date: new Date() });
         cart = [];
+        discountPercent = 0;
         showNotification("Đặt hàng công nợ thành công!");
         updateAllUI();
         showSection('dashboard');
     }
 }
 
-function showDebtWarning(currentDebt, amountOver) {
+function showDebtWarning(currentDebt, orderTotal, creditLimit) {
     const modal = document.getElementById('debtWarningModal');
     modal.innerHTML = TEMPLATES.debtWarningModal;
-    document.getElementById('debtWarningContent').innerHTML = `<p>Công nợ hiện tại: <strong class="text-red-600">${currentDebt.toLocaleString()}đ</strong></p><p>Đơn hàng này sẽ vượt hạn mức: <strong class="text-red-600">${amountOver.toLocaleString()}đ</strong></p>`;
+    document.getElementById('debtWarningContent').innerHTML = `<p>Công nợ hiện tại: <strong class="text-red-600">${currentDebt.toLocaleString()}đ</strong></p><p>Đơn hàng mới: <strong>${orderTotal.toLocaleString()}đ</strong></p><p>Tổng công nợ mới sẽ là <strong class="text-red-600">${(currentDebt + orderTotal).toLocaleString()}đ</strong>, vượt quá hạn mức <strong>${creditLimit.toLocaleString()}đ</strong>.</p>`;
     document.getElementById('debtQrImage').src = generateVietQRUrl(currentDebt, `TT Cong No ${currentUser.phone}`);
     modal.classList.remove('hidden');
 }
@@ -400,6 +496,28 @@ function confirmDebtPayment() {
     currentUser.debt = 0;
     closeModal('debtWarningModal');
     updateAllUI();
+}
+
+function handleFranchiseClick() {
+    if (isLoggedIn) showSection('franchise');
+    else { showNotification("Vui lòng đăng nhập để đăng ký.", true); showSection('login'); }
+}
+
+function prefillFranchiseForm() {
+    if(isLoggedIn) {
+        document.getElementById('franchiseName').value = currentUser.name;
+        document.getElementById('franchisePhone').value = currentUser.phone;
+        document.getElementById('franchiseEmail').value = currentUser.email;
+    }
+}
+
+function handleFranchiseSubmit(event) {
+    event.preventDefault();
+    if (!document.getElementById('franchiseTerms').checked) {
+        showNotification("Bạn phải đồng ý với điều khoản để tiếp tục.", true); return;
+    }
+    showNotification("Yêu cầu của bạn đã được gửi. Chúng tôi sẽ liên hệ lại sớm!");
+    setTimeout(() => showSection('intro'), 2000);
 }
 
 // --- LOGIN & REGISTER & USER ---
@@ -444,9 +562,7 @@ function handleRegister(event) {
 }
 
 // --- DASHBOARD ---
-function loadDashboard() {
-    showDashboardTab('overview', document.querySelector('#dashboardSection .dashboard-tab'));
-}
+function loadDashboard() { showDashboardTab('overview', document.querySelector('#dashboardSection .dashboard-tab')); }
 
 function showDashboardTab(tabName, clickedElement) {
     document.querySelectorAll('.dashboard-content').forEach(el => el.classList.add('hidden'));
@@ -486,32 +602,19 @@ function loadProfileInfo() {
     el.innerHTML = `<div class="bg-white p-6 rounded-lg shadow-sm max-w-md"><h3 class="font-bold text-lg mb-4">Thông Tin Tài Khoản</h3><div class="space-y-2"><p><strong>Họ tên:</strong> ${currentUser.name}</p><p><strong>Email:</strong> ${currentUser.email}</p><p><strong>SĐT:</strong> ${currentUser.phone}</p><p><strong>Địa chỉ:</strong> ${currentUser.address || "Chưa cập nhật"}</p></div></div>`;
 }
 
-// --- TRACKING & DEBT (Public) ---
-function trackOrder() {
-    const code = document.getElementById('orderCode').value.toUpperCase();
-    const resultEl = document.getElementById('trackingResult');
-    const order = orderHistory.find(o => o.code === code);
-    resultEl.innerHTML = order ? `<div class="bg-green-50 p-4 rounded-lg"><p>Đơn hàng <strong>${code}</strong></p><p>Trạng thái: <span class="font-semibold text-green-700">${order.status}</span></p></div>` : `<div class="bg-red-50 p-4 rounded-lg"><p>Không tìm thấy đơn hàng <strong>${code}</strong>.</p></div>`;
-}
-
-function checkDebt() {
-    const phone = document.getElementById('debtPhone').value;
-    const resultEl = document.getElementById('debtResult');
-    const user = demoUsers.find(u => u.phone === phone);
-    resultEl.innerHTML = user ? `<div class="bg-emerald-50 p-4 rounded-lg"><p>Khách hàng: <strong>${user.name}</strong></p><p>Công nợ: <span class="font-semibold text-red-500">${(user.debt || 0).toLocaleString()}đ</span></p></div>` : `<div class="bg-red-50 p-4 rounded-lg"><p>Không tìm thấy thông tin cho SĐT này.</p></div>`;
-}
 
 // --- UTILITY ---
-function showNotification(message) {
+function showNotification(message, isError = false) {
     const el = document.createElement('div');
-    el.className = 'fixed top-20 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fade-in';
+    const bgColor = isError ? 'bg-red-500' : 'bg-green-500';
+    el.className = `fixed top-20 right-4 ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fade-in`;
     el.textContent = message;
     document.body.appendChild(el);
     setTimeout(() => el.remove(), 3000);
 }
 
 function updateAllUI() {
-    document.querySelectorAll('#cartCount, #mobileCartCount').forEach(el => { el.textContent = cart.length; });
+    document.querySelectorAll('#cartCount, #mobileCartCount').forEach(el => { el.textContent = cart.reduce((total, item) => total + item.quantity, 0); });
     updateMenuVisibility();
     updateLoginUI();
     const visibleSection = document.querySelector('main > section:not(.hidden)');
@@ -542,17 +645,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // --- DUMMY DATA ---
 const products = [
-    { id: 1, name: 'Bánh mì chả cá', price: 20000, description: 'Bánh mì giòn rụm kẹp chả cá nóng hổi.', image: '<span class="text-5xl">🥖</span>' },
-    { id: 2, name: 'Chả cá tươi (kg)', price: 120000, description: 'Chả cá tươi nguyên chất, dai ngon.', image: '<span class="text-5xl">🐟</span>' },
-    { id: 3, name: 'Nem nướng', price: 25000, description: 'Nem nướng thơm lừng, đậm đà hương vị.', image: '<span class="text-5xl">🍢</span>' },
-    { id: 4, name: 'Xôi chả cá', price: 25000, description: 'Xôi nếp dẻo thơm ăn cùng chả cá.', image: '<span class="text-5xl">🍚</span>' },
-    { id: 5, name: 'Combo gia đình', price: 150000, description: 'Combo tiện lợi cho cả gia đình.', image: '<span class="text-5xl">👨‍👩‍👧‍👦</span>' },
-    { id: 6, name: 'Nước mắm', price: 50000, description: 'Nước mắm truyền thống, nguyên chất.', image: '<span class="text-5xl">🍯</span>' }
+    { id: 1, name: 'Bánh mì chả cá', price: 20000, category: 'banhmi', description: 'Bánh mì giòn rụm kẹp chả cá nóng hổi.', image: '<span class="text-5xl">🥖</span>' },
+    { id: 2, name: 'Chả cá tươi (kg)', price: 120000, category: 'chaca', description: 'Chả cá tươi nguyên chất, dai ngon.', image: '<span class="text-5xl">🐟</span>' },
+    { id: 3, name: 'Nem nướng', price: 25000, category: 'banhmi', description: 'Nem nướng thơm lừng, đậm đà hương vị.', image: '<span class="text-5xl">🍢</span>' },
+    { id: 4, name: 'Xôi chả cá', price: 25000, category: 'combo', description: 'Xôi nếp dẻo thơm ăn cùng chả cá.', image: '<span class="text-5xl">🍚</span>' },
+    { id: 5, name: 'Combo gia đình', price: 150000, category: 'combo', description: 'Combo tiện lợi cho cả gia đình.', image: '<span class="text-5xl">👨‍👩‍👧‍👦</span>' },
+    { id: 6, name: 'Chả cá Nha Trang', price: 150000, category: 'chaca', description: 'Đặc sản Nha Trang chính gốc.', image: '<span class="text-5xl">🐠</span>' }
 ];
 const branches = [
-    { id: 'vt-center', name: 'Chi nhánh Trung tâm', emoji: '🏢', address: '123 Đường A, Quận 1, TPHCM', phone: '028.123.4567' },
-    { id: 'vt-back-beach', name: 'Chi nhánh Gò Vấp', emoji: '🏪', address: '456 Đường B, Quận Gò Vấp, TPHCM', phone: '028.234.5678' },
-    { id: 'ba-ria', name: 'Chi nhánh Bình Thạnh', emoji: '🏘️', address: '789 Đường C, Quận Bình Thạnh, TPHCM', phone: '028.456.7890' },
+    { id: 'q1', name: 'Chi nhánh Quận 1', emoji: '🏢', address: '123 Đường A, Quận 1, TPHCM', phone: '028.123.4567' },
+    { id: 'gv', name: 'Chi nhánh Gò Vấp', emoji: '🏪', address: '456 Đường B, Quận Gò Vấp, TPHCM', phone: '028.234.5678' },
+    { id: 'bt', name: 'Chi nhánh Bình Thạnh', emoji: '🏘️', address: '789 Đường C, Quận Bình Thạnh, TPHCM', phone: '028.456.7890' },
 ];
 </script>
 </html>
