@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -6,7 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đồng Nhân Food - Bánh Mì & Thực Phẩm Sạch</title>
     
-    <meta name="description" content="Đồng Nhân Food chuyên cung cấp bánh mì, chả cá và các sản phẩm thực phẩm sạch. Nhận đặt hàng online và nhượng quyền kinh doanh.">
+    <meta name="description" content="Đồng Nhân Food chuyên cung cấp bánh mì chả cá nóng, chả cá tươi Vũng Tàu, combo tiện lợi. Cam kết nguyên liệu sạch, an toàn vệ sinh. Đặt hàng online, giao tận nơi.">
+    
+    <!-- UPDATE 3: Thêm các thẻ meta cho chia sẻ mạng xã hội -->
+    <meta property="og:title" content="Đồng Nhân Food - Bánh Mì & Thực Phẩm Sạch">
+    <meta property="og:description" content="Thưởng thức bánh mì chả cá nóng giòn, chả cá tươi ngon và các sản phẩm sạch từ Đồng Nhân Food. Đặt hàng ngay hôm nay!">
+    <meta property="og:image" content="https://raw.githubusercontent.com/HienNguyenEMS/chacavungtau/refs/heads/main/thumbnail-share.jpg">
+    <meta property="og:url" content="https://dongnhanfood.com/"> <!-- Thay bằng tên miền của bạn sau này -->
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Đồng Nhân Food - Bánh Mì & Thực Phẩm Sạch">
+    <meta name="twitter:description" content="Thưởng thức bánh mì chả cá nóng giòn, chả cá tươi ngon và các sản phẩm sạch từ Đồng Nhân Food. Đặt hàng ngay hôm nay!">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/HienNguyenEMS/chacavungtau/refs/heads/main/thumbnail-share.jpg">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -76,36 +87,49 @@
     <!-- Header -->
     <header class="gradient-bg text-white shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3">
-            <div class="flex flex-wrap items-center justify-between gap-x-4">
+            <div class="flex items-center justify-between gap-x-4">
                 <div class="flex items-center space-x-3 cursor-pointer flex-shrink-0" onclick="showSection('intro')">
                     <img src="https://raw.githubusercontent.com/HienNguyenEMS/chacavungtau/refs/heads/main/logo.jpg" alt="Logo" class="w-10 h-10 rounded-lg">
-                    <!-- UPDATE 1: Ẩn chữ trên mobile -->
-                    <div class="hidden md:block"><h1 class="text-xl font-bold">Đồng Nhân Food</h1></div>
+                    <!-- CHỈNH SỬA 1: Luôn hiển thị tên thương hiệu trên cả mobile và desktop -->
+                    <div><h1 class="text-lg md:text-xl font-bold">Đồng Nhân Food</h1></div>
                 </div>
                 
+                <!-- CHỈNH SỬA 2: Tái cấu trúc thanh tìm kiếm -->
+                <!-- Mobile Search Bar -->
+                <div class="relative flex-grow md:hidden mx-2">
+                    <input type="text" placeholder="Tìm kiếm..." class="w-full bg-white bg-opacity-20 rounded-full px-4 py-1.5 text-sm placeholder-emerald-100 focus:outline-none focus:bg-opacity-30 transition-all duration-300">
+                    <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+
                 <!-- Desktop Search Bar -->
                 <div class="relative flex-grow max-w-xl hidden md:block">
                     <input type="text" placeholder="Tìm kiếm sản phẩm..." class="w-full bg-white bg-opacity-20 rounded-full px-5 py-2 text-sm placeholder-emerald-100 focus:outline-none focus:bg-opacity-30 transition-all duration-300">
                     <svg class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
                 
-                <nav class="hidden md:flex space-x-5 items-center flex-shrink-0">
-                    <button onclick="showSection('intro')" class="hover:text-amber-300 transition-colors">Trang chủ</button>
-                    <button onclick="showSection('menu')" class="hover:text-amber-300 transition-colors">Sản phẩm</button>
-                    <button onclick="showSection('stores')" class="hover:text-amber-300 transition-colors">Cửa hàng</button>
-                    <button id="navCart" onclick="showSection('cart')" class="hover:text-amber-300 transition-colors relative hidden">
-                        Giỏ hàng <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
-                    </button>
-                    <div id="userMenuContainer" class="relative">
+                <div class="flex items-center flex-shrink-0">
+                    <nav class="hidden md:flex space-x-5 items-center">
+                        <button onclick="showSection('intro')" class="hover:text-amber-300 transition-colors">Trang chủ</button>
+                        <button onclick="showSection('menu')" class="hover:text-amber-300 transition-colors">Sản phẩm</button>
+                        <button onclick="showSection('stores')" class="hover:text-amber-300 transition-colors">Cửa hàng</button>
+                        <button id="navCart" onclick="showSection('cart')" class="hover:text-amber-300 transition-colors relative hidden">
+                            Giỏ hàng <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                        </button>
+                    </nav>
+
+                    <!-- CHỈNH SỬA 2: Tách menu người dùng ra để hiển thị trên mobile -->
+                    <div id="userMenuContainer" class="relative ml-4">
                         <div id="notLoggedIn" class="flex space-x-3">
-                            <button onclick="showSection('login')" class="bg-white bg-opacity-20 px-3 py-1.5 rounded-lg hover:bg-opacity-30">Đăng nhập</button>
-                            <button onclick="showSection('register')" class="bg-amber-400 text-slate-800 px-3 py-1.5 rounded-lg hover:bg-amber-300 font-semibold">Đăng ký</button>
+                            <button onclick="showSection('login')" class="bg-white bg-opacity-20 px-3 py-1.5 rounded-lg hover:bg-opacity-30 hidden md:block">Đăng nhập</button>
+                            <button onclick="showSection('register')" class="bg-amber-400 text-slate-800 px-3 py-1.5 rounded-lg hover:bg-amber-300 font-semibold hidden md:block">Đăng ký</button>
+                            <!-- Nút tài khoản cho mobile -->
+                            <button onclick="isLoggedIn ? showSection('dashboard') : showSection('login')" class="md:hidden text-2xl">👤</button>
                         </div>
                         <div id="loggedIn" class="hidden">
                             <div class="dropdown">
                                 <button onclick="toggleUserDropdown()" class="flex items-center space-x-2 bg-white bg-opacity-20 px-3 py-1.5 rounded-lg hover:bg-opacity-30">
-                                    <span class="text-xl">👤</span><span id="userName" class="font-medium"></span>
-                                    <svg class="w-4 h-4 transition-transform" id="userDropdownIcon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                    <span class="text-xl">👤</span><span id="userName" class="font-medium hidden md:inline"></span>
+                                    <svg class="w-4 h-4 transition-transform hidden md:inline" id="userDropdownIcon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                 </button>
                                 <div id="userDropdownMenu" class="dropdown-menu">
                                     <button onclick="showSection('dashboard'); closeUserDropdown();" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-emerald-50 flex items-center space-x-2"><span>📊</span><span>Dashboard</span></button>
@@ -115,12 +139,7 @@
                             </div>
                         </div>
                     </div>
-                </nav>
-            </div>
-             <!-- Mobile Search Bar -->
-             <div class="relative mt-3 md:hidden">
-                <input type="text" placeholder="Tìm kiếm sản phẩm..." class="w-full bg-white bg-opacity-20 rounded-full px-5 py-2 text-sm placeholder-emerald-100 focus:outline-none focus:bg-opacity-30 transition-all duration-300">
-                <svg class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-emerald-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
             </div>
         </div>
     </header>
@@ -143,9 +162,7 @@
                 <span class="text-xl">🛒</span><span class="text-xs font-medium">Giỏ hàng</span>
                 <span id="mobileCartCount" class="absolute top-1 right-4 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
             </button>
-             <button onclick="isLoggedIn ? showSection('dashboard') : showSection('login')" class="mobile-nav-btn flex flex-col items-center justify-center space-y-1 text-gray-600" data-section="login">
-                <span class="text-xl">👤</span><span class="text-xs font-medium">Tài khoản</span>
-            </button>
+            <!-- Nút tài khoản ở bottom nav đã được thay thế bằng nút trên header -->
         </div>
     </div>
 
@@ -188,19 +205,19 @@
                 </div>
                 <div>
                     <h3 class="font-bold mb-3">Mạng xã hội</h3>
-                     <!-- UPDATE 2: Thêm icons mạng xã hội -->
+                     <!-- UPDATE 2: Thêm icons mạng xã hội và sửa link thành từ Github -->
                      <div class="flex space-x-4">
                         <a href="https://www.facebook.com/share/15xupWfZQz/" target="_blank" rel="noopener noreferrer" class="text-emerald-200 hover:text-white" title="Facebook">
-                            <img src="https://cdn-icons-png.flaticon.com/512/2175/2175193.png" alt="Facebook" class="w-6 h-6">
+                            <img src="https://raw.githubusercontent.com/HienNguyenEMS/chacavungtau/refs/heads/main/facebook.png" alt="Facebook" class="w-6 h-6">
                         </a>
                         <a href="https://www.tiktok.com/@ch.c.vng.tung.nhn?_t=ZS-8zLJLzE0RRV&_r=1" target="_blank" rel="noopener noreferrer" class="text-emerald-200 hover:text-white" title="Tiktok">
-                           <img src="https://cdn4.iconfinder.com/data/icons/social-media-flat-7/64/Social-media_Tiktok-512.png" alt="Tiktok" class="w-6 h-6">
+                           <img src="https://raw.githubusercontent.com/HienNguyenEMS/chacavungtau/refs/heads/main/tiktok.png" alt="Tiktok" class="w-6 h-6">
                         </a>
                         <a href="https://www.youtube.com/@NguyenChi-md4gs" target="_blank" rel="noopener noreferrer" class="text-emerald-200 hover:text-white" title="Youtube">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/256px-YouTube_full-color_icon_%282017%29.svg.png" alt="Youtube" class="w-6 h-6">
+                            <img src="https://raw.githubusercontent.com/HienNguyenEMS/chacavungtau/refs/heads/main/youtube.png" alt="Youtube" class="w-6 h-6">
                         </a>
                         <a href="https://zalo.me/3635285758582238200" target="_blank" rel="noopener noreferrer" class="text-emerald-200 hover:text-white" title="Zalo OA">
-                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Icon_of_Zalo.svg/2048px-Icon_of_Zalo.svg.png" alt="Zalo" class="w-6 h-6">
+                             <img src="https://raw.githubusercontent.com/HienNguyenEMS/chacavungtau/refs/heads/main/zalo.png" alt="Zalo" class="w-6 h-6">
                         </a>
                     </div>
                 </div>
@@ -222,7 +239,7 @@
     <div class="fixed bottom-20 right-5 z-40 flex flex-col space-y-3">
         <!-- Nút Zalo -->
         <a href="https://zalo.me/0917353504" target="_blank" rel="noopener noreferrer" class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-100 transition-transform transform hover:scale-110 p-1" title="Chat Zalo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Icon_of_Zalo.svg/2048px-Icon_of_Zalo.svg.png" alt="Zalo" class="w-12 h-12">
+            <img src="https://raw.githubusercontent.com/HienNguyenEMS/chacavungtau/refs/heads/main/zalo.png" alt="Zalo" class="w-12 h-12">
         </a>
         <!-- Nút Gọi Điện -->
         <a href="tel:+84917353504" class="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-transform transform hover:scale-110" title="Gọi Hotline">
@@ -470,8 +487,18 @@ function updateMenuVisibility() {
     mobileNavCart.classList.toggle('flex', hasItems);
     
     const mobileNavGrid = document.getElementById('mobileNavGrid');
-    let visibleItems = 2 + (hasItems ? 1 : 0) + 1;
+    // CHỈNH SỬA 2: Cập nhật lại số cột của bottom nav
+    let visibleItems = 2 + (hasItems ? 1 : 0); // Trang chủ, Sản phẩm, Giỏ hàng (nếu có)
     mobileNavGrid.style.gridTemplateColumns = `repeat(${visibleItems}, 1fr)`;
+
+     // Ẩn nút tài khoản nếu đã có giỏ hàng, để tránh quá chật
+    const mobileNavAccountButton = document.querySelector('.mobile-nav-btn[data-section="login"]');
+    if (mobileNavAccountButton) {
+        mobileNavAccountButton.classList.toggle('hidden', hasItems);
+        if (!hasItems) {
+            mobileNavGrid.style.gridTemplateColumns = `repeat(3, 1fr)`;
+        }
+    }
 }
 
 function closeModal(modalId) { 
@@ -506,11 +533,12 @@ function renderProductCard(p) {
     const displayPrice = hasSale ? p.salePrice : p.price;
     const discountPercent = hasSale ? Math.round(((p.price - displayPrice) / p.price) * 100) : 0;
 
+    // UPDATE 2: Thay đổi hiển thị sản phẩm sang dùng ảnh thật
     return `
     <div class="bg-white rounded-lg card-shadow overflow-hidden interactive-card flex flex-col">
         <div class="relative">
             ${hasSale ? `<div class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-md z-10">-${discountPercent}%</div>` : ''}
-            <div class="h-48 bg-gray-100 flex items-center justify-center text-5xl">${p.image}</div>
+            <img src="${p.image}" alt="${p.name}" class="w-full h-48 object-cover">
         </div>
         <div class="p-4 flex flex-col flex-grow">
             <h3 class="font-bold text-lg truncate mb-2" title="${p.name}">${p.name}</h3>
@@ -595,7 +623,7 @@ function updateCartDisplay() {
                     <h3 class="text-xl font-semibold mb-4">Chi tiết đơn hàng</h3>
                     <div id="cartItems" class="space-y-4">${cart.map(item => `
                         <div class="flex items-center gap-4 border-b pb-4 last:border-b-0 last:pb-0">
-                            <div class="w-20 h-20 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0 text-3xl">${item.image}</div>
+                            <img src="${item.image}" alt="${item.name}" class="w-20 h-20 bg-gray-100 rounded-lg object-cover flex-shrink-0">
                             <div class="flex-1"><h3 class="font-semibold">${item.name}</h3><p class="text-emerald-600">${(item.salePrice || item.price).toLocaleString()}đ</p></div>
                             <div class="flex items-center gap-2"><button onclick="updateCartQuantity(${item.id}, -0.5)" class="w-7 h-7 bg-gray-200 rounded-md font-bold">-</button><input type="number" value="${item.quantity}" step="0.5" onchange="updateCartQuantityFromInput(${item.id}, this.value)" class="w-16 h-7 text-center font-bold border-gray-300 border rounded-md"><button onclick="updateCartQuantity(${item.id}, 0.5)" class="w-7 h-7 bg-gray-200 rounded-md font-bold">+</button></div>
                             <p class="font-bold text-lg w-28 text-right">${((item.salePrice || item.price) * item.quantity).toLocaleString()}đ</p>
@@ -1061,14 +1089,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // --- DUMMY DATA ---
+const GITHUB_REPO_URL = "https://raw.githubusercontent.com/HienNguyenEMS/chacavungtau/refs/heads/main/";
+
+// UPDATE 2: Cập nhật mảng sản phẩm với URL hình ảnh từ GitHub
 const products = [
-    { id: 1, name: 'Bánh mì chả cá nóng', price: 20000, salePrice: 18000, category: 'banhmi', image: '🥖' },
-    { id: 2, name: 'Chả cá tươi (kg)', price: 120000, salePrice: null, category: 'chaca', image: '🐟' },
-    { id: 3, name: 'Bánh mì nem nướng', price: 25000, salePrice: null, category: 'banhmi', image: '🍢' },
-    { id: 4, name: 'Xôi chả cá đặc biệt', price: 30000, salePrice: 25000, category: 'combo', image: '🍚' },
-    { id: 5, name: 'Combo gia đình 4 người', price: 150000, salePrice: null, category: 'combo', image: '👨‍👩‍👧‍👦' },
-    { id: 6, name: 'Chả cá Nha Trang (kg)', price: 150000, salePrice: 135000, category: 'chaca', image: '🐠' }
+    { id: 1, name: 'Bánh mì chả cá nóng', price: 20000, salePrice: 18000, category: 'banhmi', image: GITHUB_REPO_URL + 'banh-mi-cha-ca-nong.jpg' },
+    { id: 2, name: 'Chả cá tươi (kg)', price: 120000, salePrice: null, category: 'chaca', image: GITHUB_REPO_URL + 'cha-ca-tuoi.jpg' },
+    { id: 3, name: 'Bánh mì nem nướng', price: 25000, salePrice: null, category: 'banhmi', image: GITHUB_REPO_URL + 'banh-mi-nem-nuong.jpg' },
+    { id: 4, name: 'Xôi chả cá đặc biệt', price: 30000, salePrice: 25000, category: 'combo', image: GITHUB_REPO_URL + 'xoi-cha-ca-dac-biet.jpg' },
+    { id: 5, name: 'Combo gia đình 4 người', price: 150000, salePrice: null, category: 'combo', image: GITHUB_REPO_URL + 'combo-gia-dinh.jpg' },
+    { id: 6, name: 'Chả cá Nha Trang (kg)', price: 150000, salePrice: 135000, category: 'chaca', image: GITHUB_REPO_URL + 'cha-ca-nha-trang.jpg' }
 ];
+
 const branches = [
     { id: 'q1', name: 'Chi nhánh Quận 1', emoji: '🏢', address: '123 Đường A, Quận 1, TPHCM', phone: '028.123.4567' },
     { id: 'gv', name: 'Chi nhánh Gò Vấp', emoji: '🏪', address: '456 Đường B, Quận Gò Vấp, TPHCM', phone: '028.234.5678' },
@@ -1076,4 +1108,3 @@ const branches = [
 ];
 </script>
 </html>
-
