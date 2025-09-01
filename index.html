@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -124,6 +125,11 @@
         </div>
     </header>
     
+    <!-- Announcement Bar -->
+    <div id="announcementBar" class="bg-yellow-400 text-yellow-900 text-sm text-center py-2 px-4">
+        <p id="announcementText"></p>
+    </div>
+    
     <!-- Mobile Bottom Navigation -->
     <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t z-40">
         <div id="mobileNavGrid" class="grid grid-cols-3 h-16">
@@ -190,6 +196,9 @@
                         <a href="https://www.tiktok.com/@ch.c.vng.tung.nhn?_t=ZS-8zLJLzE0RRV&_r=1" target="_blank" rel="noopener noreferrer" class="text-emerald-200 hover:text-white" title="Tiktok">
                            <img src="https://cdn4.iconfinder.com/data/icons/social-media-flat-7/64/Social-media_Tiktok-512.png" alt="Tiktok" class="w-6 h-6">
                         </a>
+                        <a href="https://www.youtube.com/@NguyenChi-md4gs" target="_blank" rel="noopener noreferrer" class="text-emerald-200 hover:text-white" title="Youtube">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/256px-YouTube_full-color_icon_%282017%29.svg.png" alt="Youtube" class="w-6 h-6">
+                        </a>
                         <a href="https://zalo.me/3635285758582238200" target="_blank" rel="noopener noreferrer" class="text-emerald-200 hover:text-white" title="Zalo OA">
                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Icon_of_Zalo.svg/2048px-Icon_of_Zalo.svg.png" alt="Zalo" class="w-6 h-6">
                         </a>
@@ -212,7 +221,7 @@
     <!-- CÁC NÚT LIÊN HỆ NỔI -->
     <div class="fixed bottom-20 right-5 z-40 flex flex-col space-y-3">
         <!-- Nút Zalo -->
-        <a href="https://zalo.me/3635285758582238200" target="_blank" rel="noopener noreferrer" class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-100 transition-transform transform hover:scale-110 p-1" title="Chat Zalo">
+        <a href="https://zalo.me/0917353504" target="_blank" rel="noopener noreferrer" class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-100 transition-transform transform hover:scale-110 p-1" title="Chat Zalo">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Icon_of_Zalo.svg/2048px-Icon_of_Zalo.svg.png" alt="Zalo" class="w-12 h-12">
         </a>
         <!-- Nút Gọi Điện -->
@@ -225,6 +234,33 @@
 </body>
 
 <script>
+// Thông báo xoay vòng
+const announcements = [
+    "🎉 Đang kỳ nghỉ lễ Quốc khánh, các đơn hàng đặt từ 31/08 đến 02/09 sẽ được giao từ 03-05/09/2025, mong khách hàng thông cảm.",
+    "💰 Mời các bạn cập nhật chính sách hoa hồng đại lý theo sản lượng đặt hàng - Liên hệ ngay để biết thêm chi tiết!",
+    "🚚 Miễn phí giao hàng cho đơn hàng từ 200.000đ trong nội thành TP.HCM",
+    "⭐ Khuyến mãi đặc biệt: Giảm 15% cho khách hàng mới khi đặt hàng lần đầu"
+];
+let currentAnnouncementIndex = 0;
+
+function showAnnouncement() {
+    const announcementBar = document.getElementById('announcementBar');
+    const announcementText = document.getElementById('announcementText');
+    if (announcements.length > 0) {
+        announcementText.textContent = announcements[currentAnnouncementIndex];
+        announcementBar.classList.remove('hidden');
+        currentAnnouncementIndex = (currentAnnouncementIndex + 1) % announcements.length;
+    } else {
+        announcementBar.classList.add('hidden');
+    }
+}
+
+// Hiển thị thông báo khi tải trang và sau đó mỗi 8 giây
+function initAnnouncements() {
+    showAnnouncement();
+    setInterval(showAnnouncement, 8000);
+}
+
 // --- STATE MANAGEMENT ---
 let cart = [];
 let currentUser = null;
@@ -313,56 +349,78 @@ const TEMPLATES = {
     login: `<div class="max-w-md mx-auto bg-white rounded-lg card-shadow p-8"><h2 class="text-3xl font-bold text-center mb-8">Đăng Nhập</h2><form id="loginForm"><div class="space-y-4"><input type="text" id="loginIdentifier" required placeholder="Email hoặc SĐT" class="w-full px-4 py-3 border rounded-lg"><input type="password" id="loginPassword" required placeholder="Mật khẩu" class="w-full px-4 py-3 border rounded-lg"><button type="submit" class="w-full bg-emerald-600 text-white py-3 rounded-lg font-semibold">Đăng nhập</button></div></form><div id="loginMessage" class="mt-4 text-center text-sm"></div><p class="mt-6 text-center">Chưa có tài khoản? <button onclick="showSection('register')" class="text-emerald-600 font-medium">Đăng ký</button></p></div>`,
     register: `<div class="max-w-md mx-auto bg-white rounded-lg card-shadow p-8"><h2 class="text-3xl font-bold text-center mb-8">Đăng Ký Tài Khoản</h2><form id="registerForm"><div class="space-y-4"><input type="text" id="registerName" required placeholder="Họ và tên" class="w-full px-4 py-3 border rounded-lg"><input type="tel" id="registerPhone" required placeholder="Số điện thoại" class="w-full px-4 py-3 border rounded-lg"><input type="email" id="registerEmail" placeholder="Email (không bắt buộc)" class="w-full px-4 py-3 border rounded-lg"><input type="text" id="registerAddress" required placeholder="Địa chỉ nhận hàng" class="w-full px-4 py-3 border rounded-lg"><input type="password" id="registerPassword" required minlength="6" placeholder="Mật khẩu (ít nhất 6 ký tự)" class="w-full px-4 py-3 border rounded-lg"><button type="submit" class="w-full bg-emerald-600 text-white py-3 rounded-lg font-semibold">Tạo tài khoản</button></div></form><div id="registerMessage" class="mt-4 text-center text-sm"></div><p class="mt-6 text-center">Đã có tài khoản? <button onclick="showSection('login')" class="text-emerald-600 font-medium">Đăng nhập</button></p></div>`,
     dashboard: `
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6">Tài Khoản Của Tôi</h2>
-            <div class="flex flex-col md:flex-row gap-8">
-                <!-- Left Sidebar Menu -->
-                <aside class="w-full md:w-1/4 lg:w-1/5 flex-shrink-0">
-                    <div class="bg-white rounded-lg card-shadow p-4 space-y-2">
-                        <button onclick="showDashboardTab('overview', this)" class="dashboard-menu-item active"><span class="mr-3 text-xl">📊</span>Tổng quan</button>
-                        <button onclick="showDashboardTab('orders', this)" class="dashboard-menu-item"><span class="mr-3 text-xl">📦</span>Đơn hàng</button>
-                        <button onclick="showDashboardTab('debt', this)" class="dashboard-menu-item"><span class="mr-3 text-xl">📋</span>Công nợ</button>
-                        <button onclick="showDashboardTab('profile', this)" class="dashboard-menu-item"><span class="mr-3 text-xl">👤</span>Tài khoản</button>
-                        <hr class="my-2">
-                        <button onclick="logout()" class="dashboard-menu-item w-full !text-red-600"><span class="mr-3 text-xl">🚪</span>Đăng xuất</button>
-                    </div>
-                </aside>
-                <!-- Right Content Area -->
-                <div class="flex-grow bg-white rounded-lg card-shadow p-6">
-                    <div id="overviewTab" class="dashboard-content animate-fade-in"></div>
-                    <div id="ordersTab" class="dashboard-content hidden animate-fade-in"></div>
-                    <div id="debtTab" class="dashboard-content hidden animate-fade-in"></div>
-                    <div id="profileTab" class="dashboard-content hidden animate-fade-in"></div>
+        <div class="flex flex-col md:flex-row gap-8">
+            <div class="w-full md:w-64 flex-shrink-0">
+                <div class="bg-white rounded-lg card-shadow p-4 space-y-2">
+                    <button onclick="showDashboardTab('overview', this)" class="dashboard-menu-item active w-full"><span>📈</span><span>Tổng quan</span></button>
+                    <button onclick="showDashboardTab('orders', this)" class="dashboard-menu-item w-full"><span>📦</span><span>Đơn hàng</span></button>
+                    <button onclick="showDashboardTab('debt', this)" class="dashboard-menu-item w-full"><span>💰</span><span>Công nợ</span></button>
+                    <button onclick="showDashboardTab('profile', this)" class="dashboard-menu-item w-full"><span>👤</span><span>Tài khoản</span></button>
                 </div>
             </div>
+            <div class="flex-1">
+                <div id="overviewTab" class="dashboard-content"></div>
+                <div id="ordersTab" class="dashboard-content hidden"></div>
+                <div id="debtTab" class="dashboard-content hidden"></div>
+                <div id="profileTab" class="dashboard-content hidden"></div>
+            </div>
         </div>`,
-    bankingPaymentModal: `<div class="bg-white rounded-lg p-6 max-w-md w-full animate-fade-in"><h3 class="text-2xl font-bold mb-4 text-center">Thanh toán VietQR</h3><img id="bankingQrImage" src="" alt="VietQR Code" class="w-64 h-64 mx-auto bg-gray-100 rounded-lg border"><div class="my-4 text-sm bg-gray-50 p-3 rounded-lg"><p><strong>Số tiền:</strong> <span id="bankingAmount" class="text-emerald-700 font-bold"></span></p><p><strong>Nội dung:</strong> <span id="bankingContent" class="text-emerald-700"></span></p></div><button onclick="confirmBankingPayment()" class="w-full bg-green-600 text-white py-3 rounded-lg">Tôi đã thanh toán</button><button onclick="closeModal('bankingPaymentModal')" class="w-full mt-3 bg-gray-300 py-2 rounded-lg">Đóng</button></div>`,
-    debtWarningModal: `<div class="bg-white rounded-lg p-6 max-w-lg w-full animate-fade-in"><h3 class="text-2xl font-bold text-red-600 text-center mb-4">⚠️ Yêu Cầu Thanh Toán Công Nợ</h3><div id="debtWarningContent" class="bg-red-50 p-4 rounded-lg border border-red-200 mb-4 text-sm space-y-2"></div><p class="text-center mb-4">Vui lòng thanh toán công nợ cũ để tiếp tục đặt hàng.</p><img id="debtQrImage" src="" alt="VietQR for Debt" class="w-56 h-56 mx-auto bg-gray-100 rounded-lg border"><button onclick="confirmDebtPayment()" class="w-full mt-4 bg-green-600 text-white py-3 rounded-lg">Tôi đã thanh toán công nợ</button><button onclick="closeModal('debtWarningModal')" class="w-full mt-3 bg-gray-300 py-2 rounded-lg">Đóng</button></div>`,
-    ratingModal: `<div class="bg-white rounded-lg p-8 max-w-md w-full animate-fade-in">
-        <h3 class="text-2xl font-bold text-center mb-2">Đánh giá đơn hàng</h3>
-        <p class="text-center text-gray-500 text-sm mb-4" id="ratingOrderInfo"></p>
-        <div class="rating-stars text-center mb-6" onmouseout="resetStars()">
-            <span onmouseover="handleStarHover(1)" onclick="setRating(1)">★</span>
-            <span onmouseover="handleStarHover(2)" onclick="setRating(2)">★</span>
-            <span onmouseover="handleStarHover(3)" onclick="setRating(3)">★</span>
-            <span onmouseover="handleStarHover(4)" onclick="setRating(4)">★</span>
-            <span onmouseover="handleStarHover(5)" onclick="setRating(5)">★</span>
-        </div>
-        <textarea id="ratingComment" class="w-full p-3 border rounded-lg bg-gray-50" rows="3" placeholder="Để lại bình luận của bạn (không bắt buộc)"></textarea>
-        <input type="hidden" id="ratingValue" value="0">
-        <div class="flex gap-4 mt-6">
-            <button onclick="closeModal('ratingModal')" class="w-full bg-gray-300 py-2 rounded-lg">Để sau</button>
-            <button id="submitRatingBtn" class="w-full bg-emerald-600 text-white py-2 rounded-lg">Gửi đánh giá</button>
-        </div>
-    </div>`,
+    bankingPaymentModal: `
+        <div class="bg-white rounded-lg shadow-xl p-6 md:p-8 max-w-md w-full animate-fade-in">
+            <h3 class="text-2xl font-bold text-center mb-4">Thanh toán chuyển khoản</h3>
+            <p class="text-center text-gray-600 mb-6">Vui lòng quét mã QR để thanh toán. Nội dung chuyển khoản không thay đổi.</p>
+            <div class="flex justify-center mb-4">
+                <img id="bankingQrImage" src="" alt="Mã QR thanh toán" class="w-64 h-64 border rounded-lg">
+            </div>
+            <div class="bg-gray-50 rounded-lg p-4 text-center space-y-2">
+                <p>Số tiền: <strong id="bankingAmount" class="text-xl text-red-600"></strong></p>
+                <p>Nội dung: <strong id="bankingContent" class="text-lg text-blue-600"></strong></p>
+            </div>
+            <div class="mt-6 flex justify-end space-x-3">
+                <button onclick="closeModal('bankingPaymentModal')" class="px-6 py-2 bg-gray-200 rounded-lg">Hủy</button>
+                <button onclick="confirmBankingPayment()" class="px-6 py-2 bg-emerald-600 text-white rounded-lg">Tôi đã thanh toán</button>
+            </div>
+        </div>`,
+    debtWarningModal: `
+        <div class="bg-white rounded-lg shadow-xl p-6 md:p-8 max-w-lg w-full animate-fade-in">
+            <h3 class="text-2xl font-bold text-center mb-4 text-red-700">⚠️ Cảnh báo Công Nợ</h3>
+            <div id="debtWarningContent" class="text-center text-gray-700 mb-6 space-y-2"></div>
+            <p class="text-center text-gray-600 mb-4">Vui lòng thanh toán công nợ hiện tại để tiếp tục đặt hàng.</p>
+            <div class="flex justify-center mb-4">
+                <img id="debtQrImage" src="" alt="Mã QR thanh toán công nợ" class="w-64 h-64 border rounded-lg">
+            </div>
+            <div class="mt-6 flex justify-end space-x-3">
+                <button onclick="closeModal('debtWarningModal')" class="px-6 py-2 bg-gray-200 rounded-lg">Để sau</button>
+                <button onclick="confirmDebtPayment()" class="px-6 py-2 bg-blue-600 text-white rounded-lg">Tôi đã thanh toán</button>
+            </div>
+        </div>`,
+    ratingModal: `
+        <div class="bg-white rounded-lg shadow-xl p-6 md:p-8 max-w-md w-full animate-fade-in">
+            <h3 class="text-2xl font-bold text-center mb-4">Đánh giá đơn hàng</h3>
+            <p class="text-center text-gray-600 mb-6">Sự hài lòng của bạn là động lực của chúng tôi!</p>
+            <div class="flex justify-center text-gray-300 space-x-2 mb-4 rating-stars">
+                <span data-value="1">★</span>
+                <span data-value="2">★</span>
+                <span data-value="3">★</span>
+                <span data-value="4">★</span>
+                <span data-value="5">★</span>
+            </div>
+            <textarea id="ratingComment" class="w-full p-3 border rounded-lg bg-gray-50" rows="3" placeholder="Chia sẻ cảm nhận của bạn..."></textarea>
+            <div class="mt-6 flex justify-end space-x-3">
+                <button onclick="closeModal('ratingModal')" class="px-6 py-2 bg-gray-200 rounded-lg">Bỏ qua</button>
+                <button id="submitRatingBtn" class="px-6 py-2 bg-amber-500 text-white rounded-lg">Gửi đánh giá</button>
+            </div>
+        </div>`,
     orderDetailModal: `
-        <div class="bg-white rounded-lg p-6 max-w-2xl w-full animate-fade-in relative max-h-[90vh] overflow-y-auto">
-            <button onclick="closeModal('orderDetailModal')" class="absolute top-3 right-4 text-gray-500 hover:text-gray-800 text-2xl font-bold">&times;</button>
-            <h3 class="text-2xl font-bold mb-4 text-center">Chi Tiết Đơn Hàng <span id="detailOrderCode" class="text-emerald-600"></span></h3>
-            
-            <div class="grid md:grid-cols-2 gap-4 mb-4 text-sm bg-gray-50 p-4 rounded-lg">
-                <div><strong>Ngày đặt:</strong> <span id="detailOrderDate"></span></div>
+        <div class="bg-white rounded-lg shadow-xl p-6 md:p-8 max-w-2xl w-full animate-fade-in">
+            <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-bold">Chi tiết đơn hàng <span id="detailOrderCode" class="text-emerald-600"></span></h3>
+                <button onclick="closeModal('orderDetailModal')" class="text-2xl text-gray-500 hover:text-gray-800">&times;</button>
+            </div>
+            <div class="grid grid-cols-2 gap-x-6 gap-y-3 text-gray-700 mb-4">
                 <div><strong>Trạng thái:</strong> <span id="detailOrderStatus" class="font-semibold"></span></div>
+                <div><strong>Ngày đặt:</strong> <span id="detailOrderDate"></span></div>
+                <div><strong>Người nhận:</strong> <span id="detailOrderCustomer"></span></div>
                 <div><strong>Người giao:</strong> <span id="detailOrderShipper"></span></div>
                 <div><strong>Tổng tiền:</strong> <span id="detailOrderTotal" class="font-bold text-lg text-red-600"></span></div>
             </div>
@@ -803,166 +861,155 @@ function showDashboardTab(tabName, clickedElement) {
 }
 
 function loadDashboardOverview() {
-    const el = document.getElementById('overviewTab');
-    const userOrders = orderHistory.filter(o => o.customerId === currentUser.id);
-    const processing = userOrders.filter(o => o.status.includes('Đang xử lý')).length;
-    el.innerHTML = `<h3 class="text-2xl font-semibold mb-6">Tổng quan</h3><div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-emerald-50 p-6 rounded-lg"><p class="font-medium text-emerald-600">Tổng đơn hàng</p><p class="text-3xl font-bold mt-2">${userOrders.length}</p></div>
-        <div class="bg-amber-50 p-6 rounded-lg"><p class="font-medium text-amber-600">Đang xử lý</p><p class="text-3xl font-bold mt-2">${processing}</p></div>
-        <div class="bg-red-50 p-6 rounded-lg"><p class="font-medium text-red-600">Công nợ</p><p class="text-3xl font-bold mt-2">${(currentUser.debt || 0).toLocaleString()}đ</p></div>
-    </div>`;
+    const overviewTab = document.getElementById('overviewTab');
+    if (!overviewTab) return;
+    const recentOrder = orderHistory.filter(o => o.customerId === currentUser.id).sort((a,b) => b.date - a.date)[0];
+    overviewTab.innerHTML = `
+        <h3 class="text-2xl font-bold mb-6">Chào, ${currentUser.name}!</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-lg card-shadow">
+                <h4 class="font-bold text-lg mb-3">Công nợ hiện tại</h4>
+                <p class="text-3xl font-bold text-red-600">${currentUser.debt.toLocaleString()}đ</p>
+                <p class="text-sm text-gray-500">Hạn mức: ${currentUser.creditLimit.toLocaleString()}đ</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg card-shadow">
+                <h4 class="font-bold text-lg mb-3">Đơn hàng gần nhất</h4>
+                ${recentOrder ? `
+                    <p>Mã: <strong class="text-emerald-600">${recentOrder.code}</strong></p>
+                    <p>Trạng thái: <strong>${recentOrder.status}</strong></p>
+                    <p>Tổng tiền: <strong>${recentOrder.total.toLocaleString()}đ</strong></p>
+                ` : '<p>Chưa có đơn hàng nào.</p>'}
+            </div>
+        </div>
+    `;
 }
 
 function loadOrders() {
-    const el = document.getElementById('ordersTab');
-    const userOrders = orderHistory.filter(o => o.customerId === currentUser.id).sort((a, b) => b.date - a.date);
-    if (userOrders.length === 0) el.innerHTML = '<p>Bạn chưa có đơn hàng nào.</p>';
-    else el.innerHTML = `<h3 class="text-2xl font-semibold mb-6">Lịch sử đơn hàng</h3><div class="space-y-4">${userOrders.map(o => {
-        let ratingHtml = '';
-        if (o.status === 'Hoàn thành') {
-            if (o.rating) {
-                ratingHtml = `<div class="mt-2 pt-2 border-t">
-                    <p class="text-sm text-gray-600">Đánh giá của bạn: <span class="text-amber-500 font-bold">${'★'.repeat(o.rating.stars)}${'☆'.repeat(5 - o.rating.stars)}</span></p>
-                    ${o.rating.comment ? `<p class="text-sm text-gray-500 italic">"${o.rating.comment}"</p>` : ''}
-                </div>`;
-            } else {
-                ratingHtml = `<div class="mt-3"><button class="bg-amber-500 text-white text-sm px-4 py-1.5 rounded-md hover:bg-amber-600" onclick="event.stopPropagation(); openRatingModal(${o.id})">Đánh giá đơn hàng</button></div>`;
-            }
-        }
-
-        return `<div class="bg-gray-50 p-4 rounded-lg shadow-sm cursor-pointer hover:bg-gray-100 transition-colors" onclick="showOrderDetail(${o.id})">
-            <div class="flex justify-between items-start">
-                <div>
-                    <p><strong>Mã ĐH:</strong> ${o.code}</p>
-                    <p><strong>Ngày:</strong> ${o.date.toLocaleDateString('vi-VN')}</p>
-                </div>
-                <span class="text-orange-500 font-semibold bg-orange-100 px-2 py-1 rounded-md text-sm">${o.status}</span>
+    const ordersTab = document.getElementById('ordersTab');
+    if (!ordersTab) return;
+    const userOrders = orderHistory.filter(o => o.customerId === currentUser.id).sort((a,b) => b.date - a.date);
+    ordersTab.innerHTML = `
+        <h3 class="text-2xl font-bold mb-6">Lịch sử đơn hàng</h3>
+        <div class="bg-white rounded-lg card-shadow overflow-hidden">
+            <div class="divide-y divide-gray-200">
+                ${userOrders.length > 0 ? userOrders.map(o => `
+                    <div class="p-4 hover:bg-gray-50 flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-emerald-700">${o.code}</p>
+                            <p class="text-sm text-gray-600">${o.date.toLocaleDateString('vi-VN')}</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-bold">${o.total.toLocaleString()}đ</p>
+                            <p class="text-sm ${o.status === 'Hoàn thành' ? 'text-green-600' : 'text-orange-500'}">${o.status}</p>
+                        </div>
+                        <div class="ml-4 flex-shrink-0">
+                            <button onclick="showOrderDetail(${o.id})" class="text-sm bg-gray-200 px-3 py-1 rounded-md hover:bg-gray-300">Xem</button>
+                            ${o.status === 'Hoàn thành' && !o.rating ? `<button onclick="showRatingModal(${o.id})" class="text-sm bg-amber-400 px-3 py-1 rounded-md hover:bg-amber-500 ml-2">Đánh giá</button>` : ''}
+                        </div>
+                    </div>
+                `).join('') : '<p class="p-6 text-center text-gray-500">Chưa có đơn hàng nào.</p>'}
             </div>
-            <p><strong>Tổng tiền:</strong> ${o.total.toLocaleString()}đ</p>
-            ${o.shipper ? `<p class="text-sm text-gray-600"><strong>Shipper:</strong> ${o.shipper}</p>` : ''}
-            ${ratingHtml}
-        </div>`;
-    }).join('')}</div>`;
-}
-
-// --- ORDER DETAIL FUNCTIONS ---
-function showOrderDetail(orderId) {
-    const modal = document.getElementById('orderDetailModal');
-    modal.innerHTML = TEMPLATES.orderDetailModal;
-
-    const order = orderHistory.find(o => o.id === orderId);
-    if (!order) return;
-
-    // Populate general info
-    document.getElementById('detailOrderCode').textContent = order.code;
-    document.getElementById('detailOrderDate').textContent = order.date.toLocaleDateString('vi-VN');
-    document.getElementById('detailOrderStatus').textContent = order.status;
-    document.getElementById('detailOrderShipper').textContent = order.shipper || 'Chưa có';
-    document.getElementById('detailOrderTotal').textContent = `${order.total.toLocaleString()}đ`;
-    
-    // Populate status color
-    const statusEl = document.getElementById('detailOrderStatus');
-    if (order.status === 'Hoàn thành') statusEl.classList.add('text-green-600');
-    else if (order.status === 'Đang xử lý') statusEl.classList.add('text-orange-500');
-    else statusEl.classList.add('text-red-500');
-
-    // Populate items
-    const itemsContainer = document.getElementById('detailOrderItems');
-    itemsContainer.innerHTML = order.items.map(item => `
-        <div class="flex justify-between items-center text-sm">
-            <div>
-                <span class="font-medium">${item.name}</span>
-                <span class="text-gray-500"> x ${item.quantity}</span>
-            </div>
-            <div class="text-gray-700">${(item.price * item.quantity).toLocaleString()}đ</div>
-        </div>
-    `).join('');
-    
-    const subtotal = order.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const shipping = order.total - subtotal;
-    itemsContainer.innerHTML += `
-        <div class="flex justify-between items-center text-sm pt-2 border-t mt-2">
-            <div class="text-gray-500">Tạm tính</div>
-            <div class="text-gray-700">${subtotal.toLocaleString()}đ</div>
-        </div>
-        <div class="flex justify-between items-center text-sm">
-            <div class="text-gray-500">Phí giao hàng</div>
-            <div class="text-gray-700">${shipping > 0 ? shipping.toLocaleString() : '0'}đ</div>
         </div>
     `;
-
-    // Setup request button
-    document.getElementById('submitRequestBtn').onclick = () => submitOrderRequest(order.id);
-    modal.classList.remove('hidden');
 }
 
-function submitOrderRequest(orderId) {
-    const message = document.getElementById('orderRequestMessage').value;
-    if (!message.trim()) {
-        showNotification('Vui lòng nhập nội dung yêu cầu.', true);
-        return;
-    }
-    console.log(`Request for order ${orderId}: ${message}`);
-    showNotification('Yêu cầu của bạn đã được gửi đến admin.');
-    closeModal('orderDetailModal');
-}
-
-// --- RATING FUNCTIONS ---
-function openRatingModal(orderId) {
+function showRatingModal(orderId) {
     const modal = document.getElementById('ratingModal');
     modal.innerHTML = TEMPLATES.ratingModal;
-    const order = orderHistory.find(o => o.id === orderId);
-    if (!order) return;
-    document.getElementById('ratingOrderInfo').textContent = `Mã ĐH: ${order.code} - Shipper: ${order.shipper}`;
-    document.getElementById('submitRatingBtn').onclick = () => submitRating(orderId);
+    let currentRating = 0;
+    const stars = modal.querySelectorAll('.rating-stars span');
+    stars.forEach(star => {
+        star.onclick = () => {
+            currentRating = star.dataset.value;
+            stars.forEach(s => s.style.color = s.dataset.value <= currentRating ? '#f59e0b' : '#d1d5db');
+        };
+    });
+    modal.querySelector('#submitRatingBtn').onclick = () => {
+        const order = orderHistory.find(o => o.id === orderId);
+        if (order) {
+            order.rating = { stars: currentRating, comment: document.getElementById('ratingComment').value };
+            showNotification('Cảm ơn bạn đã đánh giá!');
+            closeModal('ratingModal');
+            loadOrders();
+        }
+    };
     modal.classList.remove('hidden');
 }
 
-function handleStarHover(starCount) {
-    const stars = document.querySelectorAll('.rating-stars span');
-    stars.forEach((star, index) => {
-        star.style.color = index < starCount ? '#f59e0b' : '#d1d5db';
-    });
-}
-function resetStars() {
-    const rating = document.getElementById('ratingValue').value;
-    handleStarHover(rating);
-}
-function setRating(starCount) {
-    document.getElementById('ratingValue').value = starCount;
-    handleStarHover(starCount);
-}
-function submitRating(orderId) {
-    const stars = parseInt(document.getElementById('ratingValue').value);
-    if (stars === 0) {
-        showNotification('Vui lòng chọn số sao đánh giá.', true);
-        return;
-    }
-    const comment = document.getElementById('ratingComment').value;
+function showOrderDetail(orderId) {
     const order = orderHistory.find(o => o.id === orderId);
-    order.rating = { stars, comment };
-    closeModal('ratingModal');
-    showNotification('Cảm ơn bạn đã đánh giá!');
-    loadOrders(); // Re-render the orders tab
+    if (!order) return;
+    const modal = document.getElementById('orderDetailModal');
+    modal.innerHTML = TEMPLATES.orderDetailModal;
+    document.getElementById('detailOrderCode').textContent = order.code;
+    document.getElementById('detailOrderStatus').textContent = order.status;
+    document.getElementById('detailOrderDate').textContent = order.date.toLocaleDateString('vi-VN');
+    document.getElementById('detailOrderCustomer').textContent = currentUser.name;
+    document.getElementById('detailOrderShipper').textContent = order.shipper || 'Chưa có';
+    document.getElementById('detailOrderTotal').textContent = order.total.toLocaleString() + 'đ';
+    const itemsHtml = order.items.map(item => `<div class="flex justify-between py-1"><p>${item.name} (x${item.quantity})</p><p>${(item.price * item.quantity).toLocaleString()}đ</p></div>`).join('');
+    document.getElementById('detailOrderItems').innerHTML = itemsHtml;
+    modal.classList.remove('hidden');
 }
 
 
 function loadDebtInfo() {
-    const el = document.getElementById('debtTab');
-    el.innerHTML = `<h3 class="text-2xl font-semibold mb-6">Thông Tin Công Nợ</h3><div class="bg-white p-6 rounded-lg max-w-md"><div class="space-y-3"><p class="text-lg">Công nợ hiện tại: <strong class="text-red-500 text-2xl">${(currentUser.debt || 0).toLocaleString()}đ</strong></p><p class="text-gray-600">Hạn mức tín dụng: <strong>${(currentUser.creditLimit || 0).toLocaleString()}đ</strong></p></div><button onclick="showDebtWarning(currentUser)" class="w-full mt-6 bg-red-600 text-white py-2.5 rounded-lg hover:bg-red-700">Thanh toán ngay</button></div>`;
+    const debtTab = document.getElementById('debtTab');
+    if (!debtTab) return;
+    debtTab.innerHTML = `
+        <h3 class="text-2xl font-bold mb-6">Quản lý công nợ</h3>
+        <div class="bg-white p-6 rounded-lg card-shadow text-center">
+            <p class="text-lg text-gray-600">Công nợ hiện tại của bạn</p>
+            <p class="text-5xl font-bold text-red-600 my-4">${currentUser.debt.toLocaleString()}đ</p>
+            <p class="text-gray-500 mb-6">Hạn mức tín dụng: ${currentUser.creditLimit.toLocaleString()}đ</p>
+            <button onclick="showDebtWarning(currentUser)" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold">Thanh toán ngay</button>
+        </div>
+    `;
 }
 
 function loadProfileInfo() {
-    const el = document.getElementById('profileTab');
-    el.innerHTML = `<h3 class="text-2xl font-semibold mb-6">Thông Tin Tài Khoản</h3><div class="bg-white p-6 rounded-lg max-w-md"><div class="space-y-3 text-lg"><p><strong>Họ tên:</strong> ${currentUser.name}</p><p><strong>Email:</strong> ${currentUser.email || "Chưa cập nhật"}</p><p><strong>SĐT:</strong> ${currentUser.phone}</p><p><strong>Địa chỉ:</strong> ${currentUser.address || "Chưa cập nhật"}</p></div></div>`;
+    const profileTab = document.getElementById('profileTab');
+    if (!profileTab) return;
+    profileTab.innerHTML = `
+        <h3 class="text-2xl font-bold mb-6">Thông tin tài khoản</h3>
+        <div class="bg-white p-6 rounded-lg card-shadow">
+            <form id="profileForm" class="space-y-4">
+                <div><label class="font-medium">Họ và tên</label><input type="text" id="profileName" value="${currentUser.name}" class="w-full mt-1 px-4 py-2 border rounded-lg bg-gray-50"></div>
+                <div><label class="font-medium">Số điện thoại</label><input type="tel" id="profilePhone" value="${currentUser.phone}" class="w-full mt-1 px-4 py-2 border rounded-lg bg-gray-50" readonly></div>
+                <div><label class="font-medium">Email</label><input type="email" id="profileEmail" value="${currentUser.email}" class="w-full mt-1 px-4 py-2 border rounded-lg bg-gray-50"></div>
+                <div><label class="font-medium">Địa chỉ</label><input type="text" id="profileAddress" value="${currentUser.address}" class="w-full mt-1 px-4 py-2 border rounded-lg bg-gray-50"></div>
+                <div class="pt-4"><button type="submit" class="bg-emerald-600 text-white px-6 py-2.5 rounded-lg font-semibold">Cập nhật</button></div>
+            </form>
+        </div>
+    `;
+    document.getElementById('profileForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        currentUser.name = document.getElementById('profileName').value;
+        currentUser.email = document.getElementById('profileEmail').value;
+        currentUser.address = document.getElementById('profileAddress').value;
+        const userInDb = demoUsers.find(u => u.id === currentUser.id);
+        if(userInDb) Object.assign(userInDb, { name: currentUser.name, email: currentUser.email, address: currentUser.address });
+        showNotification('Cập nhật thông tin thành công!');
+        updateLoginUI();
+    });
+}
+
+function handleFranchiseClick() {
+    if (!isLoggedIn) {
+        postLoginAction = () => showSection('dashboard');
+        showNotification('Vui lòng đăng nhập để đăng ký nhượng quyền.', true);
+        showSection('login');
+    } else {
+        showSection('dashboard');
+        showDashboardTab('franchise', document.querySelector('[onclick*="franchise"]')); // This is a bit of a hack
+    }
 }
 
 
 // --- UTILITY ---
 function showNotification(message, isError = false) {
     const el = document.createElement('div');
-    const bgColor = isError ? 'bg-red-500' : 'bg-green-500';
-    el.className = `fixed top-20 right-4 ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fade-in`;
+    el.className = `fixed top-5 right-5 p-4 rounded-lg shadow-lg text-white text-sm z-50 ${isError ? 'bg-red-500' : 'bg-green-500'}`;
     el.textContent = message;
     document.body.appendChild(el);
     setTimeout(() => el.remove(), 4000);
@@ -995,6 +1042,7 @@ function closeUserDropdown() { document.getElementById('userDropdownMenu').class
 
 // --- INITIALIZATION ---
 document.addEventListener('DOMContentLoaded', () => {
+    initAnnouncements(); // Khởi tạo thông báo
     const savedUserId = localStorage.getItem('loggedInUserId');
     if (savedUserId) {
         const user = demoUsers.find(u => u.id == savedUserId);
@@ -1028,3 +1076,4 @@ const branches = [
 ];
 </script>
 </html>
+
