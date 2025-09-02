@@ -192,7 +192,6 @@ const TEMPLATES={
     stores:`<h2 class="text-3xl font-bold text-emerald-800 mb-6 text-center">Hệ Thống Cửa Hàng</h2><div id="storeGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5"></div>`,
     cart:`<div class="max-w-7xl mx-auto"><h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Giỏ Hàng & Thanh Toán</h2><div id="cartContent"></div></div>`,
     login:`<div class="max-w-md mx-auto bg-white rounded-lg card-shadow p-6"><h2 class="text-3xl font-bold text-center mb-6">Đăng Nhập</h2><form id="loginForm"><div class="space-y-4"><input type="text" id="loginIdentifier" required placeholder="Email hoặc SĐT" class="w-full px-4 py-3 border rounded-lg"><input type="password" id="loginPassword" required placeholder="Mật khẩu" class="w-full px-4 py-3 border rounded-lg"><button type="submit" class="w-full bg-emerald-600 text-white py-3 rounded-lg font-semibold transition-transform hover:scale-105">Đăng nhập</button></div></form><div id="loginMessage" class="mt-4 text-center text-sm"></div><p class="mt-5 text-center">Chưa có tài khoản? <button onclick="showSection('register')" class="text-emerald-600 font-medium">Đăng ký</button></p></div>`,
-    // <!-- BẮT ĐẦU CHỈNH SỬA: Cập nhật form đăng ký với labels và ghi chú -->
     register:`<div class="max-w-md mx-auto bg-white rounded-lg card-shadow p-6"><h2 class="text-3xl font-bold text-center mb-6">Đăng Ký Tài Khoản</h2>
         <form id="registerForm" class="space-y-4">
             <div>
@@ -225,7 +224,6 @@ const TEMPLATES={
         <div id="registerMessage" class="mt-4 text-center text-sm"></div>
         <p class="mt-5 text-center">Đã có tài khoản? <button onclick="showSection('login')" class="text-emerald-600 font-medium">Đăng nhập</button></p>
     </div>`,
-    // <!-- KẾT THÚC CHỈNH SỬA -->
     dashboard:`<div class="flex flex-col md:flex-row gap-6"><div class="w-full md:w-64 flex-shrink-0"><div class="bg-white rounded-lg card-shadow p-4 space-y-2"><button onclick="showDashboardTab('overview', this)" class="dashboard-menu-item active w-full"><span>📊</span><span>Tổng quan</span></button><button onclick="showDashboardTab('orders', this)" class="dashboard-menu-item w-full"><span>📦</span><span>Đơn hàng</span></button><button onclick="showDashboardTab('debt', this)" class="dashboard-menu-item w-full"><span>💰</span><span>Công nợ</span></button><button onclick="showDashboardTab('profile', this)" class="dashboard-menu-item w-full"><span>👤</span><span>Tài khoản</span></button></div></div><div class="flex-1"><div id="overviewTab" class="dashboard-content"></div><div id="ordersTab" class="dashboard-content hidden"></div><div id="debtTab" class="dashboard-content hidden"></div><div id="profileTab" class="dashboard-content hidden"></div></div></div>`,
     bankingPaymentModal:`<div class="bg-white rounded-lg shadow-xl p-6 md:p-8 max-w-md w-full animate-fade-in"><h3 class="text-2xl font-bold text-center mb-4">Thanh toán chuyển khoản</h3><p class="text-center text-gray-600 mb-6">Vui lòng quét mã QR để thanh toán.</p><div class="flex justify-center mb-4"><img id="bankingQrImage" src="" alt="Mã QR thanh toán" class="w-64 h-64 border rounded-lg"></div><div class="bg-gray-50 rounded-lg p-4 text-center space-y-2"><p>Số tiền: <strong id="bankingAmount" class="text-xl text-red-600"></strong></p><p>Nội dung: <strong id="bankingContent" class="text-lg text-blue-600"></strong></p></div><div class="mt-6 flex justify-end space-x-3"><button onclick="closeModal('bankingPaymentModal')" class="px-6 py-2 bg-gray-200 rounded-lg">Hủy</button><button onclick="confirmBankingPayment()" class="px-6 py-2 bg-emerald-600 text-white rounded-lg">Tôi đã thanh toán</button></div></div>`,
     debtWarningModal:`<div class="bg-white rounded-lg shadow-xl p-6 md:p-8 max-w-lg w-full animate-fade-in"><h3 class="text-2xl font-bold text-center mb-4 text-red-700">⚠️ Cảnh báo Công Nợ</h3><div id="debtWarningContent" class="text-center text-gray-700 mb-6 space-y-2"></div><p class="text-center text-gray-600 mb-4">Vui lòng thanh toán công nợ để tiếp tục.</p><div class="flex justify-center mb-4"><img id="debtQrImage" src="" alt="Mã QR thanh toán công nợ" class="w-64 h-64 border rounded-lg"></div><div class="mt-6 flex justify-end space-x-3"><button onclick="closeModal('debtWarningModal')" class="px-6 py-2 bg-gray-200 rounded-lg">Để sau</button><button onclick="confirmDebtPayment()" class="px-6 py-2 bg-blue-600 text-white rounded-lg">Tôi đã thanh toán</button></div></div>`,
@@ -250,7 +248,89 @@ function updateCartValues(e){const t=cart.find(t=>t.id===e);if(t&&t.quantity>0){
 function updateCartCounters(){const e=cart.reduce((e,t)=>e+t.quantity,0),t=Number.isInteger(e)?e:e.toFixed(1);document.querySelectorAll("#cartCount, #mobileCartCount").forEach(e=>{e.textContent=t})}
 function removeFromCart(e){cart=cart.filter(t=>t.id!==e),updateAllUI()}
 function updateAllUI(){updateCartCounters(),updateMenuVisibility(),updateLoginUI();const e=document.querySelector("main > section:not(.hidden)");if(e){const t=e.id.replace("Section","");"menu"===t&&loadProducts(),"cart"===t&&updateCartDisplay(),"intro"===t&&loadFeaturedProducts(),setupScrollAnimations()}}
-function updateCartDisplay(){const e=document.getElementById("cartContent");if(!e)return;if(0===cart.length)e.innerHTML=`<div class="text-center py-12"><h3 class="text-xl text-gray-600">Giỏ hàng của bạn đang trống.</h3><button onclick="showSection('menu')" class="mt-4 bg-emerald-600 text-white px-6 py-2 rounded-lg">Mua sắm ngay</button></div>`;else{const t=cart.reduce((e,t)=>e+(t.salePrice||t.price)*t.quantity,0),n=t+SHIPPING_FEE;e.innerHTML=`<div class="grid lg:grid-cols-3 gap-6 items-start"><div class="lg:col-span-2 bg-white rounded-lg card-shadow p-4 md:p-5"><h3 class="text-xl font-semibold mb-4">Chi tiết đơn hàng</h3><div id="cartItems" class="space-y-4">${cart.map(e=>`<div id="cart-item-row-${e.id}" class="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 border-b pb-4 last:border-b-0 last:pb-0"><div class="flex items-center gap-3 flex-grow min-w-[200px]"><img src="${e.image}" onerror="this.onerror=null;this.src='${DEMO_IMAGE_URL}';" alt="${e.name}" class="w-16 h-16 md:w-20 md:h-20 bg-gray-100 rounded-lg object-cover flex-shrink-0"><div class="flex-1"><h3 class="font-semibold text-base">${e.name}</h3><p class="text-rose-600 text-sm">${(e.salePrice||e.price).toLocaleString()}đ</p></div></div><div class="flex items-center gap-2 w-full sm:w-auto justify-end"><div class="flex items-center gap-1"><button onclick="updateCartQuantity(${e.id}, -0.5)" class="w-7 h-7 bg-gray-200 rounded-md font-bold">-</button><input type="number" value="${e.quantity}" step="0.5" onchange="updateCartQuantityFromInput(${e.id}, this.value)" class="w-12 h-7 text-center font-bold border-gray-300 border rounded-md"><button onclick="updateCartQuantity(${e.id}, 0.5)" class="w-7 h-7 bg-gray-200 rounded-md font-bold">+</button></div><p id="item-total-${e.id}" class="font-bold text-base w-24 text-right">${((e.salePrice||t.price)*e.quantity).toLocaleString()}đ</p><button onclick="removeFromCart(${e.id})" class="text-red-500 hover:text-red-700 p-1">✖</button></div></div>`).join("")}</div></div><div class="lg:col-span-1"><div class="bg-white rounded-lg card-shadow p-5 sticky top-24 space-y-5"><div><h3 class="text-xl font-semibold mb-4">Thông tin giao hàng</h3><form id="checkoutForm" class="space-y-3"><input type="tel" id="checkoutPhone" required placeholder="Số điện thoại" class="w-full px-4 py-2 border rounded-lg bg-gray-50" onblur="checkCustomerByPhone(this.value)"><input type="text" id="checkoutName" required placeholder="Họ và tên" class="w-full px-4 py-2 border rounded-lg bg-gray-50"><input type="text" id="checkoutAddress" required placeholder="Địa chỉ nhận hàng" class="w-full px-4 py-2 border rounded-lg bg-gray-50"><div id="registrationFields" class="hidden space-y-3 pt-2"><p class="text-sm text-blue-600 bg-blue-50 p-2 rounded-md">SĐT mới! Vui lòng tạo mật khẩu.</p><input type="password" id="checkoutPassword" placeholder="Tạo mật khẩu (ít nhất 6 ký tự)" class="w-full px-4 py-2 border rounded-lg bg-gray-50"></div></form></div><div class="border-t pt-5"><h3 class="text-xl font-semibold mb-4">Hình thức thanh toán</h3><div class="space-y-3"><div><input type="radio" name="paymentMethod" id="paymentBanking" value="banking" class="hidden payment-radio" checked><label for="paymentBanking" class="flex items-center p-3 border-2 rounded-lg cursor-pointer transition"><span class="text-2xl mr-3">💳</span><div><span class="font-semibold">Thanh toán Banking</span><p class="text-sm text-gray-500">Chuyển khoản trả trước.</p></div></label></div><div><input type="radio" name="paymentMethod" id="paymentDebt" value="debt" class="hidden payment-radio"><label for="paymentDebt" class="flex items-center p-3 border-2 rounded-lg cursor-pointer transition"><span class="text-2xl mr-3">📋</span><div><span class="font-semibold">Ghi công nợ</span><p class="text-sm text-gray-500">Áp dụng cho khách hàng thân thiết.</p></div></label></div></div></div><div class="border-t pt-5"><h3 class="text-xl font-semibold mb-4">Tổng kết</h3><div class="space-y-2"><div class="flex justify-between text-gray-600"><span>Tạm tính:</span><span id="cart-subtotal">${t.toLocaleString()}đ</span></div><div class="flex justify-between text-gray-600"><span>Phí giao hàng:</span><span>${SHIPPING_FEE.toLocaleString()}đ</span></div><div class="flex justify-between text-xl font-bold"><span class="text-gray-800">Tổng thanh toán:</span><span id="cart-final-total" class="text-rose-600">${n.toLocaleString()}đ</span></div></div></div><div class="mt-2"><button onclick="proceedToOrder()" class="w-full bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 text-lg font-semibold transition-transform hover:scale-105">Đặt Hàng</button></div></div></div></div>`,isLoggedIn&&(document.getElementById("checkoutPhone").value=currentUser.phone,document.getElementById("checkoutName").value=currentUser.name,document.getElementById("checkoutAddress").value=currentUser.address)}}
+
+// <!-- BẮT ĐẦU CHỈNH SỬA: Cập nhật form giỏ hàng để thêm trường ngày sinh -->
+function updateCartDisplay() {
+    const cartContent = document.getElementById("cartContent");
+    if (!cartContent) return;
+
+    if (cart.length === 0) {
+        cartContent.innerHTML = `<div class="text-center py-12"><h3 class="text-xl text-gray-600">Giỏ hàng của bạn đang trống.</h3><button onclick="showSection('menu')" class="mt-4 bg-emerald-600 text-white px-6 py-2 rounded-lg">Mua sắm ngay</button></div>`;
+    } else {
+        const subtotal = cart.reduce((sum, item) => sum + (item.salePrice || item.price) * item.quantity, 0);
+        const finalTotal = subtotal + SHIPPING_FEE;
+        cartContent.innerHTML = `
+            <div class="grid lg:grid-cols-3 gap-6 items-start">
+                <div class="lg:col-span-2 bg-white rounded-lg card-shadow p-4 md:p-5">
+                    <h3 class="text-xl font-semibold mb-4">Chi tiết đơn hàng</h3>
+                    <div id="cartItems" class="space-y-4">${cart.map(item => `
+                        <div id="cart-item-row-${item.id}" class="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 border-b pb-4 last:border-b-0 last:pb-0">
+                            <div class="flex items-center gap-3 flex-grow min-w-[200px]">
+                                <img src="${item.image}" onerror="this.onerror=null;this.src='${DEMO_IMAGE_URL}';" alt="${item.name}" class="w-16 h-16 md:w-20 md:h-20 bg-gray-100 rounded-lg object-cover flex-shrink-0">
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-base">${item.name}</h3>
+                                    <p class="text-rose-600 text-sm">${(item.salePrice || item.price).toLocaleString()}đ</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+                                <div class="flex items-center gap-1">
+                                    <button onclick="updateCartQuantity(${item.id}, -0.5)" class="w-7 h-7 bg-gray-200 rounded-md font-bold">-</button>
+                                    <input type="number" value="${item.quantity}" step="0.5" onchange="updateCartQuantityFromInput(${item.id}, this.value)" class="w-12 h-7 text-center font-bold border-gray-300 border rounded-md">
+                                    <button onclick="updateCartQuantity(${item.id}, 0.5)" class="w-7 h-7 bg-gray-200 rounded-md font-bold">+</button>
+                                </div>
+                                <p id="item-total-${item.id}" class="font-bold text-base w-24 text-right">${((item.salePrice || item.price) * item.quantity).toLocaleString()}đ</p>
+                                <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 p-1">✖</button>
+                            </div>
+                        </div>`).join("")}
+                    </div>
+                </div>
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-lg card-shadow p-5 sticky top-24 space-y-5">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Thông tin giao hàng</h3>
+                            <form id="checkoutForm" class="space-y-3">
+                                <input type="tel" id="checkoutPhone" required placeholder="Số điện thoại" class="w-full px-4 py-2 border rounded-lg bg-gray-50" onblur="checkCustomerByPhone(this.value)">
+                                <input type="text" id="checkoutName" required placeholder="Họ và tên" class="w-full px-4 py-2 border rounded-lg bg-gray-50">
+                                <input type="text" id="checkoutAddress" required placeholder="Địa chỉ nhận hàng" class="w-full px-4 py-2 border rounded-lg bg-gray-50">
+                                <div id="registrationFields" class="hidden space-y-3 pt-2">
+                                    <p class="text-sm text-blue-600 bg-blue-50 p-2 rounded-md">Số điện thoại mới! Vui lòng cung cấp thêm thông tin để tạo tài khoản.</p>
+                                    <div>
+                                        <label for="checkoutDob" class="text-sm font-medium text-gray-700">Ngày sinh</label>
+                                        <input type="date" id="checkoutDob" class="w-full mt-1 px-4 py-2 border rounded-lg bg-gray-50 text-gray-500">
+                                        <p class="text-xs text-gray-500 mt-1">Để nhận ưu đãi sinh nhật!</p>
+                                    </div>
+                                    <input type="password" id="checkoutPassword" placeholder="Tạo mật khẩu (ít nhất 6 ký tự)" class="w-full px-4 py-2 border rounded-lg bg-gray-50">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="border-t pt-5">
+                            <h3 class="text-xl font-semibold mb-4">Hình thức thanh toán</h3>
+                            <div class="space-y-3">
+                                <div><input type="radio" name="paymentMethod" id="paymentBanking" value="banking" class="hidden payment-radio" checked><label for="paymentBanking" class="flex items-center p-3 border-2 rounded-lg cursor-pointer transition"><span class="text-2xl mr-3">💳</span><div><span class="font-semibold">Thanh toán Banking</span><p class="text-sm text-gray-500">Chuyển khoản trả trước.</p></div></label></div>
+                                <div><input type="radio" name="paymentMethod" id="paymentDebt" value="debt" class="hidden payment-radio"><label for="paymentDebt" class="flex items-center p-3 border-2 rounded-lg cursor-pointer transition"><span class="text-2xl mr-3">📋</span><div><span class="font-semibold">Ghi công nợ</span><p class="text-sm text-gray-500">Áp dụng cho khách hàng thân thiết.</p></div></label></div>
+                            </div>
+                        </div>
+                        <div class="border-t pt-5">
+                            <h3 class="text-xl font-semibold mb-4">Tổng kết</h3>
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-gray-600"><span>Tạm tính:</span><span id="cart-subtotal">${subtotal.toLocaleString()}đ</span></div>
+                                <div class="flex justify-between text-gray-600"><span>Phí giao hàng:</span><span>${SHIPPING_FEE.toLocaleString()}đ</span></div>
+                                <div class="flex justify-between text-xl font-bold"><span class="text-gray-800">Tổng thanh toán:</span><span id="cart-final-total" class="text-rose-600">${finalTotal.toLocaleString()}đ</span></div>
+                            </div>
+                        </div>
+                        <div class="mt-2"><button onclick="proceedToOrder()" class="w-full bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 text-lg font-semibold transition-transform hover:scale-105">Đặt Hàng</button></div>
+                    </div>
+                </div>
+            </div>`;
+        if (isLoggedIn) {
+            document.getElementById("checkoutPhone").value = currentUser.phone;
+            document.getElementById("checkoutName").value = currentUser.name;
+            document.getElementById("checkoutAddress").value = currentUser.address;
+        }
+    }
+}
+// <!-- KẾT THÚC CHỈNH SỬA -->
+
 function checkCustomerByPhone(e){if(isLoggedIn)return;const t=demoUsers.find(t=>t.phone===e),n=document.getElementById("registrationFields"),o=document.getElementById("checkoutName"),a=document.getElementById("checkoutAddress"),d=document.getElementById("checkoutPassword");t?(o.value=t.name,a.value=t.address,n.classList.add("hidden"),d.required=!1):(o.value="",a.value="",n.classList.remove("hidden"),d.required=!0)}
 async function proceedToOrder(){const e=document.getElementById("checkoutForm");if(!e||!e.checkValidity())return e.reportValidity(),void showNotification("Vui lòng điền đầy đủ thông tin.",!0);const t=!document.getElementById("registrationFields").classList.contains("hidden");if(!isLoggedIn&&t){if(!await handleRegisterAndCheckout())return}const n=document.getElementById("checkoutAddress").value;if(isLoggedIn&&currentUser.address!==n&&confirm("Bạn có muốn cập nhật địa chỉ giao hàng mới này cho lần sau không?")){currentUser.address=n;const e=demoUsers.find(e=>e.id===currentUser.id);e&&(e.address=n),showNotification("Đã cập nhật địa chỉ mới.")}const o=document.querySelector('input[name="paymentMethod"]:checked').value,a=cart.reduce((e,t)=>e+(t.salePrice||t.price)*t.quantity,0),d=a+SHIPPING_FEE,i=document.getElementById("checkoutPhone").value;if("banking"===o)showBankingPayment(d);else if("debt"===o){const e=demoUsers.find(e=>e.phone===i);if(!e)return void showNotification("SĐT chưa được đăng ký công nợ.",!0);const t=e.debt+a;t>e.creditLimit?showDebtWarning(e):(e.debt=t,orderHistory.push({id:Date.now(),code:"DH"+Date.now().toString().slice(-6),status:"Đang xử lý",total:d,date:new Date,customerId:e.id,shipper:null,rating:null,items:cart.map(e=>({name:e.name,quantity:e.quantity,price:e.salePrice||e.price}))}),cart=[],showNotification("Đặt hàng công nợ thành công!"),updateAllUI(),showSection("dashboard"))}}
 function generateVietQRUrl(e,t){return`https://img.vietqr.io/image/970422-0934945967-compact2.png?amount=${e}&addInfo=${encodeURIComponent(t)}&accountName=${encodeURIComponent("NGUYEN CHI THANH")}`}
@@ -260,7 +340,43 @@ function showDebtWarning(e){const t=document.getElementById("debtWarningModal");
 function confirmDebtPayment(){const e=document.getElementById("debtWarningModal"),t=e.getAttribute("data-customer-id"),n=demoUsers.find(e=>e.id==t);n&&(n.debt=0),showNotification("Đã ghi nhận thanh toán. Vui lòng đặt lại đơn hàng.",!1),closeModal("debtWarningModal"),updateAllUI(),showSection("cart")}
 function handleLogin(e){e.preventDefault();const t=document.getElementById("loginIdentifier").value,n=document.getElementById("loginPassword").value,o=demoUsers.find(e=>(e.email===t||e.phone===t)&&e.password===n);o?(loginUser(o),postLoginAction?(postLoginAction(),postLoginAction=null):showSection("intro")):document.getElementById("loginMessage").innerHTML='<p class="text-red-500">Thông tin không chính xác.</p>'}
 function handleRegister(e){e.preventDefault();const t=document.getElementById("registerName").value,n=document.getElementById("registerPhone").value,o=document.getElementById("registerDob").value,a=document.getElementById("registerEmail").value,d=document.getElementById("registerAddress").value,i=document.getElementById("registerPassword").value,r=document.getElementById("registerMessage");if(demoUsers.some(e=>e.phone===n))return void(r.innerHTML='<p class="text-red-500">Số điện thoại đã tồn tại.</p>');const s={id:Date.now(),name:t,email:a,phone:n,password:i,dob:o,debt:0,creditLimit:2e5,address:d};demoUsers.push(s),r.innerHTML='<p class="text-green-500">Đăng ký thành công! Đang tự động đăng nhập...</p>',setTimeout(()=>{loginUser(s),postLoginAction?(postLoginAction(),postLoginAction=null):showSection("intro")},1500)}
-async function handleRegisterAndCheckout(){const e=document.getElementById("checkoutName").value,t=document.getElementById("checkoutPhone").value,n=document.getElementById("checkoutAddress").value,o=document.getElementById("checkoutPassword").value;if(o.length<6)return showNotification("Mật khẩu phải có ít nhất 6 ký tự.",!0),!1;if(demoUsers.some(e=>e.phone===t))return showNotification("Số điện thoại đã tồn tại. Vui lòng đăng nhập.",!0),!1;const a={id:Date.now(),name:e,phone:t,address:n,password:o,email:"",dob:null,debt:0,creditLimit:2e5};return demoUsers.push(a),loginUser(a),showNotification(`Đăng ký thành công! Chào mừng ${e}.`,!1),!0}
+
+// <!-- BẮT ĐẦU CHỈNH SỬA: Cập nhật hàm đăng ký khi thanh toán để lấy ngày sinh -->
+async function handleRegisterAndCheckout() {
+    const name = document.getElementById("checkoutName").value;
+    const phone = document.getElementById("checkoutPhone").value;
+    const address = document.getElementById("checkoutAddress").value;
+    const password = document.getElementById("checkoutPassword").value;
+    const dob = document.getElementById("checkoutDob").value; // Lấy ngày sinh
+
+    if (password.length < 6) {
+        showNotification("Mật khẩu phải có ít nhất 6 ký tự.", true);
+        return false;
+    }
+    if (demoUsers.some(user => user.phone === phone)) {
+        showNotification("Số điện thoại đã tồn tại. Vui lòng đăng nhập.", true);
+        return false;
+    }
+
+    const newUser = {
+        id: Date.now(),
+        name,
+        phone,
+        address,
+        password,
+        email: "",
+        dob: dob, // Lưu ngày sinh
+        debt: 0,
+        creditLimit: 200000
+    };
+
+    demoUsers.push(newUser);
+    loginUser(newUser);
+    showNotification(`Đăng ký thành công! Chào mừng ${name}.`, false);
+    return true;
+}
+// <!-- KẾT THÚC CHỈNH SỬA -->
+
 function loginUser(e){currentUser=e,isLoggedIn=!0,localStorage.setItem("loggedInUserId",e.id),updateAllUI()}
 function logout(){currentUser=null,isLoggedIn=!1,localStorage.removeItem("loggedInUserId"),updateAllUI(),showSection("intro"),showNotification("Đã đăng xuất!")}
 function loadDashboard(){isLoggedIn?(showDashboardTab("overview",document.querySelector(".dashboard-menu-item")),loadDashboardOverview()):(postLoginAction=()=>showSection("dashboard"),showSection("login"))}
